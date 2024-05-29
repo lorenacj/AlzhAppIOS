@@ -39,6 +39,10 @@
 		7C273FBA2C07A5B7001557A0 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F9C2C07A5B7001557A0 /* OpenSans-Italic.ttf */; };
 		7C273FBB2C07A5B7001557A0 /* OpenSans-VariableFont_wdth,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F9D2C07A5B7001557A0 /* OpenSans-VariableFont_wdth,wght.ttf */; };
 		7C273FBD2C07A808001557A0 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C273FBC2C07A808001557A0 /* AppFonts.swift */; };
+		7C273FC02C07A93E001557A0 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C273FBF2C07A93E001557A0 /* AppStrings.swift */; };
+		7C273FC32C07AB1D001557A0 /* AppIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C273FC22C07AB1D001557A0 /* AppIcons.swift */; };
+		7C273FC52C07AC58001557A0 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C273FC42C07AC58001557A0 /* AppColors.swift */; };
+		7C273FC92C07ACBA001557A0 /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C273FC82C07ACBA001557A0 /* CommonFunctions.swift */; };
 		7C8E24F12C03E16000420913 /* AlzhAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E24F02C03E16000420913 /* AlzhAppApp.swift */; };
 		7C8E24F32C03E16000420913 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E24F22C03E16000420913 /* ContentView.swift */; };
 		7C8E24F52C03E16200420913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E24F42C03E16200420913 /* Assets.xcassets */; };
@@ -80,6 +84,10 @@
 		7C273F9D2C07A5B7001557A0 /* OpenSans-VariableFont_wdth,wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-VariableFont_wdth,wght.ttf"; sourceTree = "<group>"; };
 		7C273FBC2C07A808001557A0 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		7C273FBE2C07A825001557A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7C273FBF2C07A93E001557A0 /* AppStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
+		7C273FC22C07AB1D001557A0 /* AppIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcons.swift; sourceTree = "<group>"; };
+		7C273FC42C07AC58001557A0 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		7C273FC82C07ACBA001557A0 /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
 		7C8E24ED2C03E16000420913 /* AlzhApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlzhApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8E24F02C03E16000420913 /* AlzhAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlzhAppApp.swift; sourceTree = "<group>"; };
 		7C8E24F22C03E16000420913 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,9 +109,11 @@
 		7C273F7E2C07A52A001557A0 /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				7C273F7A2C07A500001557A0 /* Localizable.strings */,
+				7C273FC12C07AADB001557A0 /* localizable */,
 				7C273F7F2C07A531001557A0 /* fonts */,
 				7C273FBC2C07A808001557A0 /* AppFonts.swift */,
+				7C273FC22C07AB1D001557A0 /* AppIcons.swift */,
+				7C273FC42C07AC58001557A0 /* AppColors.swift */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -145,10 +155,33 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		7C273FC12C07AADB001557A0 /* localizable */ = {
+			isa = PBXGroup;
+			children = (
+				7C273FBF2C07A93E001557A0 /* AppStrings.swift */,
+				7C273F7A2C07A500001557A0 /* Localizable.strings */,
+			);
+			path = localizable;
+			sourceTree = "<group>";
+		};
+		7C273FC62C07ACA0001557A0 /* functions */ = {
+			isa = PBXGroup;
+			children = (
+				7C273FC82C07ACBA001557A0 /* CommonFunctions.swift */,
+			);
+			path = functions;
+			sourceTree = "<group>";
+		};
+		7C273FC72C07ACA9001557A0 /* components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
 		7C8E24E42C03E16000420913 = {
 			isa = PBXGroup;
 			children = (
-				7C273F7E2C07A52A001557A0 /* resources */,
 				7C8E24EF2C03E16000420913 /* AlzhApp */,
 				7C8E24EE2C03E16000420913 /* Products */,
 			);
@@ -165,6 +198,7 @@
 		7C8E24EF2C03E16000420913 /* AlzhApp */ = {
 			isa = PBXGroup;
 			children = (
+				7C273F7E2C07A52A001557A0 /* resources */,
 				7C273FBE2C07A825001557A0 /* Info.plist */,
 				7C8E24FF2C03E25E00420913 /* views */,
 				7C8E24FE2C03E25800420913 /* common */,
@@ -187,6 +221,8 @@
 		7C8E24FE2C03E25800420913 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				7C273FC72C07ACA9001557A0 /* components */,
+				7C273FC62C07ACA0001557A0 /* functions */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -302,6 +338,10 @@
 			files = (
 				7C273FBD2C07A808001557A0 /* AppFonts.swift in Sources */,
 				7C8E24F32C03E16000420913 /* ContentView.swift in Sources */,
+				7C273FC92C07ACBA001557A0 /* CommonFunctions.swift in Sources */,
+				7C273FC32C07AB1D001557A0 /* AppIcons.swift in Sources */,
+				7C273FC52C07AC58001557A0 /* AppColors.swift in Sources */,
+				7C273FC02C07A93E001557A0 /* AppStrings.swift in Sources */,
 				7C8E24F12C03E16000420913 /* AlzhAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
