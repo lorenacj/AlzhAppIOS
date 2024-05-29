@@ -43,10 +43,12 @@
 		7C273FC32C07AB1D001557A0 /* AppIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C273FC22C07AB1D001557A0 /* AppIcons.swift */; };
 		7C273FC52C07AC58001557A0 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C273FC42C07AC58001557A0 /* AppColors.swift */; };
 		7C273FC92C07ACBA001557A0 /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C273FC82C07ACBA001557A0 /* CommonFunctions.swift */; };
+		7C273FCD2C07AF85001557A0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C273FCC2C07AF85001557A0 /* LoginView.swift */; };
+		7C273FD02C07CA05001557A0 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C273FCF2C07CA05001557A0 /* TextFields.swift */; };
 		7C8E24F12C03E16000420913 /* AlzhAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E24F02C03E16000420913 /* AlzhAppApp.swift */; };
-		7C8E24F32C03E16000420913 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E24F22C03E16000420913 /* ContentView.swift */; };
 		7C8E24F52C03E16200420913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E24F42C03E16200420913 /* Assets.xcassets */; };
 		7C8E24F82C03E16200420913 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E24F72C03E16200420913 /* Preview Assets.xcassets */; };
+		7CEE3A462C07D50B007604D6 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEE3A452C07D50B007604D6 /* Buttons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,11 +90,13 @@
 		7C273FC22C07AB1D001557A0 /* AppIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcons.swift; sourceTree = "<group>"; };
 		7C273FC42C07AC58001557A0 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		7C273FC82C07ACBA001557A0 /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
+		7C273FCC2C07AF85001557A0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		7C273FCF2C07CA05001557A0 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
 		7C8E24ED2C03E16000420913 /* AlzhApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlzhApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8E24F02C03E16000420913 /* AlzhAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlzhAppApp.swift; sourceTree = "<group>"; };
-		7C8E24F22C03E16000420913 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7C8E24F42C03E16200420913 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C8E24F72C03E16200420913 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7CEE3A452C07D50B007604D6 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,8 +179,32 @@
 		7C273FC72C07ACA9001557A0 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				7C273FCF2C07CA05001557A0 /* TextFields.swift */,
+				7CEE3A452C07D50B007604D6 /* Buttons.swift */,
 			);
 			path = components;
+			sourceTree = "<group>";
+		};
+		7C273FCA2C07AF32001557A0 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				7C273FCC2C07AF85001557A0 /* LoginView.swift */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		7C273FCB2C07AF39001557A0 /* register */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = register;
+			sourceTree = "<group>";
+		};
+		7C273FCE2C07B044001557A0 /* initial */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = initial;
 			sourceTree = "<group>";
 		};
 		7C8E24E42C03E16000420913 = {
@@ -198,12 +226,11 @@
 		7C8E24EF2C03E16000420913 /* AlzhApp */ = {
 			isa = PBXGroup;
 			children = (
-				7C273F7E2C07A52A001557A0 /* resources */,
-				7C273FBE2C07A825001557A0 /* Info.plist */,
 				7C8E24FF2C03E25E00420913 /* views */,
 				7C8E24FE2C03E25800420913 /* common */,
+				7C273F7E2C07A52A001557A0 /* resources */,
+				7C273FBE2C07A825001557A0 /* Info.plist */,
 				7C8E24F02C03E16000420913 /* AlzhAppApp.swift */,
-				7C8E24F22C03E16000420913 /* ContentView.swift */,
 				7C8E24F42C03E16200420913 /* Assets.xcassets */,
 				7C8E24F62C03E16200420913 /* Preview Content */,
 			);
@@ -230,6 +257,9 @@
 		7C8E24FF2C03E25E00420913 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				7C273FCB2C07AF39001557A0 /* register */,
+				7C273FCA2C07AF32001557A0 /* login */,
+				7C273FCE2C07B044001557A0 /* initial */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -336,13 +366,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CEE3A462C07D50B007604D6 /* Buttons.swift in Sources */,
 				7C273FBD2C07A808001557A0 /* AppFonts.swift in Sources */,
-				7C8E24F32C03E16000420913 /* ContentView.swift in Sources */,
+				7C273FCD2C07AF85001557A0 /* LoginView.swift in Sources */,
 				7C273FC92C07ACBA001557A0 /* CommonFunctions.swift in Sources */,
 				7C273FC32C07AB1D001557A0 /* AppIcons.swift in Sources */,
 				7C273FC52C07AC58001557A0 /* AppColors.swift in Sources */,
 				7C273FC02C07A93E001557A0 /* AppStrings.swift in Sources */,
 				7C8E24F12C03E16000420913 /* AlzhAppApp.swift in Sources */,
+				7C273FD02C07CA05001557A0 /* TextFields.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
