@@ -7,6 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C273F7C2C07A500001557A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F7A2C07A500001557A0 /* Localizable.strings */; };
+		7C273F9E2C07A5B7001557A0 /* SourceSans3-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F802C07A5B6001557A0 /* SourceSans3-ExtraBoldItalic.ttf */; };
+		7C273F9F2C07A5B7001557A0 /* SourceSans3-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F812C07A5B6001557A0 /* SourceSans3-Regular.ttf */; };
+		7C273FA02C07A5B7001557A0 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F822C07A5B6001557A0 /* OpenSans-Bold.ttf */; };
+		7C273FA12C07A5B7001557A0 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F832C07A5B6001557A0 /* OpenSans-Regular.ttf */; };
+		7C273FA22C07A5B7001557A0 /* SourceSans3-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F842C07A5B6001557A0 /* SourceSans3-MediumItalic.ttf */; };
+		7C273FA32C07A5B7001557A0 /* SourceSans3-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F852C07A5B6001557A0 /* SourceSans3-SemiBold.ttf */; };
+		7C273FA42C07A5B7001557A0 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F862C07A5B6001557A0 /* OpenSans-SemiBoldItalic.ttf */; };
+		7C273FA52C07A5B7001557A0 /* OpenSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F872C07A5B6001557A0 /* OpenSans-Medium.ttf */; };
+		7C273FA62C07A5B7001557A0 /* SourceSans3-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F882C07A5B6001557A0 /* SourceSans3-Black.ttf */; };
+		7C273FA72C07A5B7001557A0 /* SourceSans3-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F892C07A5B6001557A0 /* SourceSans3-ExtraLightItalic.ttf */; };
+		7C273FA82C07A5B7001557A0 /* SourceSans3-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F8A2C07A5B6001557A0 /* SourceSans3-VariableFont_wght.ttf */; };
+		7C273FA92C07A5B7001557A0 /* SourceSans3-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F8B2C07A5B6001557A0 /* SourceSans3-Medium.ttf */; };
+		7C273FAA2C07A5B7001557A0 /* SourceSans3-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F8C2C07A5B6001557A0 /* SourceSans3-BoldItalic.ttf */; };
+		7C273FAB2C07A5B7001557A0 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F8D2C07A5B6001557A0 /* OpenSans-Light.ttf */; };
+		7C273FAC2C07A5B7001557A0 /* SourceSans3-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F8E2C07A5B6001557A0 /* SourceSans3-ExtraBold.ttf */; };
+		7C273FAD2C07A5B7001557A0 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F8F2C07A5B6001557A0 /* OpenSans-ExtraBold.ttf */; };
+		7C273FAE2C07A5B7001557A0 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F902C07A5B6001557A0 /* OpenSans-BoldItalic.ttf */; };
+		7C273FAF2C07A5B7001557A0 /* SourceSans3-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F912C07A5B6001557A0 /* SourceSans3-Light.ttf */; };
+		7C273FB02C07A5B7001557A0 /* SourceSans3-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F922C07A5B6001557A0 /* SourceSans3-Italic.ttf */; };
+		7C273FB12C07A5B7001557A0 /* SourceSans3-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F932C07A5B6001557A0 /* SourceSans3-LightItalic.ttf */; };
+		7C273FB22C07A5B7001557A0 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F942C07A5B6001557A0 /* OpenSans-SemiBold.ttf */; };
+		7C273FB32C07A5B7001557A0 /* SourceSans3-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F952C07A5B6001557A0 /* SourceSans3-Bold.ttf */; };
+		7C273FB42C07A5B7001557A0 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F962C07A5B6001557A0 /* OpenSans-LightItalic.ttf */; };
+		7C273FB52C07A5B7001557A0 /* OpenSans-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F972C07A5B6001557A0 /* OpenSans-MediumItalic.ttf */; };
+		7C273FB62C07A5B7001557A0 /* SourceSans3-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F982C07A5B7001557A0 /* SourceSans3-SemiBoldItalic.ttf */; };
+		7C273FB72C07A5B7001557A0 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F992C07A5B7001557A0 /* OpenSans-ExtraBoldItalic.ttf */; };
+		7C273FB82C07A5B7001557A0 /* SourceSans3-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F9A2C07A5B7001557A0 /* SourceSans3-ExtraLight.ttf */; };
+		7C273FB92C07A5B7001557A0 /* SourceSans3-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F9B2C07A5B7001557A0 /* SourceSans3-BlackItalic.ttf */; };
+		7C273FBA2C07A5B7001557A0 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F9C2C07A5B7001557A0 /* OpenSans-Italic.ttf */; };
+		7C273FBB2C07A5B7001557A0 /* OpenSans-VariableFont_wdth,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F9D2C07A5B7001557A0 /* OpenSans-VariableFont_wdth,wght.ttf */; };
+		7C273FBD2C07A808001557A0 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C273FBC2C07A808001557A0 /* AppFonts.swift */; };
 		7C8E24F12C03E16000420913 /* AlzhAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E24F02C03E16000420913 /* AlzhAppApp.swift */; };
 		7C8E24F32C03E16000420913 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E24F22C03E16000420913 /* ContentView.swift */; };
 		7C8E24F52C03E16200420913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E24F42C03E16200420913 /* Assets.xcassets */; };
@@ -14,6 +46,40 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C273F7B2C07A500001557A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7C273F7D2C07A510001557A0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7C273F802C07A5B6001557A0 /* SourceSans3-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		7C273F812C07A5B6001557A0 /* SourceSans3-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-Regular.ttf"; sourceTree = "<group>"; };
+		7C273F822C07A5B6001557A0 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		7C273F832C07A5B6001557A0 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		7C273F842C07A5B6001557A0 /* SourceSans3-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-MediumItalic.ttf"; sourceTree = "<group>"; };
+		7C273F852C07A5B6001557A0 /* SourceSans3-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-SemiBold.ttf"; sourceTree = "<group>"; };
+		7C273F862C07A5B6001557A0 /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		7C273F872C07A5B6001557A0 /* OpenSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Medium.ttf"; sourceTree = "<group>"; };
+		7C273F882C07A5B6001557A0 /* SourceSans3-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-Black.ttf"; sourceTree = "<group>"; };
+		7C273F892C07A5B6001557A0 /* SourceSans3-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		7C273F8A2C07A5B6001557A0 /* SourceSans3-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		7C273F8B2C07A5B6001557A0 /* SourceSans3-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-Medium.ttf"; sourceTree = "<group>"; };
+		7C273F8C2C07A5B6001557A0 /* SourceSans3-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-BoldItalic.ttf"; sourceTree = "<group>"; };
+		7C273F8D2C07A5B6001557A0 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		7C273F8E2C07A5B6001557A0 /* SourceSans3-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-ExtraBold.ttf"; sourceTree = "<group>"; };
+		7C273F8F2C07A5B6001557A0 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		7C273F902C07A5B6001557A0 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		7C273F912C07A5B6001557A0 /* SourceSans3-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-Light.ttf"; sourceTree = "<group>"; };
+		7C273F922C07A5B6001557A0 /* SourceSans3-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-Italic.ttf"; sourceTree = "<group>"; };
+		7C273F932C07A5B6001557A0 /* SourceSans3-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-LightItalic.ttf"; sourceTree = "<group>"; };
+		7C273F942C07A5B6001557A0 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		7C273F952C07A5B6001557A0 /* SourceSans3-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-Bold.ttf"; sourceTree = "<group>"; };
+		7C273F962C07A5B6001557A0 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		7C273F972C07A5B6001557A0 /* OpenSans-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-MediumItalic.ttf"; sourceTree = "<group>"; };
+		7C273F982C07A5B7001557A0 /* SourceSans3-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		7C273F992C07A5B7001557A0 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		7C273F9A2C07A5B7001557A0 /* SourceSans3-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-ExtraLight.ttf"; sourceTree = "<group>"; };
+		7C273F9B2C07A5B7001557A0 /* SourceSans3-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-BlackItalic.ttf"; sourceTree = "<group>"; };
+		7C273F9C2C07A5B7001557A0 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		7C273F9D2C07A5B7001557A0 /* OpenSans-VariableFont_wdth,wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-VariableFont_wdth,wght.ttf"; sourceTree = "<group>"; };
+		7C273FBC2C07A808001557A0 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
+		7C273FBE2C07A825001557A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7C8E24ED2C03E16000420913 /* AlzhApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlzhApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8E24F02C03E16000420913 /* AlzhAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlzhAppApp.swift; sourceTree = "<group>"; };
 		7C8E24F22C03E16000420913 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,9 +98,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C273F7E2C07A52A001557A0 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				7C273F7A2C07A500001557A0 /* Localizable.strings */,
+				7C273F7F2C07A531001557A0 /* fonts */,
+				7C273FBC2C07A808001557A0 /* AppFonts.swift */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		7C273F7F2C07A531001557A0 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7C273F822C07A5B6001557A0 /* OpenSans-Bold.ttf */,
+				7C273F902C07A5B6001557A0 /* OpenSans-BoldItalic.ttf */,
+				7C273F8F2C07A5B6001557A0 /* OpenSans-ExtraBold.ttf */,
+				7C273F992C07A5B7001557A0 /* OpenSans-ExtraBoldItalic.ttf */,
+				7C273F9C2C07A5B7001557A0 /* OpenSans-Italic.ttf */,
+				7C273F8D2C07A5B6001557A0 /* OpenSans-Light.ttf */,
+				7C273F962C07A5B6001557A0 /* OpenSans-LightItalic.ttf */,
+				7C273F872C07A5B6001557A0 /* OpenSans-Medium.ttf */,
+				7C273F972C07A5B6001557A0 /* OpenSans-MediumItalic.ttf */,
+				7C273F832C07A5B6001557A0 /* OpenSans-Regular.ttf */,
+				7C273F942C07A5B6001557A0 /* OpenSans-SemiBold.ttf */,
+				7C273F862C07A5B6001557A0 /* OpenSans-SemiBoldItalic.ttf */,
+				7C273F9D2C07A5B7001557A0 /* OpenSans-VariableFont_wdth,wght.ttf */,
+				7C273F882C07A5B6001557A0 /* SourceSans3-Black.ttf */,
+				7C273F9B2C07A5B7001557A0 /* SourceSans3-BlackItalic.ttf */,
+				7C273F952C07A5B6001557A0 /* SourceSans3-Bold.ttf */,
+				7C273F8C2C07A5B6001557A0 /* SourceSans3-BoldItalic.ttf */,
+				7C273F8E2C07A5B6001557A0 /* SourceSans3-ExtraBold.ttf */,
+				7C273F802C07A5B6001557A0 /* SourceSans3-ExtraBoldItalic.ttf */,
+				7C273F9A2C07A5B7001557A0 /* SourceSans3-ExtraLight.ttf */,
+				7C273F892C07A5B6001557A0 /* SourceSans3-ExtraLightItalic.ttf */,
+				7C273F922C07A5B6001557A0 /* SourceSans3-Italic.ttf */,
+				7C273F912C07A5B6001557A0 /* SourceSans3-Light.ttf */,
+				7C273F932C07A5B6001557A0 /* SourceSans3-LightItalic.ttf */,
+				7C273F8B2C07A5B6001557A0 /* SourceSans3-Medium.ttf */,
+				7C273F842C07A5B6001557A0 /* SourceSans3-MediumItalic.ttf */,
+				7C273F812C07A5B6001557A0 /* SourceSans3-Regular.ttf */,
+				7C273F852C07A5B6001557A0 /* SourceSans3-SemiBold.ttf */,
+				7C273F982C07A5B7001557A0 /* SourceSans3-SemiBoldItalic.ttf */,
+				7C273F8A2C07A5B6001557A0 /* SourceSans3-VariableFont_wght.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		7C8E24E42C03E16000420913 = {
 			isa = PBXGroup;
 			children = (
+				7C273F7E2C07A52A001557A0 /* resources */,
 				7C8E24EF2C03E16000420913 /* AlzhApp */,
 				7C8E24EE2C03E16000420913 /* Products */,
 			);
@@ -51,6 +165,9 @@
 		7C8E24EF2C03E16000420913 /* AlzhApp */ = {
 			isa = PBXGroup;
 			children = (
+				7C273FBE2C07A825001557A0 /* Info.plist */,
+				7C8E24FF2C03E25E00420913 /* views */,
+				7C8E24FE2C03E25800420913 /* common */,
 				7C8E24F02C03E16000420913 /* AlzhAppApp.swift */,
 				7C8E24F22C03E16000420913 /* ContentView.swift */,
 				7C8E24F42C03E16200420913 /* Assets.xcassets */,
@@ -65,6 +182,20 @@
 				7C8E24F72C03E16200420913 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7C8E24FE2C03E25800420913 /* common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		7C8E24FF2C03E25E00420913 /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +240,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 7C8E24E42C03E16000420913;
 			productRefGroup = 7C8E24EE2C03E16000420913 /* Products */;
@@ -125,8 +257,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C273F9E2C07A5B7001557A0 /* SourceSans3-ExtraBoldItalic.ttf in Resources */,
+				7C273FA32C07A5B7001557A0 /* SourceSans3-SemiBold.ttf in Resources */,
+				7C273FB12C07A5B7001557A0 /* SourceSans3-LightItalic.ttf in Resources */,
 				7C8E24F82C03E16200420913 /* Preview Assets.xcassets in Resources */,
+				7C273FBB2C07A5B7001557A0 /* OpenSans-VariableFont_wdth,wght.ttf in Resources */,
+				7C273FB22C07A5B7001557A0 /* OpenSans-SemiBold.ttf in Resources */,
+				7C273FAA2C07A5B7001557A0 /* SourceSans3-BoldItalic.ttf in Resources */,
+				7C273FAB2C07A5B7001557A0 /* OpenSans-Light.ttf in Resources */,
+				7C273FA82C07A5B7001557A0 /* SourceSans3-VariableFont_wght.ttf in Resources */,
+				7C273FB92C07A5B7001557A0 /* SourceSans3-BlackItalic.ttf in Resources */,
+				7C273FA72C07A5B7001557A0 /* SourceSans3-ExtraLightItalic.ttf in Resources */,
+				7C273FA02C07A5B7001557A0 /* OpenSans-Bold.ttf in Resources */,
+				7C273FB52C07A5B7001557A0 /* OpenSans-MediumItalic.ttf in Resources */,
+				7C273FAC2C07A5B7001557A0 /* SourceSans3-ExtraBold.ttf in Resources */,
+				7C273FA42C07A5B7001557A0 /* OpenSans-SemiBoldItalic.ttf in Resources */,
+				7C273FAD2C07A5B7001557A0 /* OpenSans-ExtraBold.ttf in Resources */,
+				7C273FB82C07A5B7001557A0 /* SourceSans3-ExtraLight.ttf in Resources */,
+				7C273FA12C07A5B7001557A0 /* OpenSans-Regular.ttf in Resources */,
+				7C273F7C2C07A500001557A0 /* Localizable.strings in Resources */,
+				7C273FA22C07A5B7001557A0 /* SourceSans3-MediumItalic.ttf in Resources */,
+				7C273FAE2C07A5B7001557A0 /* OpenSans-BoldItalic.ttf in Resources */,
+				7C273FA92C07A5B7001557A0 /* SourceSans3-Medium.ttf in Resources */,
+				7C273FA62C07A5B7001557A0 /* SourceSans3-Black.ttf in Resources */,
+				7C273FA52C07A5B7001557A0 /* OpenSans-Medium.ttf in Resources */,
+				7C273FB62C07A5B7001557A0 /* SourceSans3-SemiBoldItalic.ttf in Resources */,
+				7C273FB02C07A5B7001557A0 /* SourceSans3-Italic.ttf in Resources */,
+				7C273FBA2C07A5B7001557A0 /* OpenSans-Italic.ttf in Resources */,
+				7C273FAF2C07A5B7001557A0 /* SourceSans3-Light.ttf in Resources */,
+				7C273F9F2C07A5B7001557A0 /* SourceSans3-Regular.ttf in Resources */,
 				7C8E24F52C03E16200420913 /* Assets.xcassets in Resources */,
+				7C273FB72C07A5B7001557A0 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				7C273FB42C07A5B7001557A0 /* OpenSans-LightItalic.ttf in Resources */,
+				7C273FB32C07A5B7001557A0 /* SourceSans3-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C273FBD2C07A808001557A0 /* AppFonts.swift in Sources */,
 				7C8E24F32C03E16000420913 /* ContentView.swift in Sources */,
 				7C8E24F12C03E16000420913 /* AlzhAppApp.swift in Sources */,
 			);
@@ -144,12 +308,25 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		7C273F7A2C07A500001557A0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C273F7B2C07A500001557A0 /* en */,
+				7C273F7D2C07A510001557A0 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		7C8E24F92C03E16200420913 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -213,6 +390,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -274,6 +452,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AlzhApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AlzhApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -302,6 +481,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AlzhApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AlzhApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
