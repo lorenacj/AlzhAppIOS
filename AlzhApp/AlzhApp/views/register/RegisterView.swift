@@ -63,6 +63,7 @@ struct RegisterView: View {
                                     nameText = ""
                                     passwordText = ""
                                     lastnameText = ""
+                                    #warning("comprobar que no existe")
                                 } else {
                                     // Teléfono no válido
                                     alertMessage = LocalizedString.registroErrorTelefono
