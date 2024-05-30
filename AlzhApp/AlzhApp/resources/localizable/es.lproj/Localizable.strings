@@ -7,7 +7,7 @@
 "login" = "Iniciar sesión";
 "validacion" = "Validación";
 "dni" = "DNI";
-"dni_placeholder" = "123456789X";
+"dni_placeholder" = "12345678X";
 "password" = "Contraseña";
 "placeholder_general" = "Escriba aquí";
 "no_tiene_cuenta" = "¿No tienes una cuenta? ¡Regístrate!";

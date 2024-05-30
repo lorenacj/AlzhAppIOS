@@ -8,7 +8,7 @@
 "login" = "Login";
 "validacion" = "Validation";
 "dni" = "ID";
-"dni_placeholder" = "123456789X";
+"dni_placeholder" = "12345678X";
 "password" = "Password";
 "placeholder_general" = "write here";
 "no_tiene_cuenta" = "Don't have an account? Sign up!";

@@ -58,6 +58,11 @@ struct RegisterView: View {
                                     //     alertMessage = LocalizedString.registroDuplicado
                                     // }
                                     alertMessage = LocalizedString.registrocorrecto
+                                    dniText = ""
+                                    telephoneText = ""
+                                    nameText = ""
+                                    passwordText = ""
+                                    lastnameText = ""
                                 } else {
                                     // Teléfono no válido
                                     alertMessage = LocalizedString.registroErrorTelefono
