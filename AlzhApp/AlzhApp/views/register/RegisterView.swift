@@ -49,24 +49,29 @@ struct RegisterView: View {
                     CustomButtonStyle(text: LocalizedString.register, isTapped: $isTapped) {
                         if dniText.isEmpty || passwordText.isEmpty || nameText.isEmpty || lastnameText.isEmpty || telephoneText.isEmpty {
                             alertMessage = LocalizedString.camposVacios
+                            print("Campos vacíos detectados")
                         } else {
-                            if(isValidDNI(dni: dniText)) {
-                                if(isValidTelephone(telephone: telephoneText)){
-                                    // Si es correcto:
-                                    //comprueba que no existe el usuario
-                                    //                                    if(user no existe) {
-//                                    alertMessage= LocalizedString.registrocorrecto
-//                                    } else {
-//                                    alertMessage = LocalizedString.registroDuplicado }
+                            if isValidDNI(dni: dniText) {
+                                print("DNI válido: \(dniText)")
+                                if isValidTelephone(telephone: telephoneText) {
+                                    print("Teléfono válido: \(telephoneText)")
+                                    // Aquí puedes agregar la lógica para comprobar si el usuario ya existe.
+                                    // if(user no existe) {
+                                    //     alertMessage = LocalizedString.registrocorrecto
+                                    // } else {
+                                    //     alertMessage = LocalizedString.registroDuplicado
+                                    // }
+                                    alertMessage = LocalizedString.registrocorrecto
                                 } else {
-                                    //telefono no valido
+                                    // Teléfono no válido
                                     alertMessage = LocalizedString.registroErrorTelefono
+                                    print("Teléfono no válido: \(telephoneText)")
                                 }
                             } else {
-                                //dni no valido
+                                // DNI no válido
                                 alertMessage = LocalizedString.registroErrorDni
+                                print("DNI no válido: \(dniText)")
                             }
-                            alertMessage = LocalizedString.registrocorrecto
                         }
                         showAlert = true
                     }
@@ -84,13 +89,17 @@ struct RegisterView: View {
     func isValidTelephone(telephone: String) -> Bool {
         let phoneRegex = "^[0-9]{9}$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
-        return phoneTest.evaluate(with: telephone)
+        let result = phoneTest.evaluate(with: telephone)
+        print("Evaluando teléfono '\(telephone)': \(result)")
+        return result
     }
-    
+
     func isValidDNI(dni: String) -> Bool {
         let dniRegex = "^[0-9]{8}[A-Z]$"
         let dniTest = NSPredicate(format: "SELF MATCHES %@", dniRegex)
-        return dniTest.evaluate(with: dni)
+        let result = dniTest.evaluate(with: dni)
+        print("Evaluando DNI '\(dni)': \(result)")
+        return result
     }
 }
 
