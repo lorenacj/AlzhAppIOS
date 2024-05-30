@@ -1,7 +1,16 @@
-/* 
+/*
   Localizable.strings
   AlzhApp
-
   Created by lorena.cruz on 29/5/24.
-  
 */
+"AlzhApp" = "AlzhApp";
+"login" = "Iniciar sesión";
+"validacion" = "Validación";
+"dni" = "DNI";
+"dni_placeholder" = "123456789X";
+"password" = "Contraseña";
+"placeholder_general" = "Escriba aquí";
+"no_tiene_cuenta" = "¿No tienes una cuenta? ¡Regístrate!";
+"campos_vacios" = "Hay campos vacíos, por favor complételos.";
+"login_correcto" = "Inicio de sesión exitoso";
+"ok" = "OK";
