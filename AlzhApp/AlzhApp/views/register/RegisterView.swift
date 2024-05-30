@@ -49,13 +49,9 @@ struct RegisterView: View {
                     CustomButtonStyle(text: LocalizedString.register, isTapped: $isTapped) {
                         if dniText.isEmpty || passwordText.isEmpty || nameText.isEmpty || lastnameText.isEmpty || telephoneText.isEmpty {
                             alertMessage = LocalizedString.camposVacios
-                            print("Campos vacíos detectados")
                         } else {
                             if isValidDNI(dni: dniText) {
-                                print("DNI válido: \(dniText)")
                                 if isValidTelephone(telephone: telephoneText) {
-                                    print("Teléfono válido: \(telephoneText)")
-                                    // Aquí puedes agregar la lógica para comprobar si el usuario ya existe.
                                     // if(user no existe) {
                                     //     alertMessage = LocalizedString.registrocorrecto
                                     // } else {
@@ -65,12 +61,10 @@ struct RegisterView: View {
                                 } else {
                                     // Teléfono no válido
                                     alertMessage = LocalizedString.registroErrorTelefono
-                                    print("Teléfono no válido: \(telephoneText)")
                                 }
                             } else {
                                 // DNI no válido
                                 alertMessage = LocalizedString.registroErrorDni
-                                print("DNI no válido: \(dniText)")
                             }
                         }
                         showAlert = true
@@ -90,7 +84,6 @@ struct RegisterView: View {
         let phoneRegex = "^[0-9]{9}$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
         let result = phoneTest.evaluate(with: telephone)
-        print("Evaluando teléfono '\(telephone)': \(result)")
         return result
     }
 
@@ -98,7 +91,6 @@ struct RegisterView: View {
         let dniRegex = "^[0-9]{8}[A-Z]$"
         let dniTest = NSPredicate(format: "SELF MATCHES %@", dniRegex)
         let result = dniTest.evaluate(with: dni)
-        print("Evaluando DNI '\(dni)': \(result)")
         return result
     }
 }
