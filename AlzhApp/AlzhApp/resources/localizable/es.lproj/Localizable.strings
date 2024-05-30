@@ -14,3 +14,12 @@
 "campos_vacios" = "Hay campos vacíos, por favor complételos.";
 "login_correcto" = "Inicio de sesión exitoso";
 "ok" = "OK";
+"register" = "Registro";
+"nombre" = "Nombre";
+"apellidos" = "Apellidos";
+"telefono" = "Teléfono";
+"placeholder_telefono" = "123456789";
+"registro_correcto" = "Registrado correctamente";
+"registro_error_dni" = "Formato incorrecto del dni";
+"registro_error_telefono" = "Formato de teléfono no válido";
+"registro_duplicado" = "Ese DNI ya está registrado";

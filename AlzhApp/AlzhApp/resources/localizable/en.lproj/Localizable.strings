@@ -15,3 +15,12 @@
 "campos_vacios" = "There are empty fields, please fill them in.";
 "login_correcto" = "Successfully logged in";
 "ok" = "OK";
+"register" = "Register";
+"nombre" = "Name";
+"apellidos" = "Lastname";
+"telefono" = "Telephone";
+"placeholder_telefono" = "123456789";
+"registro_correcto" = "Successfully registered";
+"registro_error_dni" = "Incorrect DNI format";
+"registro_error_telefono" = "Invalid phone format";
+"registro_duplicado" = "This DNI is already registered";

@@ -31,7 +31,7 @@ struct LoginView: View {
                     CustomTextFieldAuth(title: LocalizedString.dni, placeholder: LocalizedString.dniplaceholder, text: $dniText, isSecureField: false)
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
-                    CustomTextFieldAuth(title: LocalizedString.password, placeholder: "Write here", text: $passwordText, isSecureField: true)
+                    CustomTextFieldAuth(title: LocalizedString.password, placeholder: LocalizedString.placeholderGeneral, text: $passwordText, isSecureField: true)
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
                     Text(LocalizedString.noTieneCuenta)

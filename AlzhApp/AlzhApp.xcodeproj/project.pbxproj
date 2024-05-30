@@ -48,6 +48,7 @@
 		7C8E24F12C03E16000420913 /* AlzhAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E24F02C03E16000420913 /* AlzhAppApp.swift */; };
 		7C8E24F52C03E16200420913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E24F42C03E16200420913 /* Assets.xcassets */; };
 		7C8E24F82C03E16200420913 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E24F72C03E16200420913 /* Preview Assets.xcassets */; };
+		7C9380382C088CE700A04805 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9380372C088CE700A04805 /* RegisterView.swift */; };
 		7CEE3A462C07D50B007604D6 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEE3A452C07D50B007604D6 /* Buttons.swift */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,7 @@
 		7C8E24F02C03E16000420913 /* AlzhAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlzhAppApp.swift; sourceTree = "<group>"; };
 		7C8E24F42C03E16200420913 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C8E24F72C03E16200420913 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7C9380372C088CE700A04805 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		7CEE3A452C07D50B007604D6 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -196,6 +198,7 @@
 		7C273FCB2C07AF39001557A0 /* register */ = {
 			isa = PBXGroup;
 			children = (
+				7C9380372C088CE700A04805 /* RegisterView.swift */,
 			);
 			path = register;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CEE3A462C07D50B007604D6 /* Buttons.swift in Sources */,
+				7C9380382C088CE700A04805 /* RegisterView.swift in Sources */,
 				7C273FBD2C07A808001557A0 /* AppFonts.swift in Sources */,
 				7C273FCD2C07AF85001557A0 /* LoginView.swift in Sources */,
 				7C273FC92C07ACBA001557A0 /* CommonFunctions.swift in Sources */,
