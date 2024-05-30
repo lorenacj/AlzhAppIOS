@@ -11,7 +11,7 @@ import SwiftUI
 struct AlzhAppApp: App {
     var body: some Scene {
         WindowGroup {
-            RegisterView()
+            LoginView()
         }
     }
 }
