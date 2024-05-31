@@ -16,4 +16,6 @@ enum AppIcons: String {
     case connection = "wifi.exclamationmark"
     case starFill = "★"
     case star = "☆"
+    case addperson = "person.crop.circle.badge.plus"
+    case family = "person.3.fill"
 }
