@@ -81,6 +81,9 @@ struct LoginView: View {
                 .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
                 .opacity(0.8)
             }
+            .onTapGesture {
+                endEditing()
+            }
         }
     }
 }

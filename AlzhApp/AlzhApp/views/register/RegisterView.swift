@@ -85,6 +85,9 @@ struct RegisterView: View {
             .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
             .opacity(0.8)
         }
+        .onTapGesture {
+            endEditing()
+        }
     }
     func isValidTelephone(telephone: String) -> Bool {
         let phoneRegex = "^[0-9]{9}$"
