@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var dniText: String = ""
-    @State private var passwordText: String = ""
+    @State private var dniText: String? = ""
+    @State private var passwordText: String? = ""
     @State private var isTapped = false
     @State private var isLoginSuccessful = false
     @State private var showAlert = false
@@ -25,37 +25,37 @@ struct LoginView: View {
                         Image("logo")
                             .resizable()
                             .frame(width: 150, height: 150)
-                        Text(LocalizedString.alzhapp)
-                            .font(.custom(AppFonts.OpenSans.regular.rawValue, size: 40))
-                            .foregroundStyle(.white)
+                        Text("AlzhApp") // Asegúrate de tener una cadena aquí en lugar de LocalizedString
+                            .font(.custom("OpenSans-Regular", size: 40))
+                            .foregroundColor(.white)
                             .bold()
                             .shadow(color: .black, radius: 3, x: 0, y: 0)
                             .padding(.bottom, 20)
-                        CustomTextFieldAuth(title: LocalizedString.dni, placeholder: LocalizedString.dniplaceholder, text: $dniText, isSecureField: false)
+                        CustomTextFieldAuth(title: "DNI", placeholder: "Ingrese su DNI", text: $dniText, isSecureField: false)
                             .padding(.horizontal, 40)
                             .frame(maxWidth: .infinity)
-                        CustomTextFieldAuth(title: LocalizedString.password, placeholder: LocalizedString.placeholderGeneral, text: $passwordText, isSecureField: true)
+                        CustomTextFieldAuth(title: "Contraseña", placeholder: "Ingrese su contraseña", text: $passwordText, isSecureField: true)
                             .padding(.horizontal, 40)
                             .frame(maxWidth: .infinity)
                         NavigationLink(destination: RegisterView()) {
-                            Text(LocalizedString.noTieneCuenta)
+                            Text("¿No tiene cuenta?")
                                 .font(.system(size: 12))
-                                .foregroundColor(AppColors.darkBlue)
+                                .foregroundColor(Color.blue)
                                 .opacity(1)
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                                 .padding(.trailing, 40)
                         }
                         Spacer()
-                        NavigationLink(destination: InitialView(), isActive: $navigateToInitialView) {
+                        NavigationLink(destination: TabNavigationBar(), isActive: $navigateToInitialView) {
                             EmptyView()
                         }
-                        CustomButtonStyle(text: LocalizedString.login, isTapped: $isTapped) {
-                            if dniText.isEmpty || passwordText.isEmpty {
-                                alertMessage = LocalizedString.camposVacios
+                        CustomButtonStyle(text: "Iniciar Sesión", isTapped: $isTapped) {
+                            if dniText?.isEmpty ?? true || passwordText?.isEmpty ?? true {
+                                alertMessage = "Todos los campos son obligatorios"
                                 showAlert = true
                                 isLoginSuccessful = false // Asegurarse de que no navegue
                             } else {
-                                alertMessage = LocalizedString.loginCorrecto
+                                alertMessage = "Inicio de sesión correcto"
                                 dniText = ""
                                 passwordText = ""
                                 showAlert = true
@@ -64,9 +64,9 @@ struct LoginView: View {
                         }
                         .alert(isPresented: $showAlert) {
                             Alert(
-                                title: Text(LocalizedString.validacion),
+                                title: Text("Validación"),
                                 message: Text(alertMessage),
-                                dismissButton: .default(Text(LocalizedString.okbutton)) {
+                                dismissButton: .default(Text("OK")) {
                                     if isLoginSuccessful {
                                         navigateToInitialView = true
                                     }

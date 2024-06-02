@@ -33,19 +33,23 @@ extension View {
     func navBarDefault(title: String) -> some View {
         self.modifier(NavigationBarDefault(title: title))
     }
+    func navBarAddFamily(title: String) -> some View {
+        self.modifier(NavigationBarAddFamily(title: title))
+    }
 }
 
 
 // MARK: -  --------------- AÑADIR CÓDIGO FAMILIA NAVBAR -------------
 
 struct NavigationBarAddFamily: ViewModifier {
+    var title: String
     @Environment(\.presentationMode) var presentationMode
     @State private var showSheet = false
     @State private var familyCode = ""
 
     func body(content: Content) -> some View {
         content
-            .modifier(NavigationBarDefault(title: "")) // Reutilizar NavigationBarDefault sin título
+            .modifier(NavigationBarDefault(title: title)) // Reutilizar NavigationBarDefault con título
             .navigationBarItems(trailing:
                 Button(action: {
                     showSheet = true
@@ -71,20 +75,20 @@ struct AddFamilySheet: View {
             LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             VStack(spacing: 20) {
-                Text("Agregar a Familia")
+                Text(LocalizedString.agregarUF)
                     .font(.headline)
-                Text("Introduce el código de la familia")
+                Text(LocalizedString.introducirCodigoUF)
                     .font(.subheadline)
-                TextField("Código de la familia", text: $familyCode)
+                TextField(LocalizedString.codigoUF, text: $familyCode)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 HStack {
-                    Button("Cancelar") {
+                    Button(LocalizedString.cancelButton) {
                         showSheet = false
                     }
                     .padding()
                     Spacer()
-                    Button("OK") {
+                    Button(LocalizedString.okbutton) {
                         // Aquí se haría la comprobación del código por API
                         // Realizar la llamada a la API con familyCode
                         // validateFamilyCode(familyCode)
@@ -99,11 +103,5 @@ struct AddFamilySheet: View {
             .cornerRadius(10)
             .padding()
         }
-    }
-}
-
-extension View {
-    func navBarAddFamily() -> some View {
-        self.modifier(NavigationBarAddFamily())
     }
 }

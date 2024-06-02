@@ -45,6 +45,9 @@
 		7C273FC92C07ACBA001557A0 /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C273FC82C07ACBA001557A0 /* CommonFunctions.swift */; };
 		7C273FCD2C07AF85001557A0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C273FCC2C07AF85001557A0 /* LoginView.swift */; };
 		7C273FD02C07CA05001557A0 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C273FCF2C07CA05001557A0 /* TextFields.swift */; };
+		7C2B35EB2C0CEB630088338C /* TabNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B35EA2C0CEB630088338C /* TabNavigationBar.swift */; };
+		7C2B35ED2C0CF08D0088338C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B35EC2C0CF08D0088338C /* TabBar.swift */; };
+		7C2B35F12C0CF36D0088338C /* CreatePatientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B35F02C0CF36D0088338C /* CreatePatientView.swift */; };
 		7C8654792C0CD4AB008AE334 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8654782C0CD4AB008AE334 /* NavBar.swift */; };
 		7C8E24F12C03E16000420913 /* AlzhAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E24F02C03E16000420913 /* AlzhAppApp.swift */; };
 		7C8E24F52C03E16200420913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E24F42C03E16200420913 /* Assets.xcassets */; };
@@ -95,6 +98,9 @@
 		7C273FC82C07ACBA001557A0 /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
 		7C273FCC2C07AF85001557A0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		7C273FCF2C07CA05001557A0 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
+		7C2B35EA2C0CEB630088338C /* TabNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavigationBar.swift; sourceTree = "<group>"; };
+		7C2B35EC2C0CF08D0088338C /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		7C2B35F02C0CF36D0088338C /* CreatePatientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePatientView.swift; sourceTree = "<group>"; };
 		7C8654782C0CD4AB008AE334 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		7C8E24ED2C03E16000420913 /* AlzhApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlzhApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8E24F02C03E16000420913 /* AlzhAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlzhAppApp.swift; sourceTree = "<group>"; };
@@ -188,6 +194,7 @@
 				7C273FCF2C07CA05001557A0 /* TextFields.swift */,
 				7CEE3A452C07D50B007604D6 /* Buttons.swift */,
 				7C8654782C0CD4AB008AE334 /* NavBar.swift */,
+				7C2B35EC2C0CF08D0088338C /* TabBar.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -211,9 +218,35 @@
 		7C273FCE2C07B044001557A0 /* initial */ = {
 			isa = PBXGroup;
 			children = (
+				7C2B35EE2C0CF34F0088338C /* subViews */,
+				7C2B35E92C0CEB450088338C /* tabBar */,
 				7C9380392C08FD2A00A04805 /* InitialView.swift */,
 			);
 			path = initial;
+			sourceTree = "<group>";
+		};
+		7C2B35E92C0CEB450088338C /* tabBar */ = {
+			isa = PBXGroup;
+			children = (
+				7C2B35EA2C0CEB630088338C /* TabNavigationBar.swift */,
+			);
+			path = tabBar;
+			sourceTree = "<group>";
+		};
+		7C2B35EE2C0CF34F0088338C /* subViews */ = {
+			isa = PBXGroup;
+			children = (
+				7C2B35EF2C0CF3560088338C /* CreatePatient */,
+			);
+			path = subViews;
+			sourceTree = "<group>";
+		};
+		7C2B35EF2C0CF3560088338C /* CreatePatient */ = {
+			isa = PBXGroup;
+			children = (
+				7C2B35F02C0CF36D0088338C /* CreatePatientView.swift */,
+			);
+			path = CreatePatient;
 			sourceTree = "<group>";
 		};
 		7C8E24E42C03E16000420913 = {
@@ -384,9 +417,12 @@
 				7C273FC92C07ACBA001557A0 /* CommonFunctions.swift in Sources */,
 				7C273FC32C07AB1D001557A0 /* AppIcons.swift in Sources */,
 				7C273FC52C07AC58001557A0 /* AppColors.swift in Sources */,
+				7C2B35EB2C0CEB630088338C /* TabNavigationBar.swift in Sources */,
 				7C273FC02C07A93E001557A0 /* AppStrings.swift in Sources */,
+				7C2B35F12C0CF36D0088338C /* CreatePatientView.swift in Sources */,
 				7C8E24F12C03E16000420913 /* AlzhAppApp.swift in Sources */,
 				7C273FD02C07CA05001557A0 /* TextFields.swift in Sources */,
+				7C2B35ED2C0CF08D0088338C /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

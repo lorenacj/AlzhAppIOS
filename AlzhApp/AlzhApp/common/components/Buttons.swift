@@ -25,7 +25,7 @@ struct CustomButtonStyle: View {
                 .foregroundColor(.white)
                 .bold()
                 .padding()
-                .frame(width: 140, height: 52)
+//                .frame(width: 140, height: 52)
                 .background(
                     RoundedRectangle(cornerRadius: 30)
                         .fill(isTapped ? AppColors.pink : AppColors.lightBlue)

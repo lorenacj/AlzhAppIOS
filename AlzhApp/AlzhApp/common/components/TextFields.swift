@@ -8,10 +8,10 @@
 import Foundation
 import SwiftUI
 
-struct CustomTextFieldAuth: View {
+struct CustomTextFieldAuth<T: LosslessStringConvertible>: View {
     var title: String
     var placeholder: String
-    @Binding var text: String
+    @Binding var text: T?
     var isSecureField: Bool = false
     
     var body: some View {
@@ -22,23 +22,48 @@ struct CustomTextFieldAuth: View {
                 .padding(.leading, 8)
             ZStack(alignment: .leading) {
                 if isSecureField {
-                    SecureField(placeholder, text: $text)
-                        .foregroundColor(.black)
-                        .frame(width: 311, height: 56)
-                        .padding(.leading, 17)
-                        .background(
-                            RoundedRectangle(cornerRadius: 4)
-                                .fill(.white.opacity(0.6))
-                        )
+                    SecureField("", text: Binding<String>(
+                        get: { text?.description ?? "" },
+                        set: {
+                            if let value = T($0) {
+                                text = value
+                            } else {
+                                text = nil
+                            }
+                        }
+                    ))
+                    .placeholder(when: text == nil || text!.description.isEmpty) {
+                        Text(placeholder).foregroundColor(.gray)
+                    }
+                    .foregroundColor(.black)
+                    .frame(width: 311, height: 56)
+                    .padding(.leading, 17)
+                    .background(
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(.white.opacity(0.6))
+                    )
                 } else {
-                    TextField(placeholder, text: $text)
-                        .foregroundColor(.black)
-                        .frame(width: 311, height: 56)
-                        .padding(.leading, 17)
-                        .background(
-                            RoundedRectangle(cornerRadius: 4)
-                                .fill(.white.opacity(0.6))
-                        )
+                    TextField("", text: Binding<String>(
+                        get: { text?.description ?? "" },
+                        set: {
+                            if let value = T($0) {
+                                text = value
+                            } else {
+                                text = nil
+                            }
+                        }
+                    ))
+                    .placeholder(when: text == nil || text!.description.isEmpty) {
+                        Text(placeholder).foregroundColor(.gray)
+                    }
+                    .foregroundColor(.black)
+                    .keyboardType(T.self == String.self ? .default : .numberPad)
+                    .frame(width: 311, height: 56)
+                    .padding(.leading, 17)
+                    .background(
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(.white.opacity(0.6))
+                    )
                 }
             }
             .overlay(
@@ -46,5 +71,116 @@ struct CustomTextFieldAuth: View {
                     .stroke(Color.black.opacity(0.7), lineWidth: 1)
             )
         }
+    }
+}
+
+extension View {
+    func placeholder<Content: View>(
+        when shouldShow: Bool,
+        alignment: Alignment = .leading,
+        @ViewBuilder placeholder: () -> Content) -> some View {
+
+        ZStack(alignment: alignment) {
+            placeholder().opacity(shouldShow ? 1 : 0)
+            self
+        }
+    }
+}
+// datepicker ---------
+
+struct CustomDateField: View {
+    var title: String
+    var placeholder: String
+    @Binding var date: Date?
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(title)
+                .frame(alignment: .leading)
+                .font(.system(size: 12))
+                .foregroundColor(.black.opacity(0.7))
+                .padding(.leading, 8)
+            
+            ZStack(alignment: .leading) {
+                if date == nil {
+                    Text(placeholder)
+                        .foregroundColor(.gray)
+                        .padding(.leading, 17)
+                }
+                
+                DatePicker(
+                    "",
+                    selection: Binding<Date>(
+                        get: { date ?? Date() },
+                        set: { newValue in date = newValue }
+                    ),
+                    displayedComponents: .date
+                )
+                .labelsHidden()
+                .accentColor(.black)
+                .padding(.leading, 17)
+                .frame(height: 56)
+                .background(
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color.white.opacity(0.6))
+                        .frame(width: 320)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 4)
+                        .stroke(Color.black.opacity(0.7), lineWidth: 1)
+                        .frame(width: 320)
+                )
+            }
+        }
+        .padding(.horizontal, 40)
+    }
+}
+
+// picker ------
+struct CustomPickerField: View {
+    var title: String
+    var placeholder: String
+    @Binding var selectedOption: String?
+    
+    private let options = ["Alzheimer", "Demencia", "Otros"]
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(title)
+                .font(.system(size: 12))
+                .foregroundColor(.black.opacity(0.7))
+            
+            ZStack(alignment: .leading) {
+                if selectedOption == nil {
+                    Text(placeholder)
+                        .foregroundColor(.gray)
+                        .padding(.leading, 17)
+                }
+                
+                Picker("", selection: Binding<String>(
+                    get: { selectedOption ?? "" },
+                    set: { newValue in selectedOption = newValue }
+                )) {
+                    ForEach(options, id: \.self) { option in
+                        Text(option).tag(option)
+                    }
+                }
+                .labelsHidden()
+                .pickerStyle(MenuPickerStyle())
+                .padding(.leading, 17)
+                .frame(height: 56)
+                .background(
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color.white.opacity(0.6))
+                        .frame(width: 320)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 4)
+                        .stroke(Color.black.opacity(0.7), lineWidth: 1)
+                        .frame(width: 320)
+                )
+            }
+        }
+        .padding(.horizontal, 40)
     }
 }

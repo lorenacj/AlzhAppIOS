@@ -18,4 +18,5 @@ enum AppIcons: String {
     case star = "☆"
     case addperson = "person.crop.circle.badge.plus"
     case family = "person.3.fill"
+    case familyunit = "folder.fill.badge.person.crop"
 }

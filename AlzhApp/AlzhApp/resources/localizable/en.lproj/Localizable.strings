@@ -24,3 +24,17 @@
 "registro_error_dni" = "Incorrect DNI format";
 "registro_error_telefono" = "Invalid phone format";
 "registro_duplicado" = "This DNI is already registered";
+"agregar_unidadFamiliar" = "Add family unit";
+"introducir_codigo_unidadFamiliar" = "Enter the family code";
+"codigo_UnidadFamiliar" = "Family code:";
+"cancel_button" = "Cancel";
+"unidad_familiar" = "Family units";
+"agregar_pacciente" = "Add new patient";
+"peso" = "Weight";
+"peso_placeholder" = "00,00";
+"altura" = "Height";
+"altura_placeholder" = "Height in centimeters";
+"disorder" = "Disorder";
+"elige_uno" = "Choose";
+"nacimiento" = "Birthdate";
+"formato_fecha" = "DD/MM/YYYY";

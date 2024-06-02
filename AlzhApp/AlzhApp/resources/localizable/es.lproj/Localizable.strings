@@ -23,3 +23,17 @@
 "registro_error_dni" = "Formato incorrecto del dni";
 "registro_error_telefono" = "Formato de teléfono no válido";
 "registro_duplicado" = "Ese DNI ya está registrado";
+"agregar_unidadFamiliar" = "Añadir unidad familiar";
+"introducir_codigo_unidadFamiliar" = "Introduce el código de la unidad familiar";
+"codigo_UnidadFamiliar" = "Código:";
+"cancel_button" = "Cancelar";
+"unidad_familiar" = "Unidades familiares";
+"agregar_pacciente" = "Agregar paciente";
+"peso" = "Peso";
+"peso_placeholder" = "00,00";
+"altura" = "Altura";
+"altura_placeholder" = "Altura en centímetros";
+"disorder" = "Trastorno";
+"elige_uno" = "Elige";
+"nacimiento" = "Fecha de nacimiento";
+"formato_fecha" = "DD/MM/AAAA";

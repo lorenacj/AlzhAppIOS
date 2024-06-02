@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @State private var dniText: String = ""
-    @State private var passwordText: String = ""
-    @State private var nameText: String = ""
-    @State private var lastnameText: String = ""
-    @State private var telephoneText: String = ""
+    @State private var dniText: String? = ""
+    @State private var passwordText: String? = ""
+    @State private var nameText: String? = ""
+    @State private var lastnameText: String? = ""
+    @State private var telephoneText: String? = ""
     @State private var isTapped = false
     @State private var showAlert = false
     @State private var alertMessage = ""
@@ -41,17 +41,18 @@ struct RegisterView: View {
                     CustomTextFieldAuth(title: LocalizedString.telephone, placeholder: LocalizedString.placeholderGeneral, text: $telephoneText, isSecureField: false)
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
+                        .keyboardType(.phonePad)
                     //password
                     CustomTextFieldAuth(title: LocalizedString.password, placeholder: LocalizedString.placeholderGeneral, text: $passwordText, isSecureField: true)
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
                     Spacer()
                     CustomButtonStyle(text: LocalizedString.register, isTapped: $isTapped) {
-                        if dniText.isEmpty || passwordText.isEmpty || nameText.isEmpty || lastnameText.isEmpty || telephoneText.isEmpty {
+                        if dniText?.isEmpty ?? true || passwordText?.isEmpty ?? true || nameText?.isEmpty ?? true || lastnameText?.isEmpty ?? true || telephoneText?.isEmpty ?? true {
                             alertMessage = LocalizedString.camposVacios
                         } else {
-                            if isValidDNI(dni: dniText) {
-                                if isValidTelephone(telephone: telephoneText) {
+                            if isValidDNI(dni: dniText!) {
+                                if isValidTelephone(telephone: telephoneText!) {
                                     // if(user no existe) {
                                     //     alertMessage = LocalizedString.registrocorrecto
                                     // } else {
@@ -90,18 +91,17 @@ struct RegisterView: View {
             endEditing()
         }
     }
+    
     func isValidTelephone(telephone: String) -> Bool {
         let phoneRegex = "^[0-9]{9}$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
-        let result = phoneTest.evaluate(with: telephone)
-        return result
+        return phoneTest.evaluate(with: telephone)
     }
 
     func isValidDNI(dni: String) -> Bool {
         let dniRegex = "^[0-9]{8}[A-Z]$"
         let dniTest = NSPredicate(format: "SELF MATCHES %@", dniRegex)
-        let result = dniTest.evaluate(with: dni)
-        return result
+        return dniTest.evaluate(with: dni)
     }
 }
 
