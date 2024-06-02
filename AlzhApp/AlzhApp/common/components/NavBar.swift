@@ -8,6 +8,36 @@
 import SwiftUI
 import Foundation
 
+// MARK: -  ---------------  NAVBAR DEFAULT -------------
+struct NavigationBarDefault: ViewModifier {
+    var title: String
+
+    func body(content: Content) -> some View {
+        content
+            .navigationBarTitle(Text(title), displayMode: .inline)
+            .onAppear {
+                let appearance = UINavigationBarAppearance()
+                appearance.configureWithTransparentBackground()
+                appearance.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+                appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+                let navigationBar = UINavigationBar.appearance()
+                navigationBar.standardAppearance = appearance
+                navigationBar.scrollEdgeAppearance = appearance
+                navigationBar.setBackgroundImage(UIImage(), for: .default)
+                navigationBar.shadowImage = UIImage()
+            }
+    }
+}
+
+extension View {
+    func navBarDefault(title: String) -> some View {
+        self.modifier(NavigationBarDefault(title: title))
+    }
+}
+
+
+// MARK: -  --------------- AÑADIR CÓDIGO FAMILIA NAVBAR -------------
+
 struct NavigationBarAddFamily: ViewModifier {
     @Environment(\.presentationMode) var presentationMode
     @State private var showSheet = false
@@ -15,7 +45,7 @@ struct NavigationBarAddFamily: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .modifier(NavigationBarDefault()) // Reutilizar NavigationBarDefault
+            .modifier(NavigationBarDefault(title: "")) // Reutilizar NavigationBarDefault sin título
             .navigationBarItems(trailing:
                 Button(action: {
                     showSheet = true
@@ -29,6 +59,8 @@ struct NavigationBarAddFamily: ViewModifier {
             }
     }
 }
+
+// MARK: -  --------------- SHEET AÑADIR CÓDIGO FAMILIA NAVBAR -------------
 
 struct AddFamilySheet: View {
     @Binding var showSheet: Bool
@@ -73,29 +105,5 @@ struct AddFamilySheet: View {
 extension View {
     func navBarAddFamily() -> some View {
         self.modifier(NavigationBarAddFamily())
-    }
-}
-
-struct NavigationBarDefault: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .navigationBarTitle(Text("Familias"), displayMode: .inline)
-            .onAppear {
-                let appearance = UINavigationBarAppearance()
-                appearance.configureWithTransparentBackground()
-                appearance.backgroundColor = UIColor.white.withAlphaComponent(0.5)
-                appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
-                let navigationBar = UINavigationBar.appearance()
-                navigationBar.standardAppearance = appearance
-                navigationBar.scrollEdgeAppearance = appearance
-                navigationBar.setBackgroundImage(UIImage(), for: .default)
-                navigationBar.shadowImage = UIImage()
-            }
-    }
-}
-
-extension View {
-    func navBarDefault() -> some View {
-        self.modifier(NavigationBarDefault())
     }
 }

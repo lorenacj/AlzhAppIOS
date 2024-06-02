@@ -85,6 +85,7 @@ struct RegisterView: View {
             .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
             .opacity(0.8)
         }
+        .navBarDefault(title: LocalizedString.register)
         .onTapGesture {
             endEditing()
         }
