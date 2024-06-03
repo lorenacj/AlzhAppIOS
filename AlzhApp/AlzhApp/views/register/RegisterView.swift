@@ -47,6 +47,7 @@ struct RegisterView: View {
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
                     Spacer()
+#warning("Falta funcionalidad con la API")
                     CustomButtonStyle(text: LocalizedString.register, isTapped: $isTapped) {
                         if dniText?.isEmpty ?? true || passwordText?.isEmpty ?? true || nameText?.isEmpty ?? true || lastnameText?.isEmpty ?? true || telephoneText?.isEmpty ?? true {
                             alertMessage = LocalizedString.camposVacios

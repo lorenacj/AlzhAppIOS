@@ -14,6 +14,7 @@ struct InitialView: View {
         GeometryReader { proxy in
             ScrollView {
                 VStack(spacing: 20) {
+#warning("Falta funcionalidad con la API")
                     // Contenido de la lista de unidades familiares
                     
                     CustomButtonStyle(text: LocalizedString.agregarPaciente, isTapped: $isTapped) {

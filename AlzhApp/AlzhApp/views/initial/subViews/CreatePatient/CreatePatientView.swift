@@ -53,6 +53,8 @@ struct CreatePatientView: View {
                         CustomDateField(title: LocalizedString.birthdate, placeholder: "", date: $birthdate)
                             .frame(maxWidth: .infinity)
                     Spacer()
+                    #warning("Falta comprobación de campos correcta y volver atrás con dismiss si se registra")
+                    #warning("Falta funcionalidad con la API")
                     CustomButtonStyle(text: LocalizedString.register, isTapped: $isTapped) {
                         if dniText?.isEmpty ?? true || passwordText?.isEmpty ?? true || nameText?.isEmpty ?? true || lastnameText?.isEmpty ?? true {
                             alertMessage = LocalizedString.camposVacios
