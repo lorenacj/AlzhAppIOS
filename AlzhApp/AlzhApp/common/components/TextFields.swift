@@ -140,46 +140,25 @@ struct CustomDateField: View {
 struct CustomPickerField: View {
     var title: String
     var placeholder: String
-    @Binding var selectedOption: String?
-    
-    private let options = ["Alzheimer", "Demencia", "Otros"]
-    
+    @Binding var selectedOption: String
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading) {
             Text(title)
-                .font(.system(size: 12))
-                .foregroundColor(.black.opacity(0.7))
-            
-            ZStack(alignment: .leading) {
-                if selectedOption == nil {
-                    Text(placeholder)
-                        .foregroundColor(.gray)
-                        .padding(.leading, 17)
-                }
-                
-                Picker("", selection: Binding<String>(
-                    get: { selectedOption ?? "" },
-                    set: { newValue in selectedOption = newValue }
-                )) {
-                    ForEach(options, id: \.self) { option in
-                        Text(option).tag(option)
-                    }
-                }
-                .labelsHidden()
-                .pickerStyle(MenuPickerStyle())
-                .padding(.leading, 17)
-                .frame(height: 56)
-                .background(
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(Color.white.opacity(0.6))
-                        .frame(width: 320)
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 4)
-                        .stroke(Color.black.opacity(0.7), lineWidth: 1)
-                        .frame(width: 320)
-                )
+                .font(.headline)
+            Picker(selection: $selectedOption, label: Text(placeholder)) {
+                // Replace the following with your actual options
+                #warning("Cambiar opciones y localized")
+                Text("Elige").tag("Option 1")
+                Text("Alzheimer").tag("Option 2")
+                Text("Demencia").tag("Option 3")
+                Text("Alzheimer y demencia").tag("Option 3")
+                Text("Otros").tag("Option 3")
             }
+            .pickerStyle(MenuPickerStyle())
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color(.systemGray6))
+            .cornerRadius(10)
         }
         .padding(.horizontal, 40)
     }
