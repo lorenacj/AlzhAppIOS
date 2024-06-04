@@ -1,3 +1,9 @@
+//
+//  InitialView.swift
+//  AlzhApp
+//
+//  Created by lorena.cruz on 2/6/24.
+//
 import SwiftUI
 
 struct InitialView: View {
@@ -48,13 +54,15 @@ struct InitialView: View {
                             }
                         }
                     }
-                }
-                .onTapGesture {
-                    endEditing()
+                    .frame(maxWidth: .infinity, minHeight: proxy.size.height)
+                    .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
+                    .opacity(0.8)
+                    .onTapGesture {
+                        endEditing()
+                    }
                 }
             }
-            .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
-            .opacity(0.8)
+            .navigationBar(title: LocalizedString.initialViewTitle)
             .onAppear {
                 viewModel.loadProducts()
             }
