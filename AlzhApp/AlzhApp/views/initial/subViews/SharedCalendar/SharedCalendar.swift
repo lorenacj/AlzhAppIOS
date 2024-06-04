@@ -1,4 +1,3 @@
-//
 //  SharedCalendar.swift
 //  AlzhApp
 //
@@ -6,42 +5,39 @@
 //
 
 import SwiftUI
-#warning("message: Falta poner API y lista de eventos / marcados")
 
-struct Day: Identifiable {
-    let id = UUID()
-    let date: Date
-    var annotation: String = ""
+struct Event: Identifiable {
+    var id = UUID()
+    var date: Date
+    var annotation: String
 }
 
 struct SharedCalendar: View {
-    @State private var selectedDate: Date?
-    @State private var days: [Day] = generateDaysForCurrentMonth()
-    @State private var showingAnnotationInput = false
-    @State private var annotationText = ""
-    
-    private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 7)
-    
+    @State private var events: [Event] = generateSampleEvents()
+    @State private var selectedEvent: Event?
+    @State private var annotationText: String = ""
+    @State private var showingAnnotationInput: Bool = false
+
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 10) {
-                    ForEach(days) { day in
+                LazyVStack(spacing: 10) {
+                    ForEach(events) { event in
                         Button(action: {
-                            selectedDate = day.date
-                            annotationText = day.annotation
+                            selectedEvent = event
+                            annotationText = event.annotation
                             showingAnnotationInput = true
                         }) {
-                            VStack {
-                                Text(dayOfMonthFormatter.string(from: day.date))
+                            VStack(alignment: .leading) {
+                                Text(eventFormatter.string(from: event.date))
                                     .font(.headline)
-                                if !day.annotation.isEmpty {
-                                    Text(day.annotation)
+                                if !event.annotation.isEmpty {
+                                    Text(event.annotation)
                                         .font(.caption)
                                         .foregroundColor(.gray)
                                 }
                             }
-                            .frame(width: proxy.size.width / 9, height: proxy.size.width / 9)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(8)
@@ -62,9 +58,9 @@ struct SharedCalendar: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
                     Button("Save") {
-                        if let date = selectedDate,
-                           let index = days.firstIndex(where: { Calendar.current.isDate($0.date, inSameDayAs: date) }) {
-                            days[index].annotation = annotationText
+                        if let event = selectedEvent,
+                           let index = events.firstIndex(where: { $0.id == event.id }) {
+                            events[index].annotation = annotationText
                         }
                         showingAnnotationInput = false
                     }
@@ -79,28 +75,32 @@ struct SharedCalendar: View {
     }
 }
 
-private func generateDaysForCurrentMonth() -> [Day] {
-    var days: [Day] = []
+private func generateSampleEvents() -> [Event] {
+    // Generate some sample events for demonstration
     let calendar = Calendar.current
-    let date = Date()
-    let range = calendar.range(of: .day, in: .month, for: date)!
-    let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: date))!
-    
-    for day in range {
-        if let date = calendar.date(byAdding: .day, value: day - 1, to: startOfMonth) {
-            days.append(Day(date: date))
+    var events: [Event] = []
+    let currentDate = Date()
+    for i in 0..<10 {
+        if let date = calendar.date(byAdding: .day, value: i, to: currentDate) {
+            events.append(Event(date: date, annotation: ""))
         }
     }
-    return days
+    return events
 }
 
-private let dayOfMonthFormatter: DateFormatter = {
+private let eventFormatter: DateFormatter = {
     let formatter = DateFormatter()
-    formatter.dateFormat = "d"
+    formatter.dateStyle = .medium
+    formatter.timeStyle = .none
     return formatter
 }()
 
-
 #Preview {
     SharedCalendar()
+}
+
+extension View {
+    func endEditing() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }

@@ -55,14 +55,12 @@ struct InitialView: View {
                         }
                     }
                     .frame(maxWidth: .infinity, minHeight: proxy.size.height)
-                    .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
-                    .opacity(0.8)
                     .onTapGesture {
                         endEditing()
                     }
                 }
+                .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
             }
-            .navigationBar(title: LocalizedString.initialViewTitle)
             .onAppear {
                 viewModel.loadProducts()
             }
