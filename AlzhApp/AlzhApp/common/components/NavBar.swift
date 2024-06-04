@@ -1,4 +1,3 @@
-//
 //  NavBar.swift
 //  AlzhApp
 //
@@ -8,13 +7,15 @@
 import SwiftUI
 import Foundation
 
-// MARK: -  ---------------  NAVBAR DEFAULT -------------
-struct NavigationBarDefault: ViewModifier {
+// MARK: -  ---------------  NAVBAR BASE -------------
+struct NavigationBarBase: ViewModifier {
     var title: String
+    var trailingButton: AnyView?
 
     func body(content: Content) -> some View {
         content
             .navigationBarTitle(Text(title), displayMode: .inline)
+            .navigationBarItems(trailing: trailingButton)
             .onAppear {
                 let appearance = UINavigationBarAppearance()
                 appearance.configureWithTransparentBackground()
@@ -30,42 +31,42 @@ struct NavigationBarDefault: ViewModifier {
 }
 
 extension View {
-    func navBarDefault(title: String) -> some View {
-        self.modifier(NavigationBarDefault(title: title))
-    }
-    func navBarAddFamily(title: String) -> some View {
-        self.modifier(NavigationBarAddFamily(title: title))
+    func navigationBar(title: String, trailingButton: AnyView? = nil) -> some View {
+        self.modifier(NavigationBarBase(title: title, trailingButton: trailingButton))
     }
 }
 
-
-// MARK: -  --------------- AÑADIR CÓDIGO FAMILIA NAVBAR -------------
-
+// MARK: -  --------------- NAVBAR ADD FAMILY -------------
 struct NavigationBarAddFamily: ViewModifier {
     var title: String
-    @Environment(\.presentationMode) var presentationMode
     @State private var showSheet = false
     @State private var familyCode = ""
 
     func body(content: Content) -> some View {
         content
-            .modifier(NavigationBarDefault(title: title)) // Reutilizar NavigationBarDefault con título
-            .navigationBarItems(trailing:
-                Button(action: {
-                    showSheet = true
-                }) {
-                    Image(systemName: "person.3.fill")
-                        .foregroundColor(.black)
-                }
-            )
+            .navigationBar(title: title, trailingButton: AnyView(addFamilyButton))
             .sheet(isPresented: $showSheet) {
                 AddFamilySheet(showSheet: $showSheet, familyCode: $familyCode)
             }
     }
+
+    private var addFamilyButton: some View {
+        Button(action: {
+            showSheet = true
+        }) {
+            Image(systemName: "person.3.fill")
+                .foregroundColor(.black)
+        }
+    }
 }
 
-// MARK: -  --------------- SHEET AÑADIR CÓDIGO FAMILIA NAVBAR -------------
+extension View {
+    func navBarAddFamily(title: String) -> some View {
+        self.modifier(NavigationBarAddFamily(title: title))
+    }
+}
 
+// MARK: -  --------------- SHEET ADD FAMILY CODE -------------
 struct AddFamilySheet: View {
     @Binding var showSheet: Bool
     @Binding var familyCode: String

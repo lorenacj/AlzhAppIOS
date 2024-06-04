@@ -61,6 +61,7 @@
 		7C9380382C088CE700A04805 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9380372C088CE700A04805 /* RegisterView.swift */; };
 		7C93803A2C08FD2A00A04805 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9380392C08FD2A00A04805 /* InitialView.swift */; };
 		7CEE3A462C07D50B007604D6 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEE3A452C07D50B007604D6 /* Buttons.swift */; };
+		7CEF165F2C0F7D9F003B6865 /* UnityFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEF165E2C0F7D9F003B6865 /* UnityFamilyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +122,7 @@
 		7C9380372C088CE700A04805 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		7C9380392C08FD2A00A04805 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		7CEE3A452C07D50B007604D6 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		7CEF165E2C0F7D9F003B6865 /* UnityFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityFamilyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 				7C2B35EE2C0CF34F0088338C /* subViews */,
 				7C2B35E92C0CEB450088338C /* tabBar */,
 				7C9380392C08FD2A00A04805 /* InitialView.swift */,
+				7CEF165E2C0F7D9F003B6865 /* UnityFamilyView.swift */,
 			);
 			path = initial;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				7C273FCD2C07AF85001557A0 /* LoginView.swift in Sources */,
 				7C8654792C0CD4AB008AE334 /* NavBar.swift in Sources */,
 				7C1AA3A72C0F741C00E4AAD5 /* URLImage.swift in Sources */,
+				7CEF165F2C0F7D9F003B6865 /* UnityFamilyView.swift in Sources */,
 				7C273FC92C07ACBA001557A0 /* CommonFunctions.swift in Sources */,
 				7C273FC32C07AB1D001557A0 /* AppIcons.swift in Sources */,
 				7C1AA39F2C0F730700E4AAD5 /* ProductDTO.swift in Sources */,

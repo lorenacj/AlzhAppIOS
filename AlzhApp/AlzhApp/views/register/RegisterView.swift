@@ -1,4 +1,3 @@
-//
 //  RegisterView.swift
 //  AlzhApp
 //
@@ -16,33 +15,33 @@ struct RegisterView: View {
     @State private var isTapped = false
     @State private var showAlert = false
     @State private var alertMessage = ""
-    
+
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
-                VStack (spacing:20) {
+                VStack(spacing: 20) {
                     Spacer()
                     Image("logo")
                         .resizable()
                         .frame(width: 150, height: 150)
-                    //DNI
+                    // DNI
                     CustomTextFieldAuth(title: LocalizedString.dni, placeholder: LocalizedString.dniplaceholder, text: $dniText, isSecureField: false)
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
-                    //nombre
+                    // Nombre
                     CustomTextFieldAuth(title: LocalizedString.name, placeholder: LocalizedString.placeholderGeneral, text: $nameText, isSecureField: false)
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
-                    //apellidos
+                    // Apellidos
                     CustomTextFieldAuth(title: LocalizedString.lastname, placeholder: LocalizedString.placeholderGeneral, text: $lastnameText, isSecureField: false)
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
-                    //telefono
+                    // Teléfono
                     CustomTextFieldAuth(title: LocalizedString.telephone, placeholder: LocalizedString.placeholderGeneral, text: $telephoneText, isSecureField: false)
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
                         .keyboardType(.phonePad)
-                    //password
+                    // Contraseña
                     CustomTextFieldAuth(title: LocalizedString.password, placeholder: LocalizedString.placeholderGeneral, text: $passwordText, isSecureField: true)
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
@@ -66,6 +65,7 @@ struct RegisterView: View {
                                     passwordText = ""
                                     lastnameText = ""
                                     #warning("comprobar que no existe")
+                                    #warning("Volver atras si se registra al pulsar ok")
                                 } else {
                                     // Teléfono no válido
                                     alertMessage = LocalizedString.registroErrorTelefono
@@ -77,7 +77,7 @@ struct RegisterView: View {
                         }
                         showAlert = true
                     }
-                    .padding(.bottom,10)
+                    .padding(.bottom, 10)
                     .alert(isPresented: $showAlert) {
                         Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)))
                     }
@@ -87,12 +87,12 @@ struct RegisterView: View {
             .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
             .opacity(0.8)
         }
-        .navBarDefault(title: LocalizedString.register)
+        .navigationBar(title: LocalizedString.register)
         .onTapGesture {
             endEditing()
         }
     }
-    
+
     func isValidTelephone(telephone: String) -> Bool {
         let phoneRegex = "^[0-9]{9}$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
