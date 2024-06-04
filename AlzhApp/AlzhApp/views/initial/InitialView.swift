@@ -34,7 +34,7 @@ struct InitialView: View {
         .onTapGesture {
             endEditing()
         }
-        .navigationTitle(LocalizedString.unidadesFamiliares)
+        .navBarAddFamily(title: LocalizedString.unidadesFamiliares)
     }
 }
 
