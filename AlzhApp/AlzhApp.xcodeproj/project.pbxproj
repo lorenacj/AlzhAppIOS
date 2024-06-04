@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C1AA3982C0F6A2000E4AAD5 /* SharedCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AA3972C0F6A2000E4AAD5 /* SharedCalendar.swift */; };
 		7C273F7C2C07A500001557A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F7A2C07A500001557A0 /* Localizable.strings */; };
 		7C273F9E2C07A5B7001557A0 /* SourceSans3-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F802C07A5B6001557A0 /* SourceSans3-ExtraBoldItalic.ttf */; };
 		7C273F9F2C07A5B7001557A0 /* SourceSans3-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F812C07A5B6001557A0 /* SourceSans3-Regular.ttf */; };
@@ -58,6 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C1AA3972C0F6A2000E4AAD5 /* SharedCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedCalendar.swift; sourceTree = "<group>"; };
 		7C273F7B2C07A500001557A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7C273F7D2C07A510001557A0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7C273F802C07A5B6001557A0 /* SourceSans3-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
@@ -122,6 +124,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C1AA3942C0F6A0300E4AAD5 /* SharedCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				7C1AA3972C0F6A2000E4AAD5 /* SharedCalendar.swift */,
+			);
+			path = SharedCalendar;
+			sourceTree = "<group>";
+		};
 		7C273F7E2C07A52A001557A0 /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +246,7 @@
 		7C2B35EE2C0CF34F0088338C /* subViews */ = {
 			isa = PBXGroup;
 			children = (
+				7C1AA3942C0F6A0300E4AAD5 /* SharedCalendar */,
 				7C2B35EF2C0CF3560088338C /* CreatePatient */,
 			);
 			path = subViews;
@@ -408,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C1AA3982C0F6A2000E4AAD5 /* SharedCalendar.swift in Sources */,
 				7C93803A2C08FD2A00A04805 /* InitialView.swift in Sources */,
 				7CEE3A462C07D50B007604D6 /* Buttons.swift in Sources */,
 				7C9380382C088CE700A04805 /* RegisterView.swift in Sources */,

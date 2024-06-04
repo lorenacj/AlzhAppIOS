@@ -43,5 +43,12 @@ struct LocalizedString {
     static let elegirOpcion = NSLocalizedString("elige_uno", comment: "")
     static let birthdate = NSLocalizedString("nacimiento", comment: "")
     static let formatoBirthDate = NSLocalizedString("formato_fecha", comment: "")
-
+    static let dniNoValido = NSLocalizedString("dni_no_valido", comment: "")
+    static let pesoNoValido = NSLocalizedString("peso_no_valido", comment: "")
+    static let alturaNoValida = NSLocalizedString("altura_no_valida", comment: "")
+    static let fechaNoValida = NSLocalizedString("fecha_no_valida", comment: "")
+    static let alzheimer = NSLocalizedString("alzheimer", comment: "")
+    static let demencia = NSLocalizedString("demencia", comment: "")
+    static let alzheimerYdemencia = NSLocalizedString("alzheimer_demencia", comment: "")
+    static let otros = NSLocalizedString("otros", comment: "")
 }

@@ -150,13 +150,11 @@ struct CustomPickerField: View {
                 .foregroundColor(.black.opacity(0.7))
                 .padding(.leading, 8)
             Picker(selection: $selectedOption, label: Text(placeholder)) {
-                // Replace the following with your actual options
-                #warning("Cambiar opciones y localized")
-                Text("Elige").tag("Option 1")
-                Text("Alzheimer").tag("Option 2")
-                Text("Demencia").tag("Option 3")
-                Text("Alzheimer y demencia").tag("Option 3")
-                Text("Otros").tag("Option 3")
+                Text(LocalizedString.elegirOpcion).tag("Option 1")
+                Text(LocalizedString.alzheimer).tag("Option 2")
+                Text(LocalizedString.demencia).tag("Option 3")
+                Text(LocalizedString.alzheimerYdemencia).tag("Option 3")
+                Text(LocalizedString.otros).tag("Option 3")
             }
             .pickerStyle(MenuPickerStyle())
             .frame(maxWidth: .infinity, alignment: .leading)

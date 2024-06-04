@@ -37,3 +37,12 @@
 "elige_uno" = "Elige";
 "nacimiento" = "Fecha de nacimiento";
 "formato_fecha" = "DD/MM/AAAA";
+"dni_no_valido" = "El DNI introducido no es válido, por favor introduzca el siguiente formato 12345678X";
+"peso_no_valido" = "El peso no es válido, introduzca un número entero o decimal separado por coma";
+"altura_no_valida" = "La altura no es válida, introduzca la alturan en centímetros";
+"fecha_no_valida" = "La fecha no es válida, debe ser anterior a la fecha actual";
+"alzheimer" = "Alzheimer";
+"demencia" = "Demencia";
+"alzheimer_demencia" = "Alzheimer y demencia";
+"otros" = "Otros";
+

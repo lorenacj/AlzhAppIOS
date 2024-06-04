@@ -116,18 +116,17 @@ struct CreatePatientView: View {
                         // Validación de campos
                         if dniText.isEmpty || nameText.isEmpty || lastnameText.isEmpty || weightValue.isEmpty || heightValue.isEmpty || disorderText.isEmpty {
                             alertMessage = LocalizedString.camposVacios
-                            #warning("Cambiar nslocalized")
                         } else if !isValidDNI(dniText) {
-                            alertMessage = "DNI no válido"
+                            alertMessage = LocalizedString.dniNoValido
                         } else if Float(weightValue) == nil {
-                            alertMessage = "Peso no válido, debe ser un número"
+                            alertMessage = LocalizedString.pesoNoValido
                         } else if Int(heightValue) == nil {
-                            alertMessage = "Altura no válida, debe ser un número entero"
+                            alertMessage = LocalizedString.alturaNoValida
                         } else if birthdate > Date() {
-                            alertMessage = "Fecha no válida"
-                            #warning("Cambiar a localized")
+                            alertMessage = LocalizedString.fechaNoValida
                         } else {
                             // Lógica de registro
+                            #warning("Funcionalidad api")
                             alertMessage = LocalizedString.registrocorrecto
                         }
                         showAlert = true

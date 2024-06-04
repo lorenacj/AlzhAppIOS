@@ -38,3 +38,12 @@
 "elige_uno" = "Choose";
 "nacimiento" = "Birthdate";
 "formato_fecha" = "DD/MM/YYYY";
+"dni_no_valido" = "The DNI entered is not valid, please enter the following format 12345678X";
+"peso_no_valido" = "The weight is not valid, enter an integer or decimal number separated by a comma";
+"altura_no_valida" = "The height is not valid, enter the height in centimeters";
+"fecha_no_valida" = "The date is not valid, it must be before the current date";
+"alzheimer" = "Alzheimer";
+"demencia" = "Dementia";
+"alzheimer_demencia" = "Alzheimer and dementia";
+"otros" = "Others";
+

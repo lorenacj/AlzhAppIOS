@@ -20,16 +20,16 @@ struct TabNavigationBar: View {
                     Label("Initial", systemImage: AppIcons.familyunit.rawValue)
                 }
                 .tag(TabSelection.initial)
-            RegisterView()
+            SharedCalendar()
                 .tabItem {
                     Label("Calendario", systemImage: AppIcons.calendar.rawValue)
                 }
         }
         .navBarAddFamily(title: LocalizedString.unidadesFamiliares)
-        .onChange(of: appEnviroment.selectionTab) { newValue in
+        .onChange(of: appEnviroment.selectionTab) { newValue, oldValue in
             selectionTab = newValue
         }
-        .onChange(of: selectionTab) { newValue in
+        .onChange(of: selectionTab) { newValue, oldValue in
             appEnviroment.selectionTab = newValue
         }
         .accentColor(AppColors.pink)
