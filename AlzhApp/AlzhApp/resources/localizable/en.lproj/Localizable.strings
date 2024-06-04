@@ -31,7 +31,7 @@
 "unidad_familiar" = "Family units";
 "agregar_pacciente" = "Add new patient";
 "peso" = "Weight";
-"peso_placeholder" = "00,00";
+"peso_placeholder" = "00.00";
 "altura" = "Height";
 "altura_placeholder" = "Height in centimeters";
 "disorder" = "Disorder";
@@ -39,7 +39,7 @@
 "nacimiento" = "Birthdate";
 "formato_fecha" = "DD/MM/YYYY";
 "dni_no_valido" = "The DNI entered is not valid, please enter the following format 12345678X";
-"peso_no_valido" = "The weight is not valid, enter an integer or decimal number separated by a comma";
+"peso_no_valido" = "The weight is not valid, enter an integer or decimal number separated by a dot";
 "altura_no_valida" = "The height is not valid, enter the height in centimeters";
 "fecha_no_valida" = "The date is not valid, it must be before the current date";
 "alzheimer" = "Alzheimer";

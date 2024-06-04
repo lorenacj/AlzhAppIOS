@@ -107,3 +107,20 @@ struct AddFamilySheet: View {
         }
     }
 }
+// MARK: -  --------------- NAVBAR OUT FAMILY -------------
+struct NavigationBarExitFamily: ViewModifier {
+    var title: String
+    var trailingButton: AnyView
+
+    func body(content: Content) -> some View {
+        content
+            .navigationBarBackButtonHidden(false)
+            .navigationBar(title: title, trailingButton: trailingButton)
+    }
+}
+
+extension View {
+    func navigationBarExitFamily(title: String, trailingButton: AnyView) -> some View {
+        self.modifier(NavigationBarExitFamily(title: title, trailingButton: trailingButton))
+    }
+}

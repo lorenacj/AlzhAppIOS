@@ -1,14 +1,15 @@
+// InitialView.swift
+// AlzhApp
 //
-//  InitialView.swift
-//  AlzhApp
-//
-//  Created by lorena.cruz on 2/6/24.
+// Created by lorena.cruz on 2/6/24.
 //
 import SwiftUI
 
 struct InitialView: View {
     @State private var isTapped = false
     @State private var navigateToCreatePatient = false
+    @State private var navigateToProduct = false
+    @State private var selectedProduct: ProductBO? = nil
     @StateObject private var viewModel = ProductViewModel()
     
     let singleColumn = [
@@ -46,6 +47,11 @@ struct InitialView: View {
                             NavigationLink(destination: CreatePatientView(), isActive: $navigateToCreatePatient) {
                                 EmptyView()
                             }
+                            if let selectedProduct = selectedProduct {
+                                NavigationLink(destination: UnityFamilyView(product: selectedProduct), isActive: $navigateToProduct) {
+                                    EmptyView()
+                                }
+                            }
                             CustomButtonStyle(text: LocalizedString.agregarPaciente, isTapped: $isTapped) {
                                 navigateToCreatePatient = true
                             }
@@ -53,12 +59,15 @@ struct InitialView: View {
                             .frame(maxWidth: .infinity)
                             LazyVGrid(columns: singleColumn, spacing: 20) {
                                 ForEach(viewModel.items!, id: \.id) { product in
-                                    ProductRow(product: product)
-                                        .frame(maxWidth: .infinity)
-                                        .padding()
-                                        .background(Color.white)
-                                        .cornerRadius(8)
-                                        .shadow(radius: 5)
+                                    ProductRow(product: product) {
+                                        selectedProduct = product
+                                        navigateToProduct = true
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.white)
+                                    .cornerRadius(8)
+                                    .shadow(radius: 5)
                                 }
                             }
                         }
@@ -80,6 +89,7 @@ struct InitialView: View {
 
 struct ProductRow: View {
     let product: ProductBO
+    let onTap: () -> Void
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -91,6 +101,9 @@ struct ProductRow: View {
                 .font(.subheadline)
             Text("Rating: \(product.rating)")
                 .font(.subheadline)
+        }
+        .onTapGesture {
+            onTap()
         }
     }
 }
