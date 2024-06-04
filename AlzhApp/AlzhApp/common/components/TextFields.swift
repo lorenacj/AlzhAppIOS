@@ -145,7 +145,10 @@ struct CustomPickerField: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
-                .font(.headline)
+                .frame(alignment: .leading)
+                .font(.system(size: 12))
+                .foregroundColor(.black.opacity(0.7))
+                .padding(.leading, 8)
             Picker(selection: $selectedOption, label: Text(placeholder)) {
                 // Replace the following with your actual options
                 #warning("Cambiar opciones y localized")

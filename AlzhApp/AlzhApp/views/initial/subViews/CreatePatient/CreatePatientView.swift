@@ -17,6 +17,7 @@ struct CreatePatientView: View {
     @State private var isTapped = false
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         GeometryReader { proxy in
@@ -112,10 +113,18 @@ struct CreatePatientView: View {
                     Spacer()
                     
                     CustomButtonStyle(text: LocalizedString.register, isTapped: $isTapped) {
-                        if dniText.isEmpty || nameText.isEmpty || lastnameText.isEmpty || weightValue.isEmpty || heightValue.isEmpty || disorderText.isEmpty || birthdate > Date() {
+                        // Validación de campos
+                        if dniText.isEmpty || nameText.isEmpty || lastnameText.isEmpty || weightValue.isEmpty || heightValue.isEmpty || disorderText.isEmpty {
                             alertMessage = LocalizedString.camposVacios
+                            #warning("Cambiar nslocalized")
+                        } else if !isValidDNI(dniText) {
+                            alertMessage = "DNI no válido"
+                        } else if Float(weightValue) == nil {
+                            alertMessage = "Peso no válido, debe ser un número"
+                        } else if Int(heightValue) == nil {
+                            alertMessage = "Altura no válida, debe ser un número entero"
                         } else if birthdate > Date() {
-                            alertMessage = "Fecha no valida"
+                            alertMessage = "Fecha no válida"
                             #warning("Cambiar a localized")
                         } else {
                             // Lógica de registro
@@ -125,7 +134,11 @@ struct CreatePatientView: View {
                     }
                     .padding(.bottom, 10)
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)))
+                        Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)) {
+                            if alertMessage == LocalizedString.registrocorrecto {
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        })
                     }
                 }
                 .frame(maxWidth: .infinity, minHeight: proxy.size.height)
@@ -137,6 +150,12 @@ struct CreatePatientView: View {
         .onTapGesture {
             endEditing()
         }
+    }
+    
+    func isValidDNI(_ dni: String) -> Bool {
+        let dniRegex = "^[0-9]{8}[A-Za-z]$"
+        let dniTest = NSPredicate(format:"SELF MATCHES %@", dniRegex)
+        return dniTest.evaluate(with: dni)
     }
 }
 
