@@ -20,28 +20,37 @@ struct InitialView: View {
             GeometryReader { proxy in
                 ScrollView {
                     VStack(spacing: 20) {
-                        NavigationLink(destination: CreatePatientView(), isActive: $navigateToCreatePatient) {
-                            EmptyView()
-                        }
-                        CustomButtonStyle(text: LocalizedString.agregarPaciente, isTapped: $isTapped) {
-                            navigateToCreatePatient = true
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        
                         if viewModel.items == nil {
                             if let errorText = viewModel.errorText {
+                                Image(systemName: AppIcons.connection.rawValue)
+                                    .resizable()
+                                    .frame(width: 30,height: 30)
+                                    .foregroundStyle(.white)
                                 Text("Error de conexión")
-                                    .foregroundColor(.red)
+                                    .foregroundColor(.white)
                                 Button(action: {
                                     viewModel.loadProducts()
                                 }, label: {
                                     Text("Reintentar")
+                                        .foregroundStyle(.white)
+                                        .padding()
                                 })
+                                .background(
+                                Capsule()
+                                    .fill(AppColors.maroon)
+                                )
                             } else {
                                 ProgressView("Loading products...")
                             }
                         } else {
+                            NavigationLink(destination: CreatePatientView(), isActive: $navigateToCreatePatient) {
+                                EmptyView()
+                            }
+                            CustomButtonStyle(text: LocalizedString.agregarPaciente, isTapped: $isTapped) {
+                                navigateToCreatePatient = true
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity)
                             LazyVGrid(columns: singleColumn, spacing: 20) {
                                 ForEach(viewModel.items!, id: \.id) { product in
                                     ProductRow(product: product)
@@ -54,6 +63,7 @@ struct InitialView: View {
                             }
                         }
                     }
+                    .navBarAddFamily(title: LocalizedString.unidadesFamiliares)
                     .frame(maxWidth: .infinity, minHeight: proxy.size.height)
                     .onTapGesture {
                         endEditing()

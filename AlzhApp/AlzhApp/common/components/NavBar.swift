@@ -44,6 +44,7 @@ struct NavigationBarAddFamily: ViewModifier {
 
     func body(content: Content) -> some View {
         content
+            .navigationBarBackButtonHidden(false)
             .navigationBar(title: title, trailingButton: AnyView(addFamilyButton))
             .sheet(isPresented: $showSheet) {
                 AddFamilySheet(showSheet: $showSheet, familyCode: $familyCode)

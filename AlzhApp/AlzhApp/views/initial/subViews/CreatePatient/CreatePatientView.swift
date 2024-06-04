@@ -145,7 +145,7 @@ struct CreatePatientView: View {
             .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
             .opacity(0.8)
         }
-        .navigationBarTitle("Agregar Paciente", displayMode: .inline) // Muestra la barra de navegación en CreatePatientView
+        .navigationBarTitle("Agregar Paciente", displayMode: .inline)
         .onTapGesture {
             endEditing()
         }

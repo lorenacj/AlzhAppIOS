@@ -1,9 +1,3 @@
-//  RegisterView.swift
-//  AlzhApp
-//
-//  Created by lorena.cruz on 30/5/24.
-//
-
 import SwiftUI
 
 struct RegisterView: View {
@@ -15,6 +9,7 @@ struct RegisterView: View {
     @State private var isTapped = false
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         GeometryReader { proxy in
@@ -79,7 +74,13 @@ struct RegisterView: View {
                     }
                     .padding(.bottom, 10)
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)))
+                        if alertMessage == LocalizedString.registrocorrecto {
+                            return Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)) {
+                                self.presentationMode.wrappedValue.dismiss()
+                            })
+                        } else {
+                            return Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)))
+                        }
                     }
                 }
                 .frame(maxWidth: .infinity, minHeight: proxy.size.height)
