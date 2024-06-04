@@ -1,0 +1,48 @@
+/*
+  Localizable.strings
+  AlzhApp
+  Created by lorena.cruz on 29/5/24.
+*/
+"AlzhApp" = "AlzhApp";
+"login" = "Iniciar sesión";
+"validacion" = "Validación";
+"dni" = "DNI";
+"dni_placeholder" = "12345678X";
+"password" = "Contraseña";
+"placeholder_general" = "Escriba aquí";
+"no_tiene_cuenta" = "¿No tienes una cuenta? ¡Regístrate!";
+"campos_vacios" = "Hay campos vacíos, por favor complételos.";
+"login_correcto" = "Inicio de sesión exitoso";
+"ok" = "OK";
+"register" = "Registro";
+"nombre" = "Nombre";
+"apellidos" = "Apellidos";
+"telefono" = "Teléfono";
+"placeholder_telefono" = "123456789";
+"registro_correcto" = "Registrado correctamente";
+"registro_error_dni" = "Formato incorrecto del dni";
+"registro_error_telefono" = "Formato de teléfono no válido";
+"registro_duplicado" = "Ese DNI ya está registrado";
+"agregar_unidadFamiliar" = "Añadir unidad familiar";
+"introducir_codigo_unidadFamiliar" = "Introduce el código de la unidad familiar";
+"codigo_UnidadFamiliar" = "Código:";
+"cancel_button" = "Cancelar";
+"unidad_familiar" = "Unidades familiares";
+"agregar_pacciente" = "Agregar paciente";
+"peso" = "Peso";
+"peso_placeholder" = "00,00";
+"altura" = "Altura";
+"altura_placeholder" = "Altura en centímetros";
+"disorder" = "Trastorno";
+"elige_uno" = "Elige";
+"nacimiento" = "Fecha de nacimiento";
+"formato_fecha" = "DD/MM/AAAA";
+"dni_no_valido" = "El DNI introducido no es válido, por favor introduzca el siguiente formato 12345678X";
+"peso_no_valido" = "El peso no es válido, introduzca un número entero o decimal separado por coma";
+"altura_no_valida" = "La altura no es válida, introduzca la alturan en centímetros";
+"fecha_no_valida" = "La fecha no es válida, debe ser anterior a la fecha actual";
+"alzheimer" = "Alzheimer";
+"demencia" = "Demencia";
+"alzheimer_demencia" = "Alzheimer y demencia";
+"otros" = "Otros";
+"shared_calendar" = "Calendario compartido";
