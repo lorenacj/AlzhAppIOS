@@ -12,9 +12,6 @@ final class ProductViewModel: ObservableObject {
     @Published var errorText: String?
     
     private lazy var productRepository: ProductRepository = ProductWS()
-    
-
-    
 }
 
 @MainActor

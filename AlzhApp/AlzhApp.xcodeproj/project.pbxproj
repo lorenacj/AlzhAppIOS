@@ -12,6 +12,7 @@
 		7C1AA39F2C0F730700E4AAD5 /* ProductDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AA39E2C0F730700E4AAD5 /* ProductDTO.swift */; };
 		7C1AA3A12C0F731C00E4AAD5 /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AA3A02C0F731C00E4AAD5 /* ProductRepository.swift */; };
 		7C1AA3A32C0F734D00E4AAD5 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AA3A22C0F734D00E4AAD5 /* ProductViewModel.swift */; };
+		7C1AA3A72C0F741C00E4AAD5 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AA3A62C0F741C00E4AAD5 /* URLImage.swift */; };
 		7C273F7C2C07A500001557A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F7A2C07A500001557A0 /* Localizable.strings */; };
 		7C273F9E2C07A5B7001557A0 /* SourceSans3-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F802C07A5B6001557A0 /* SourceSans3-ExtraBoldItalic.ttf */; };
 		7C273F9F2C07A5B7001557A0 /* SourceSans3-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C273F812C07A5B6001557A0 /* SourceSans3-Regular.ttf */; };
@@ -68,6 +69,7 @@
 		7C1AA39E2C0F730700E4AAD5 /* ProductDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDTO.swift; sourceTree = "<group>"; };
 		7C1AA3A02C0F731C00E4AAD5 /* ProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepository.swift; sourceTree = "<group>"; };
 		7C1AA3A22C0F734D00E4AAD5 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
+		7C1AA3A62C0F741C00E4AAD5 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		7C273F7B2C07A500001557A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7C273F7D2C07A510001557A0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7C273F802C07A5B6001557A0 /* SourceSans3-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSans3-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				7C273FC82C07ACBA001557A0 /* CommonFunctions.swift */,
+				7C1AA3A62C0F741C00E4AAD5 /* URLImage.swift */,
 			);
 			path = functions;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				7C273FBD2C07A808001557A0 /* AppFonts.swift in Sources */,
 				7C273FCD2C07AF85001557A0 /* LoginView.swift in Sources */,
 				7C8654792C0CD4AB008AE334 /* NavBar.swift in Sources */,
+				7C1AA3A72C0F741C00E4AAD5 /* URLImage.swift in Sources */,
 				7C273FC92C07ACBA001557A0 /* CommonFunctions.swift in Sources */,
 				7C273FC32C07AB1D001557A0 /* AppIcons.swift in Sources */,
 				7C1AA39F2C0F730700E4AAD5 /* ProductDTO.swift in Sources */,
