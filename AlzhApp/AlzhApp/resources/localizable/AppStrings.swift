@@ -52,4 +52,5 @@ struct LocalizedString {
     static let alzheimerYdemencia = NSLocalizedString("alzheimer_demencia", comment: "")
     static let otros = NSLocalizedString("otros", comment: "")
     static let calendarioCompartido = NSLocalizedString("shared_calendar", comment: "")
+    static let loginIncorrecto = NSLocalizedString("login_incorrecto",comment: "")
 }

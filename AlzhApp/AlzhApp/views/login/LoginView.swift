@@ -27,20 +27,20 @@ struct LoginView: View {
                         Image("logo")
                             .resizable()
                             .frame(width: 150, height: 150)
-                        Text("AlzhApp")
+                        Text(LocalizedString.alzhapp)
                             .font(.custom("OpenSans-Regular", size: 40))
                             .foregroundColor(.white)
                             .bold()
                             .shadow(color: .black, radius: 3, x: 0, y: 0)
                             .padding(.bottom, 20)
-                        CustomTextFieldAuth(title: "DNI", placeholder: "Ingrese su DNI", text: $dniText, isSecureField: false)
+                        CustomTextFieldAuth(title: LocalizedString.dni, placeholder: LocalizedString.dniplaceholder, text: $dniText, isSecureField: false)
                             .padding(.horizontal, 40)
                             .frame(maxWidth: .infinity)
-                        CustomTextFieldAuth(title: "Contraseña", placeholder: "Ingrese su contraseña", text: $passwordText, isSecureField: true)
+                        CustomTextFieldAuth(title: LocalizedString.password, placeholder: LocalizedString.placeholderGeneral, text: $passwordText, isSecureField: true)
                             .padding(.horizontal, 40)
                             .frame(maxWidth: .infinity)
                         NavigationLink(destination: RegisterView()) {
-                            Text("¿No tiene cuenta?")
+                            Text(LocalizedString.noTieneCuenta)
                                 .font(.system(size: 12))
                                 .foregroundColor(Color.blue)
                                 .opacity(1)
@@ -51,9 +51,9 @@ struct LoginView: View {
                         NavigationLink(destination: TabNavigationBar(), isActive: $navigateToInitialView) {
                             EmptyView()
                         }
-                        CustomButtonStyle(text: "Iniciar Sesión", isTapped: $isTapped) {
+                        CustomButtonStyle(text: LocalizedString.login, isTapped: $isTapped) {
                             if dniText?.isEmpty ?? true || passwordText?.isEmpty ?? true {
-                                alertMessage = "Todos los campos son obligatorios"
+                                alertMessage = LocalizedString.camposVacios
                                 showAlert = true
                                 isLoginSuccessful = false
                             } else {
@@ -62,9 +62,9 @@ struct LoginView: View {
                         }
                         .alert(isPresented: $showAlert) {
                             Alert(
-                                title: Text("Validación"),
+                                title: Text(LocalizedString.validacion),
                                 message: Text(alertMessage),
-                                dismissButton: .default(Text("OK")) {
+                                dismissButton: .default(Text(LocalizedString.okbutton)) {
                                     if isLoginSuccessful {
                                         navigateToInitialView = true
                                     }
@@ -84,15 +84,15 @@ struct LoginView: View {
             }
             .onReceive(viewModel.$isLoginSuccessful) { success in
                 if success {
-                    alertMessage = "Inicio de sesión correcto"
+                    alertMessage = LocalizedString.loginCorrecto
                     dniText = ""
                     passwordText = ""
                     showAlert = true
                     isLoginSuccessful = true
                 } else if let errorText = viewModel.errorText {
-                    alertMessage = errorText
+                    alertMessage = LocalizedString.loginIncorrecto
                     showAlert = true
-                    print("Error: \(errorText)") // Imprime el error
+                    print("Error: \(errorText)")
                 }
             }
         }

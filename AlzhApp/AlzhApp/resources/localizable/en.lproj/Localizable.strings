@@ -47,3 +47,5 @@
 "alzheimer_demencia" = "Alzheimer and dementia";
 "otros" = "Others";
 "shared_calendar" = "Shared calendar";
+"login_incorrecto" = "Invalid credentials";
+
