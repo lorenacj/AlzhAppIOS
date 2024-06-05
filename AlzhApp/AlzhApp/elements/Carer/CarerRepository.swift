@@ -12,6 +12,7 @@ enum RepositoryError: Error {
     case invalidResponse
     case statusCode(Int)
     case noData
+    case custom(String)
 }
 
 protocol CarerRepository {
@@ -65,31 +66,43 @@ class CarerWS: CarerRepository {
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let boundary = UUID().uuidString
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
 
-        let loginDetails = ["username": username, "password": password]
+        let formData = createFormData(parameters: ["username": username, "password": password], boundary: boundary)
+        request.httpBody = formData
 
         do {
-            let jsonData = try JSONEncoder().encode(loginDetails)
-            request.httpBody = jsonData
+            let (data, response) = try await URLSession.shared.data(for: request)
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw RepositoryError.invalidResponse
+            }
+
+            guard 200 ..< 300 ~= httpResponse.statusCode else {
+                print("Login failed with status code: \(httpResponse.statusCode)")
+                throw RepositoryError.statusCode(httpResponse.statusCode)
+            }
+
+            guard let token = String(data: data, encoding: .utf8) else {
+                throw RepositoryError.noData
+            }
+
+            return token
         } catch {
-            throw error
+            print("Login request error: \(error)")
+            throw RepositoryError.custom("Login request failed: \(error.localizedDescription)")
         }
+    }
 
-        let (data, response) = try await URLSession.shared.data(for: request)
-
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw RepositoryError.invalidResponse
+    private func createFormData(parameters: [String: String], boundary: String) -> Data {
+        var body = Data()
+        for (key, value) in parameters {
+            body.append("--\(boundary)\r\n".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n".data(using: .utf8)!)
+            body.append("\(value)\r\n".data(using: .utf8)!)
         }
-
-        guard 200 ..< 300 ~= httpResponse.statusCode else {
-            throw RepositoryError.statusCode(httpResponse.statusCode)
-        }
-
-        guard let token = String(data: data, encoding: .utf8) else {
-            throw RepositoryError.noData
-        }
-
-        return token
+        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+        return body
     }
 }

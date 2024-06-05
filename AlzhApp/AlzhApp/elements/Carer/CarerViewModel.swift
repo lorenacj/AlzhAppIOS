@@ -26,7 +26,7 @@ final class CarerViewModel: ObservableObject {
             } catch {
                 errorText = error.localizedDescription
                 isLoginSuccessful = false
-                print("Login error: \(error.localizedDescription)")
+                print("Login error: \(error.localizedDescription)") // Añade esta línea para imprimir el error
             }
         }
     }
@@ -41,7 +41,7 @@ final class CarerViewModel: ObservableObject {
             } catch {
                 errorText = error.localizedDescription
                 isRegisterSuccessful = false
-                print("Register error: \(error.localizedDescription)") 
+                print("Register error: \(error.localizedDescription)") // Añade esta línea para imprimir el error
             }
         }
     }
