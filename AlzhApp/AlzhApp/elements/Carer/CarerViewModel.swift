@@ -20,13 +20,23 @@ final class CarerViewModel: ObservableObject {
         Task {
             do {
                 let token = try await carerRepository.loginCarer(username: username, password: password)
-                // Puedes guardar el token si es necesario
                 isLoginSuccessful = true
                 errorText = nil
             } catch {
-                errorText = error.localizedDescription
+                if let repoError = error as? RepositoryError {
+                    switch repoError {
+                    case .statusCode(let code):
+                        errorText = "Error: Código de estado \(code)"
+                    case .custom(let message):
+                        errorText = message
+                    default:
+                        errorText = "Error desconocido: \(error.localizedDescription)"
+                    }
+                } else {
+                    errorText = error.localizedDescription
+                }
                 isLoginSuccessful = false
-                print("Login error: \(error.localizedDescription)") // Añade esta línea para imprimir el error
+                print("Login error: \(error.localizedDescription)")
             }
         }
     }
@@ -39,9 +49,20 @@ final class CarerViewModel: ObservableObject {
                 isRegisterSuccessful = true
                 errorText = nil
             } catch {
-                errorText = error.localizedDescription
+                if let repoError = error as? RepositoryError {
+                    switch repoError {
+                    case .statusCode(let code):
+                        errorText = "Error: Código de estado \(code)"
+                    case .custom(let message):
+                        errorText = message
+                    default:
+                        errorText = "Error desconocido: \(error.localizedDescription)"
+                    }
+                } else {
+                    errorText = error.localizedDescription
+                }
                 isRegisterSuccessful = false
-                print("Register error: \(error.localizedDescription)") // Añade esta línea para imprimir el error
+                print("Register error: \(error.localizedDescription)")
             }
         }
     }

@@ -48,14 +48,21 @@ class CarerWS: CarerRepository {
             throw error
         }
 
-        let (_, response) = try await URLSession.shared.data(for: request)
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw RepositoryError.invalidResponse
+            }
 
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw RepositoryError.invalidResponse
-        }
-
-        guard 200 ..< 300 ~= httpResponse.statusCode else {
-            throw RepositoryError.statusCode(httpResponse.statusCode)
+            guard 200 ..< 300 ~= httpResponse.statusCode else {
+                if let errorMessage = String(data: data, encoding: .utf8) {
+                    throw RepositoryError.custom(errorMessage)
+                } else {
+                    throw RepositoryError.statusCode(httpResponse.statusCode)
+                }
+            }
+        } catch {
+            throw error
         }
     }
 
@@ -80,8 +87,11 @@ class CarerWS: CarerRepository {
             }
 
             guard 200 ..< 300 ~= httpResponse.statusCode else {
-                print("Login failed with status code: \(httpResponse.statusCode)")
-                throw RepositoryError.statusCode(httpResponse.statusCode)
+                if let errorMessage = String(data: data, encoding: .utf8) {
+                    throw RepositoryError.custom(errorMessage)
+                } else {
+                    throw RepositoryError.statusCode(httpResponse.statusCode)
+                }
             }
 
             guard let token = String(data: data, encoding: .utf8) else {
@@ -90,7 +100,6 @@ class CarerWS: CarerRepository {
 
             return token
         } catch {
-            print("Login request error: \(error)")
             throw RepositoryError.custom("Login request failed: \(error.localizedDescription)")
         }
     }

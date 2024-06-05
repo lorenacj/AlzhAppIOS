@@ -1,3 +1,10 @@
+//
+//  LoginView.swift
+//  AlzhApp
+//
+//  Created by lorena.cruz on 29/5/24.
+//
+
 import SwiftUI
 
 struct RegisterView: View {
@@ -49,7 +56,7 @@ struct RegisterView: View {
                             showAlert = true
                         } else {
                             guard let dni = dniText, let password = passwordText, let name = nameText, let lastname = lastnameText, let telephone = telephoneText else {
-                                alertMessage = "Todos los campos son obligatorios"
+                                alertMessage = LocalizedString.camposVacios
                                 showAlert = true
                                 return
                             }
@@ -78,13 +85,11 @@ struct RegisterView: View {
                     }
                     .padding(.bottom, 10)
                     .alert(isPresented: $showAlert) {
-                        if alertMessage == LocalizedString.registrocorrecto {
-                            return Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)) {
+                        Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)) {
+                            if viewModel.isRegisterSuccessful {
                                 self.presentationMode.wrappedValue.dismiss()
-                            })
-                        } else {
-                            return Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)))
-                        }
+                            }
+                        })
                     }
                 }
                 .frame(maxWidth: .infinity, minHeight: proxy.size.height)
