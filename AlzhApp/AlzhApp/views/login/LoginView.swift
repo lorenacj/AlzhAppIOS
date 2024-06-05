@@ -16,6 +16,8 @@ struct LoginView: View {
     @State private var alertMessage = ""
     @State private var navigateToInitialView = false
     
+    @StateObject private var viewModel = CarerViewModel()
+    
     var body: some View {
         NavigationView {
             GeometryReader { proxy in
@@ -25,7 +27,7 @@ struct LoginView: View {
                         Image("logo")
                             .resizable()
                             .frame(width: 150, height: 150)
-                        Text("AlzhApp") // Asegúrate de tener una cadena aquí en lugar de LocalizedString
+                        Text("AlzhApp")
                             .font(.custom("OpenSans-Regular", size: 40))
                             .foregroundColor(.white)
                             .bold()
@@ -53,13 +55,9 @@ struct LoginView: View {
                             if dniText?.isEmpty ?? true || passwordText?.isEmpty ?? true {
                                 alertMessage = "Todos los campos son obligatorios"
                                 showAlert = true
-                                isLoginSuccessful = false // Asegurarse de que no navegue
+                                isLoginSuccessful = false
                             } else {
-                                alertMessage = "Inicio de sesión correcto"
-                                dniText = ""
-                                passwordText = ""
-                                showAlert = true
-                                isLoginSuccessful = true
+                                viewModel.loginCarer(username: dniText ?? "", password: passwordText ?? "")
                             }
                         }
                         .alert(isPresented: $showAlert) {
@@ -83,6 +81,19 @@ struct LoginView: View {
             }
             .onTapGesture {
                 endEditing()
+            }
+            .onReceive(viewModel.$isLoginSuccessful) { success in
+                if success {
+                    alertMessage = "Inicio de sesión correcto"
+                    dniText = ""
+                    passwordText = ""
+                    showAlert = true
+                    isLoginSuccessful = true
+                } else if let errorText = viewModel.errorText {
+                    alertMessage = errorText
+                    showAlert = true
+                    print("Error: \(errorText)") // Imprime el error
+                }
             }
         }
     }

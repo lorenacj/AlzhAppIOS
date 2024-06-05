@@ -7,13 +7,6 @@
 
 import Foundation
 
-enum RepositoryError: Error {
-    case invalidURL
-    case invalidResponse
-    case statusCode(Int)
-    case noData
-}
-
 protocol ProductRepository {
     func loadListProduct(completion: @escaping (Result<[ProductBO], Error>) -> Void)
     func loadListProduct() async throws -> [ProductBO]

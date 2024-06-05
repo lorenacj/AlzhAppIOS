@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct CarerDTO: Decodable {
+// Define CarerDTO conforme a Codable
+struct CarerDTO: Codable {
     var id: Int?
     var name: String?
     var lastname: String?
@@ -18,7 +19,8 @@ struct CarerDTO: Decodable {
     var token: String?
     var enabled: Bool?
     var deleted: Bool?
-    var patientsCare: Any? // Cambia el tipo según sea necesario
-    var familyUnit: Any? // Cambia el tipo según sea necesario
-    var medicines: Any? // Cambia el tipo según sea necesario
+    #warning("cambiar")
+    var patientsCare: [Int]? // Lista de identificadores de pacientes
+    var familyUnit: Int? // Identificador de la unidad familiar
+    var medicines: [Int]? // Lista de identificadores de medicamentos
 }

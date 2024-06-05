@@ -11,6 +11,8 @@ struct RegisterView: View {
     @State private var alertMessage = ""
     @Environment(\.presentationMode) var presentationMode
 
+    @StateObject private var viewModel = CarerViewModel()
+
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
@@ -41,36 +43,38 @@ struct RegisterView: View {
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
                     Spacer()
-#warning("Falta funcionalidad con la API")
                     CustomButtonStyle(text: LocalizedString.register, isTapped: $isTapped) {
                         if dniText?.isEmpty ?? true || passwordText?.isEmpty ?? true || nameText?.isEmpty ?? true || lastnameText?.isEmpty ?? true || telephoneText?.isEmpty ?? true {
                             alertMessage = LocalizedString.camposVacios
+                            showAlert = true
                         } else {
-                            if isValidDNI(dni: dniText!) {
-                                if isValidTelephone(telephone: telephoneText!) {
-                                    // if(user no existe) {
-                                    //     alertMessage = LocalizedString.registrocorrecto
-                                    // } else {
-                                    //     alertMessage = LocalizedString.registroDuplicado
-                                    // }
-                                    alertMessage = LocalizedString.registrocorrecto
-                                    dniText = ""
-                                    telephoneText = ""
-                                    nameText = ""
-                                    passwordText = ""
-                                    lastnameText = ""
-                                    #warning("comprobar que no existe")
-                                    #warning("Volver atras si se registra al pulsar ok")
+                            guard let dni = dniText, let password = passwordText, let name = nameText, let lastname = lastnameText, let telephone = telephoneText else {
+                                alertMessage = "Todos los campos son obligatorios"
+                                showAlert = true
+                                return
+                            }
+                            
+                            if isValidDNI(dni: dni) {
+                                if isValidTelephone(telephone: telephone) {
+                                    let carer = CarerBO(
+                                        name: name,
+                                        lastname: lastname,
+                                        telephone: telephone,
+                                        username: dni,
+                                        password: password
+                                    )
+                                    viewModel.registerCarer(carer: carer)
                                 } else {
                                     // Teléfono no válido
                                     alertMessage = LocalizedString.registroErrorTelefono
+                                    showAlert = true
                                 }
                             } else {
                                 // DNI no válido
                                 alertMessage = LocalizedString.registroErrorDni
+                                showAlert = true
                             }
                         }
-                        showAlert = true
                     }
                     .padding(.bottom, 10)
                     .alert(isPresented: $showAlert) {
@@ -91,6 +95,20 @@ struct RegisterView: View {
         .navigationBar(title: LocalizedString.register)
         .onTapGesture {
             endEditing()
+        }
+        .onReceive(viewModel.$isRegisterSuccessful) { success in
+            if success {
+                alertMessage = LocalizedString.registrocorrecto
+                dniText = ""
+                passwordText = ""
+                nameText = ""
+                lastnameText = ""
+                telephoneText = ""
+                showAlert = true
+            } else if let errorText = viewModel.errorText {
+                alertMessage = errorText
+                showAlert = true
+            }
         }
     }
 
