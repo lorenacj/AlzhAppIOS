@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C17B4D92C122B7D0026F2D2 /* EventDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C17B4D82C122B7D0026F2D2 /* EventDTO.swift */; };
+		7C17B4DB2C122C000026F2D2 /* EventBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C17B4DA2C122C000026F2D2 /* EventBO.swift */; };
+		7C17B4DD2C122C0C0026F2D2 /* EventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C17B4DC2C122C0C0026F2D2 /* EventRepository.swift */; };
+		7C17B4DF2C122C140026F2D2 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C17B4DE2C122C140026F2D2 /* EventViewModel.swift */; };
 		7C1AA3982C0F6A2000E4AAD5 /* SharedCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AA3972C0F6A2000E4AAD5 /* SharedCalendar.swift */; };
 		7C1AA39D2C0F72F000E4AAD5 /* ProductBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AA39C2C0F72F000E4AAD5 /* ProductBO.swift */; };
 		7C1AA39F2C0F730700E4AAD5 /* ProductDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AA39E2C0F730700E4AAD5 /* ProductDTO.swift */; };
@@ -85,6 +89,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C17B4D82C122B7D0026F2D2 /* EventDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDTO.swift; sourceTree = "<group>"; };
+		7C17B4DA2C122C000026F2D2 /* EventBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBO.swift; sourceTree = "<group>"; };
+		7C17B4DC2C122C0C0026F2D2 /* EventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepository.swift; sourceTree = "<group>"; };
+		7C17B4DE2C122C140026F2D2 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		7C1AA3972C0F6A2000E4AAD5 /* SharedCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedCalendar.swift; sourceTree = "<group>"; };
 		7C1AA39C2C0F72F000E4AAD5 /* ProductBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBO.swift; sourceTree = "<group>"; };
 		7C1AA39E2C0F730700E4AAD5 /* ProductDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDTO.swift; sourceTree = "<group>"; };
@@ -455,6 +463,10 @@
 		7CCA114D2C10D2AB0043B67D /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				7C17B4D82C122B7D0026F2D2 /* EventDTO.swift */,
+				7C17B4DA2C122C000026F2D2 /* EventBO.swift */,
+				7C17B4DC2C122C0C0026F2D2 /* EventRepository.swift */,
+				7C17B4DE2C122C140026F2D2 /* EventViewModel.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -563,12 +575,16 @@
 			files = (
 				7CCA11452C10D2590043B67D /* SymptomBO.swift in Sources */,
 				7CCA11632C10D3630043B67D /* MedicineDTO.swift in Sources */,
+				7C17B4D92C122B7D0026F2D2 /* EventDTO.swift in Sources */,
 				7CCA11472C10D2640043B67D /* SymptomRepository.swift in Sources */,
+				7C17B4DD2C122C0C0026F2D2 /* EventRepository.swift in Sources */,
 				7CCA11652C10D36F0043B67D /* MedicineRepository.swift in Sources */,
 				7C1AA3982C0F6A2000E4AAD5 /* SharedCalendar.swift in Sources */,
 				7C93803A2C08FD2A00A04805 /* InitialView.swift in Sources */,
+				7C17B4DB2C122C000026F2D2 /* EventBO.swift in Sources */,
 				7CEE3A462C07D50B007604D6 /* Buttons.swift in Sources */,
 				7CCA115D2C10D3350043B67D /* FamilyUnitRepository.swift in Sources */,
+				7C17B4DF2C122C140026F2D2 /* EventViewModel.swift in Sources */,
 				7CCA113E2C10CFD00043B67D /* CarerRepository.swift in Sources */,
 				7C9380382C088CE700A04805 /* RegisterView.swift in Sources */,
 				7CCA11512C10D2C70043B67D /* PatientDTO.swift in Sources */,

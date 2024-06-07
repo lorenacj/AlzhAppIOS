@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+// MARK: - FamilyUnitBO
+struct FamilyUnitBO {
+    let id: Int?
+    let code: String?
+}

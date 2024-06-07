@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+// MARK: - FamilyUnit
+struct FamilyUnitDTO: Codable {
+    let id: Int?
+    let code: String?
+}
