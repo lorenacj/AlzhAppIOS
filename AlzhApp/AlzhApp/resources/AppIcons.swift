@@ -20,4 +20,6 @@ enum AppIcons: String {
     case family = "person.3.fill"
     case familyunit = "folder.fill.badge.person.crop"
     case exitfamily = "person.2.slash.fill"
+    case edit = "pencil"
+    case patient = "figure.wave"
 }

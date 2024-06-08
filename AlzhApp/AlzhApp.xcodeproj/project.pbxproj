@@ -69,6 +69,7 @@
 		7C945FF62C133D4A0091376A /* IndividualEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C945FF52C133D4A0091376A /* IndividualEventsView.swift */; };
 		7C945FF92C133D9E0091376A /* SharedEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C945FF82C133D9E0091376A /* SharedEventsView.swift */; };
 		7C945FFC2C133DEF0091376A /* MonitoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C945FFB2C133DEF0091376A /* MonitoringView.swift */; };
+		7C945FFE2C14FD0E0091376A /* PatientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C945FFD2C14FD0E0091376A /* PatientDetailView.swift */; };
 		7CCA11392C10CFA90043B67D /* CarerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11382C10CFA90043B67D /* CarerDTO.swift */; };
 		7CCA113C2C10CFBD0043B67D /* CarerBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA113B2C10CFBD0043B67D /* CarerBO.swift */; };
 		7CCA113E2C10CFD00043B67D /* CarerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA113D2C10CFD00043B67D /* CarerRepository.swift */; };
@@ -90,7 +91,6 @@
 		7CCA11652C10D36F0043B67D /* MedicineRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11642C10D36F0043B67D /* MedicineRepository.swift */; };
 		7CCA11672C10D3800043B67D /* MedicineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11662C10D3800043B67D /* MedicineViewModel.swift */; };
 		7CEE3A462C07D50B007604D6 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEE3A452C07D50B007604D6 /* Buttons.swift */; };
-		7CEF165F2C0F7D9F003B6865 /* UnityFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEF165E2C0F7D9F003B6865 /* UnityFamilyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -159,6 +159,7 @@
 		7C945FF52C133D4A0091376A /* IndividualEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualEventsView.swift; sourceTree = "<group>"; };
 		7C945FF82C133D9E0091376A /* SharedEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedEventsView.swift; sourceTree = "<group>"; };
 		7C945FFB2C133DEF0091376A /* MonitoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringView.swift; sourceTree = "<group>"; };
+		7C945FFD2C14FD0E0091376A /* PatientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailView.swift; sourceTree = "<group>"; };
 		7CCA11382C10CFA90043B67D /* CarerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarerDTO.swift; sourceTree = "<group>"; };
 		7CCA113B2C10CFBD0043B67D /* CarerBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarerBO.swift; sourceTree = "<group>"; };
 		7CCA113D2C10CFD00043B67D /* CarerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarerRepository.swift; sourceTree = "<group>"; };
@@ -180,7 +181,6 @@
 		7CCA11642C10D36F0043B67D /* MedicineRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineRepository.swift; sourceTree = "<group>"; };
 		7CCA11662C10D3800043B67D /* MedicineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineViewModel.swift; sourceTree = "<group>"; };
 		7CEE3A452C07D50B007604D6 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
-		7CEF165E2C0F7D9F003B6865 /* UnityFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityFamilyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,7 +328,7 @@
 				7C2B35EE2C0CF34F0088338C /* subViews */,
 				7C2B35E92C0CEB450088338C /* tabBar */,
 				7C9380392C08FD2A00A04805 /* InitialView.swift */,
-				7CEF165E2C0F7D9F003B6865 /* UnityFamilyView.swift */,
+				7C945FFD2C14FD0E0091376A /* PatientDetailView.swift */,
 			);
 			path = initial;
 			sourceTree = "<group>";
@@ -651,7 +651,6 @@
 				7C273FCD2C07AF85001557A0 /* LoginView.swift in Sources */,
 				7C8654792C0CD4AB008AE334 /* NavBar.swift in Sources */,
 				7C1AA3A72C0F741C00E4AAD5 /* URLImage.swift in Sources */,
-				7CEF165F2C0F7D9F003B6865 /* UnityFamilyView.swift in Sources */,
 				7C273FC92C07ACBA001557A0 /* CommonFunctions.swift in Sources */,
 				7C273FC32C07AB1D001557A0 /* AppIcons.swift in Sources */,
 				7C1AA39F2C0F730700E4AAD5 /* ProductDTO.swift in Sources */,
@@ -676,6 +675,7 @@
 				7CCA114F2C10D2BF0043B67D /* PatientBO.swift in Sources */,
 				7CCA11392C10CFA90043B67D /* CarerDTO.swift in Sources */,
 				7CCA11402C10CFDB0043B67D /* CarerViewModel.swift in Sources */,
+				7C945FFE2C14FD0E0091376A /* PatientDetailView.swift in Sources */,
 				7CCA11612C10D3570043B67D /* MedicineBO.swift in Sources */,
 				7CCA11552C10D2DA0043B67D /* PatientViewModel.swift in Sources */,
 				7C2B35ED2C0CF08D0088338C /* TabBar.swift in Sources */,

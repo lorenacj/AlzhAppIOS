@@ -9,13 +9,14 @@ import SwiftUI
 struct InitialView: View {
     @State private var isTapped = false
     @State private var navigateToCreatePatient = false
+    @State private var selectedPatient: PatientsCareBO?
     @EnvironmentObject private var carerViewModel: CarerViewModel
 
     var body: some View {
         NavigationView {
             GeometryReader { proxy in
                 ScrollView {
-                    VStack(spacing: 0) { // Reduce spacing here
+                    VStack(spacing: 0) {
                         if carerViewModel.patients.isEmpty {
                             if let errorText = carerViewModel.errorText {
                                 Image(systemName: AppIcons.connection.rawValue)
@@ -28,7 +29,7 @@ struct InitialView: View {
                                     carerViewModel.getPatientsByCarer()
                                 }, label: {
                                     Text("Reintentar")
-                                        .foregroundStyle(.white)
+                                        .foregroundColor(.white)
                                         .padding()
                                 })
                                 .background(
@@ -48,17 +49,25 @@ struct InitialView: View {
                             .padding()
                             .frame(maxWidth: .infinity)
                             
-                            VStack(spacing: 0) { // Reduce spacing here
+                            VStack(spacing: 0) {
                                 ForEach(carerViewModel.patients, id: \.id) { patient in
-                                    PatientRow(patient: patient)
-                                        .frame(maxWidth: .infinity)
-                                        .padding(.vertical, 15) // Reduce padding here
-                                        .background(Color.white)
-                                        .cornerRadius(8)
-                                        .shadow(radius: 2) // Adjust shadow radius here
-                                        .padding(.horizontal)
-                                    Spacer()
-                                        .frame(height: 10)
+                                    NavigationLink(
+                                        destination: PatientDetailView(patient: patient),
+                                        tag: patient,
+                                        selection: $selectedPatient
+                                    ) {
+                                        PatientRow(patient: patient)
+                                            .frame(maxWidth: .infinity)
+                                            .padding(.vertical, 15)
+                                            .background(Color.white)
+                                            .cornerRadius(8)
+                                            .shadow(radius: 2)
+                                            .padding(.horizontal)
+                                            .onTapGesture {
+                                                selectedPatient = patient
+                                            }
+                                    }
+                                    Spacer().frame(height: 10)
                                 }
                             }
                         }
@@ -84,24 +93,27 @@ struct PatientRow: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Image(systemName: "figure.wave")
+                Image(systemName: AppIcons.patient.rawValue)
                     .resizable()
                     .frame(width: 20, height: 35)
-                    .foregroundColor(AppColors.maroon)
+                    .foregroundColor(AppColors.pink)
                     .padding(.trailing, 20)
             }
             VStack(alignment: .leading) {
                 Spacer()
                 Text(patient.name ?? "Unknown")
                     .font(.headline)
+                    .foregroundColor(.black)
                 Text(patient.lastname ?? "Unknown")
                     .font(.subheadline)
+                    .foregroundColor(.black)
                 Text("Fecha de nacimiento: \(patient.birthdate ?? "Unknown")")
                     .font(.subheadline)
+                    .foregroundColor(.black)
                 Spacer()
             }
         }
-        .padding(10) // Adjust padding within the row here
+        .padding(10)
     }
 }
 

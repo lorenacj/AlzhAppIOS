@@ -3,7 +3,6 @@
 //
 //  Created by lorena.cruz on 2/6/24.
 //
-
 import SwiftUI
 import Foundation
 
@@ -68,13 +67,14 @@ extension View {
     }
 }
 
-
 // MARK: -  --------------- SHEET ADD FAMILY CODE -------------
 struct AddFamilySheet: View {
     @Binding var showSheet: Bool
     @Binding var familyCode: String
     @ObservedObject var viewModel: CarerViewModel
-    
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+
     var body: some View {
         ZStack {
             LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom)
@@ -95,8 +95,15 @@ struct AddFamilySheet: View {
                     Spacer()
                     Button(LocalizedString.okbutton) {
                         Task {
-                            await viewModel.addCarerToPatientByCode(code: familyCode)
+                            do {
+                                try await viewModel.addCarerToPatientByCode(code: familyCode)
+                                alertMessage = "Family added successfully"
+                            } catch {
+                                alertMessage = "Failed to add family: \(error.localizedDescription)"
+                            }
+                            showAlert = true
                             showSheet = false
+                            viewModel.getPatientsByCarer() // Trigger data refresh
                         }
                     }
                     .padding()
@@ -106,6 +113,9 @@ struct AddFamilySheet: View {
             .background(Color.white.opacity(0.8))
             .cornerRadius(10)
             .padding()
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Family Registration"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
     }
 }

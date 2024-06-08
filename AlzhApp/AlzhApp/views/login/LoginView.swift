@@ -47,7 +47,7 @@ struct LoginView: View {
                                 .padding(.trailing, 40)
                         }
                         Spacer()
-                        NavigationLink(destination: InitialView().environmentObject(viewModel), isActive: $navigateToInitialView) {
+                        NavigationLink(destination: TabNavigationBar().environmentObject(viewModel), isActive: $navigateToInitialView) {
                             EmptyView()
                         }
                         CustomButtonStyle(text: LocalizedString.login, isTapped: $isTapped) {
