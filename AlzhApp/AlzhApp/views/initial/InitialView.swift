@@ -19,7 +19,7 @@ struct InitialView: View {
         NavigationView {
             GeometryReader { proxy in
                 ScrollView {
-                    VStack(spacing: 20) {
+                    VStack(spacing: 5) {
                         if carerViewModel.patients.isEmpty {
                             if let errorText = carerViewModel.errorText {
                                 Image(systemName: AppIcons.connection.rawValue)
@@ -51,7 +51,7 @@ struct InitialView: View {
                             }
                             .padding()
                             .frame(maxWidth: .infinity)
-                            LazyVGrid(columns: singleColumn, spacing: 20) {
+                            LazyVGrid(columns: singleColumn, spacing: 5) {
                                 ForEach(carerViewModel.patients, id: \.id) { patient in
                                     PatientRow(patient: patient)
                                         .frame(maxWidth: .infinity)

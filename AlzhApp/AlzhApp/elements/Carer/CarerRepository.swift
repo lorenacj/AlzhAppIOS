@@ -79,6 +79,10 @@ class CarerWS: CarerRepository {
         let formData = createFormData(parameters: ["username": username, "password": password], boundary: boundary)
         request.httpBody = formData
 
+        print("DEBUG: Login Request URL: \(url.absoluteString)")
+        print("DEBUG: Login Request Headers: \(request.allHTTPHeaderFields ?? [:])")
+        print("DEBUG: Login Request Body: \(String(data: formData, encoding: .utf8) ?? "")")
+
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
 
@@ -86,20 +90,26 @@ class CarerWS: CarerRepository {
                 throw RepositoryError.invalidResponse
             }
 
+            print("DEBUG: Login Response Status Code: \(httpResponse.statusCode)")
+
             guard 200 ..< 300 ~= httpResponse.statusCode else {
                 if let errorMessage = String(data: data, encoding: .utf8) {
+                    print("DEBUG: Login Error Message: \(errorMessage)")
                     throw RepositoryError.custom(errorMessage)
                 } else {
                     throw RepositoryError.statusCode(httpResponse.statusCode)
                 }
             }
 
-            guard let token = String(data: data, encoding: .utf8) else {
-                throw RepositoryError.noData
+            if let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+               let token = jsonResponse["token"] as? String {
+                print("DEBUG: Login Token: \(token)")
+                return token
+            } else {
+                throw RepositoryError.custom("Failed to decode login response")
             }
-
-            return token
         } catch {
+            print("DEBUG: Login Fetch Error: \(error.localizedDescription)")
             throw RepositoryError.custom("Login request failed: \(error.localizedDescription)")
         }
     }
