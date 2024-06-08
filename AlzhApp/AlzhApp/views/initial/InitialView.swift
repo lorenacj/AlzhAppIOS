@@ -11,15 +11,11 @@ struct InitialView: View {
     @State private var navigateToCreatePatient = false
     @EnvironmentObject private var carerViewModel: CarerViewModel
 
-    let singleColumn = [
-        GridItem(.flexible(minimum: 150, maximum: .infinity), spacing: 1)
-    ]
-
     var body: some View {
         NavigationView {
             GeometryReader { proxy in
                 ScrollView {
-                    VStack(spacing: 5) {
+                    VStack(spacing: 0) { // Reduce spacing here
                         if carerViewModel.patients.isEmpty {
                             if let errorText = carerViewModel.errorText {
                                 Image(systemName: AppIcons.connection.rawValue)
@@ -51,14 +47,18 @@ struct InitialView: View {
                             }
                             .padding()
                             .frame(maxWidth: .infinity)
-                            LazyVGrid(columns: singleColumn, spacing: 5) {
+                            
+                            VStack(spacing: 0) { // Reduce spacing here
                                 ForEach(carerViewModel.patients, id: \.id) { patient in
                                     PatientRow(patient: patient)
                                         .frame(maxWidth: .infinity)
-                                        .padding()
+                                        .padding(.vertical, 15) // Reduce padding here
                                         .background(Color.white)
                                         .cornerRadius(8)
-                                        .shadow(radius: 5)
+                                        .shadow(radius: 2) // Adjust shadow radius here
+                                        .padding(.horizontal)
+                                    Spacer()
+                                        .frame(height: 10)
                                 }
                             }
                         }
@@ -82,18 +82,26 @@ struct PatientRow: View {
     let patient: PatientsCareBO
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(patient.name ?? "Unknown")
-                .font(.headline)
-            Text(patient.lastname ?? "Unknown")
-                .font(.subheadline)
-            Text("Birthdate: \(patient.birthdate ?? "Unknown")")
-                .font(.subheadline)
-            Text("Height: \(patient.height ?? 0)")
-                .font(.subheadline)
-            Text("Weight: \(patient.weight ?? 0.0, specifier: "%.2f")")
-                .font(.subheadline)
+        HStack {
+            VStack(alignment: .leading) {
+                Image(systemName: "figure.wave")
+                    .resizable()
+                    .frame(width: 20, height: 35)
+                    .foregroundColor(AppColors.maroon)
+                    .padding(.trailing, 20)
+            }
+            VStack(alignment: .leading) {
+                Spacer()
+                Text(patient.name ?? "Unknown")
+                    .font(.headline)
+                Text(patient.lastname ?? "Unknown")
+                    .font(.subheadline)
+                Text("Fecha de nacimiento: \(patient.birthdate ?? "Unknown")")
+                    .font(.subheadline)
+                Spacer()
+            }
         }
+        .padding(10) // Adjust padding within the row here
     }
 }
 
