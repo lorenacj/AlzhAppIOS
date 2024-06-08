@@ -11,7 +11,6 @@ struct LoginView: View {
     @State private var dniText: String? = ""
     @State private var passwordText: String? = ""
     @State private var isTapped = false
-    @State private var isLoginSuccessful = false
     @State private var showAlert = false
     @State private var alertMessage = ""
     @State private var navigateToInitialView = false
@@ -48,14 +47,13 @@ struct LoginView: View {
                                 .padding(.trailing, 40)
                         }
                         Spacer()
-                        NavigationLink(destination: TabNavigationBar(), isActive: $navigateToInitialView) {
+                        NavigationLink(destination: InitialView().environmentObject(viewModel), isActive: $navigateToInitialView) {
                             EmptyView()
                         }
                         CustomButtonStyle(text: LocalizedString.login, isTapped: $isTapped) {
                             if dniText?.isEmpty ?? true || passwordText?.isEmpty ?? true {
                                 alertMessage = LocalizedString.camposVacios
                                 showAlert = true
-                                isLoginSuccessful = false
                             } else {
                                 viewModel.loginCarer(username: dniText ?? "", password: passwordText ?? "")
                             }
@@ -65,7 +63,7 @@ struct LoginView: View {
                                 title: Text(LocalizedString.validacion),
                                 message: Text(alertMessage),
                                 dismissButton: .default(Text(LocalizedString.okbutton)) {
-                                    if isLoginSuccessful {
+                                    if viewModel.isLoginSuccessful {
                                         navigateToInitialView = true
                                     }
                                 }
@@ -88,7 +86,6 @@ struct LoginView: View {
                     dniText = ""
                     passwordText = ""
                     showAlert = true
-                    isLoginSuccessful = true
                 } else if let errorText = viewModel.errorText {
                     alertMessage = LocalizedString.loginIncorrecto
                     showAlert = true

@@ -41,13 +41,14 @@ struct NavigationBarAddFamily: ViewModifier {
     var title: String
     @State private var showSheet = false
     @State private var familyCode = ""
+    @ObservedObject var viewModel: CarerViewModel
 
     func body(content: Content) -> some View {
         content
             .navigationBarBackButtonHidden(false)
             .navigationBar(title: title, trailingButton: AnyView(addFamilyButton))
             .sheet(isPresented: $showSheet) {
-                AddFamilySheet(showSheet: $showSheet, familyCode: $familyCode)
+                AddFamilySheet(showSheet: $showSheet, familyCode: $familyCode, viewModel: viewModel)
             }
     }
 
@@ -62,15 +63,17 @@ struct NavigationBarAddFamily: ViewModifier {
 }
 
 extension View {
-    func navBarAddFamily(title: String) -> some View {
-        self.modifier(NavigationBarAddFamily(title: title))
+    func navBarAddFamily(title: String, viewModel: CarerViewModel) -> some View {
+        self.modifier(NavigationBarAddFamily(title: title, viewModel: viewModel))
     }
 }
+
 
 // MARK: -  --------------- SHEET ADD FAMILY CODE -------------
 struct AddFamilySheet: View {
     @Binding var showSheet: Bool
     @Binding var familyCode: String
+    @ObservedObject var viewModel: CarerViewModel
     
     var body: some View {
         ZStack {
@@ -91,11 +94,10 @@ struct AddFamilySheet: View {
                     .padding()
                     Spacer()
                     Button(LocalizedString.okbutton) {
-                        // Aquí se haría la comprobación del código por API
-                        // Realizar la llamada a la API con familyCode
-                        // validateFamilyCode(familyCode)
-                        print("Código introducido: \(familyCode)")
-                        showSheet = false
+                        Task {
+                            await viewModel.addCarerToPatientByCode(code: familyCode)
+                            showSheet = false
+                        }
                     }
                     .padding()
                 }
@@ -107,6 +109,7 @@ struct AddFamilySheet: View {
         }
     }
 }
+
 // MARK: -  --------------- NAVBAR OUT FAMILY -------------
 struct NavigationBarExitFamily: ViewModifier {
     var title: String

@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - FamilyUnitBO
-struct FamilyUnitBO {
+struct FamilyUnitBO: Codable {
     let id: Int?
     let code: String?
 }

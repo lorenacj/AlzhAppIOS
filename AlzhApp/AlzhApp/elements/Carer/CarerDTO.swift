@@ -55,6 +55,11 @@ struct CarerDTO: Codable {
        }
    }
 
+struct AddCarerRequestDTO: Codable {
+    let patientId: Int
+    let carerId: Int
+    let code: String
+}
 // MARK: - Encode/decode helpers
 
 class JSONNull: Codable, Hashable {

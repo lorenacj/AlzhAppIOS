@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+struct MedicineBO: Codable {
+    let id: Int?
+    let name: String?
+    let description: String?
+    let usage: String?
+    let howOften: Int?
+    let howManyDays: Int?
+    let deleted: Bool?
+}

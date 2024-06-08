@@ -10,5 +10,6 @@ import Foundation
 // MARK: - Symptom
 struct Symptom: Codable {
     let id: Int?
-    let type, description, date, hour: String?
+    let type, description: String?
+    let  date, hour: Date?
 }

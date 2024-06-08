@@ -3,54 +3,48 @@
 //
 // Created by lorena.cruz on 2/6/24.
 //
+
 import SwiftUI
 
 struct InitialView: View {
     @State private var isTapped = false
     @State private var navigateToCreatePatient = false
-    @State private var navigateToProduct = false
-    @State private var selectedProduct: ProductBO? = nil
-    @StateObject private var viewModel = ProductViewModel()
-    
+    @EnvironmentObject private var carerViewModel: CarerViewModel
+
     let singleColumn = [
         GridItem(.flexible(minimum: 150, maximum: .infinity), spacing: 1)
     ]
-    
+
     var body: some View {
         NavigationView {
             GeometryReader { proxy in
                 ScrollView {
                     VStack(spacing: 20) {
-                        if viewModel.items == nil {
-                            if let errorText = viewModel.errorText {
+                        if carerViewModel.patients.isEmpty {
+                            if let errorText = carerViewModel.errorText {
                                 Image(systemName: AppIcons.connection.rawValue)
                                     .resizable()
-                                    .frame(width: 30,height: 30)
+                                    .frame(width: 30, height: 30)
                                     .foregroundStyle(.white)
-                                Text("Error de conexión")
+                                Text(errorText)
                                     .foregroundColor(.white)
                                 Button(action: {
-                                    viewModel.loadProducts()
+                                    carerViewModel.getPatientsByCarer()
                                 }, label: {
                                     Text("Reintentar")
                                         .foregroundStyle(.white)
                                         .padding()
                                 })
                                 .background(
-                                Capsule()
-                                    .fill(AppColors.maroon)
+                                    Capsule()
+                                        .fill(AppColors.maroon)
                                 )
                             } else {
-                                ProgressView("Loading products...")
+                                ProgressView("Loading patients...")
                             }
                         } else {
                             NavigationLink(destination: CreatePatientView(), isActive: $navigateToCreatePatient) {
                                 EmptyView()
-                            }
-                            if let selectedProduct = selectedProduct {
-                                NavigationLink(destination: UnityFamilyView(product: selectedProduct), isActive: $navigateToProduct) {
-                                    EmptyView()
-                                }
                             }
                             CustomButtonStyle(text: LocalizedString.agregarPaciente, isTapped: $isTapped) {
                                 navigateToCreatePatient = true
@@ -58,21 +52,18 @@ struct InitialView: View {
                             .padding()
                             .frame(maxWidth: .infinity)
                             LazyVGrid(columns: singleColumn, spacing: 20) {
-                                ForEach(viewModel.items!, id: \.id) { product in
-                                    ProductRow(product: product) {
-                                        selectedProduct = product
-                                        navigateToProduct = true
-                                    }
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(Color.white)
-                                    .cornerRadius(8)
-                                    .shadow(radius: 5)
+                                ForEach(carerViewModel.patients, id: \.id) { patient in
+                                    PatientRow(patient: patient)
+                                        .frame(maxWidth: .infinity)
+                                        .padding()
+                                        .background(Color.white)
+                                        .cornerRadius(8)
+                                        .shadow(radius: 5)
                                 }
                             }
                         }
                     }
-                    .navBarAddFamily(title: LocalizedString.unidadesFamiliares)
+                    .navBarAddFamily(title: LocalizedString.unidadesFamiliares, viewModel: carerViewModel)
                     .frame(maxWidth: .infinity, minHeight: proxy.size.height)
                     .onTapGesture {
                         endEditing()
@@ -81,29 +72,27 @@ struct InitialView: View {
                 .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
             }
             .onAppear {
-                viewModel.loadProducts()
+                carerViewModel.getPatientsByCarer()
             }
         }
     }
 }
 
-struct ProductRow: View {
-    let product: ProductBO
-    let onTap: () -> Void
+struct PatientRow: View {
+    let patient: PatientsCareBO
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(product.title)
+            Text(patient.name ?? "Unknown")
                 .font(.headline)
-            Text(product.description)
+            Text(patient.lastname ?? "Unknown")
                 .font(.subheadline)
-            Text("Price: \(product.price, specifier: "%.2f")")
+            Text("Birthdate: \(patient.birthdate ?? "Unknown")")
                 .font(.subheadline)
-            Text("Rating: \(product.rating)")
+            Text("Height: \(patient.height ?? 0)")
                 .font(.subheadline)
-        }
-        .onTapGesture {
-            onTap()
+            Text("Weight: \(patient.weight ?? 0.0, specifier: "%.2f")")
+                .font(.subheadline)
         }
     }
 }
