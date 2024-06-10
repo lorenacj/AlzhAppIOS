@@ -48,13 +48,21 @@ struct InitialView: View {
                             }
                             .padding()
                             .frame(maxWidth: .infinity)
-                            
+
                             VStack(spacing: 0) {
                                 ForEach(carerViewModel.patients, id: \.id) { patient in
                                     NavigationLink(
                                         destination: PatientDetailView(patient: patient),
-                                        tag: patient,
-                                        selection: $selectedPatient
+                                        isActive: Binding(
+                                            get: { selectedPatient?.id == patient.id },
+                                            set: { isActive in
+                                                if isActive {
+                                                    selectedPatient = patient
+                                                } else {
+                                                    selectedPatient = nil
+                                                }
+                                            }
+                                        )
                                     ) {
                                         PatientRow(patient: patient)
                                             .frame(maxWidth: .infinity)
@@ -92,15 +100,12 @@ struct PatientRow: View {
     
     var body: some View {
         HStack {
+            Image(systemName: AppIcons.patient.rawValue)
+                .resizable()
+                .frame(width: 20, height: 35)
+                .foregroundColor(AppColors.pink)
+                .padding(.trailing, 20)
             VStack(alignment: .leading) {
-                Image(systemName: AppIcons.patient.rawValue)
-                    .resizable()
-                    .frame(width: 20, height: 35)
-                    .foregroundColor(AppColors.pink)
-                    .padding(.trailing, 20)
-            }
-            VStack(alignment: .leading) {
-                Spacer()
                 Text(patient.name ?? "Unknown")
                     .font(.headline)
                     .foregroundColor(.black)
@@ -110,7 +115,6 @@ struct PatientRow: View {
                 Text("Fecha de nacimiento: \(patient.birthdate ?? "Unknown")")
                     .font(.subheadline)
                     .foregroundColor(.black)
-                Spacer()
             }
         }
         .padding(10)
@@ -120,5 +124,6 @@ struct PatientRow: View {
 #Preview {
     NavigationView {
         InitialView()
+            .environmentObject(CarerViewModel())
     }
 }

@@ -12,65 +12,70 @@ struct PatientDetailView: View {
     @State private var showAlert = false
     @State private var isTapped = false
 
-
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
                 VStack {
                     HStack {
                         CustomButtonStyle(text: "Crear eventos", isTapped: $isTapped) {
-                            
+                            // Acción para crear eventos
                         }
                         CustomButtonStyle(text: "Visualizar eventos", isTapped: $isTapped) {
-                            
+                            // Acción para visualizar eventos
                         }
                     }
                     .padding()
-                    VStack (alignment: .leading){
+                    VStack(alignment: .leading) {
                         HStack {
                             Text("Ficha del paciente")
-                            Button {
-                                //editar
-                            } label: {
+                            NavigationLink(destination: ModifyPatientView(patient: patient)) {
                                 Image(systemName: AppIcons.edit.rawValue)
                                     .resizable()
-                                    .frame(width: 20,height: 20)
-                                    .foregroundStyle(AppColors.lightBlue)
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(AppColors.lightBlue)
                             }
-
                         }
-                            .font(.custom(AppFonts.OpenSans.semibold.rawValue, size: 20))
+                        .font(.custom(AppFonts.OpenSans.semibold.rawValue, size: 20))
+                        
                         Text("\(patient.name ?? "Unknown") \(patient.lastname ?? "Unknown")")
                         Text("Fecha de nacimiento: \(patient.birthdate ?? "Unknown")")
                         Text("Disorder: \(patient.disorder ?? "Unknown")")
                         Text("DNI: \(patient.passportid ?? "Unknown")")
-                        Text("Peso: \(patient.weight ?? 0)")
-                        Text("Altura: \(patient.height ?? 0)")
+                        Text("Peso: \(patient.weight?.formatted(.number.precision(.fractionLength(2))) ?? "0.00")Kg")
+                        Text("Altura: \(patient.height?.formatted(.number.precision(.integerLength(0))) ?? "0")cm")
+                        HStack {
+                            Text("Medicinas: ")
+                            NavigationLink(destination: MedicinesView(medicines: patient.medicines ?? [])) {
+                                Image(systemName: "pills")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(AppColors.lightBlue)
+                            }
+                        }
                     }
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 5)
-                            .fill(.white).opacity(0.8)
+                            .fill(.white)
+                            .opacity(0.8)
                     )
-                    .padding(.bottom,5)
+                    .padding(.bottom, 5)
+                    
                     Text("Participantes:")
-                    //api que te dice los ROLE_CARER que pertenecen a la unidad familiar == patient.id
+                    // API para obtener los ROLE_CARER que pertenecen a la unidad familiar == patient.id
                 }
                 .frame(maxWidth: .infinity, minHeight: proxy.size.height)
             }
             .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
             .opacity(0.8)
         }
-        .navigationBarExitFamily(
-            title: "Detalle del Paciente",
-            trailingButton: AnyView(exitFamilyButton)
-        )
+        .navigationBarTitle("Detalle del Paciente", displayMode: .inline)
         .alert(isPresented: $showAlert) {
             Alert(
                 title: Text("Confirmar"),
                 message: Text("¿Estás seguro de salir de la unidad familiar? AVISO: Si eres el último cuidador de la unidad familiar, esta y el perfil del paciente serán eliminados."),
                 primaryButton: .destructive(Text("Salir")) {
-                    // llamada a la api para salir de la unidad familiar
+                    // Llamada a la API para salir de la unidad familiar
                 },
                 secondaryButton: .cancel()
             )

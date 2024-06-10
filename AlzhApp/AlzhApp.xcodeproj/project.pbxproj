@@ -58,6 +58,7 @@
 		7C2B35EB2C0CEB630088338C /* TabNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B35EA2C0CEB630088338C /* TabNavigationBar.swift */; };
 		7C2B35ED2C0CF08D0088338C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B35EC2C0CF08D0088338C /* TabBar.swift */; };
 		7C2B35F12C0CF36D0088338C /* CreatePatientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B35F02C0CF36D0088338C /* CreatePatientView.swift */; };
+		7C7C75D62C1767280068B6BF /* PatientMedicineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7C75D52C1767280068B6BF /* PatientMedicineView.swift */; };
 		7C8654792C0CD4AB008AE334 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8654782C0CD4AB008AE334 /* NavBar.swift */; };
 		7C8E24F12C03E16000420913 /* AlzhAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E24F02C03E16000420913 /* AlzhAppApp.swift */; };
 		7C8E24F52C03E16200420913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E24F42C03E16200420913 /* Assets.xcassets */; };
@@ -147,6 +148,7 @@
 		7C2B35EA2C0CEB630088338C /* TabNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavigationBar.swift; sourceTree = "<group>"; };
 		7C2B35EC2C0CF08D0088338C /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		7C2B35F02C0CF36D0088338C /* CreatePatientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePatientView.swift; sourceTree = "<group>"; };
+		7C7C75D52C1767280068B6BF /* PatientMedicineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientMedicineView.swift; sourceTree = "<group>"; };
 		7C8654782C0CD4AB008AE334 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		7C8E24ED2C03E16000420913 /* AlzhApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlzhApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8E24F02C03E16000420913 /* AlzhAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlzhAppApp.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 		7C2B35EE2C0CF34F0088338C /* subViews */ = {
 			isa = PBXGroup;
 			children = (
+				7C7C75D42C1767160068B6BF /* MedicinesView */,
 				7C945FF42C133D310091376A /* IndividualEvents */,
 				7C2B35EF2C0CF3560088338C /* CreatePatient */,
 				7C945FEC2C1339170091376A /* ModifyPatientView */,
@@ -358,6 +361,14 @@
 				7C2B35F02C0CF36D0088338C /* CreatePatientView.swift */,
 			);
 			path = CreatePatient;
+			sourceTree = "<group>";
+		};
+		7C7C75D42C1767160068B6BF /* MedicinesView */ = {
+			isa = PBXGroup;
+			children = (
+				7C7C75D52C1767280068B6BF /* PatientMedicineView.swift */,
+			);
+			path = MedicinesView;
 			sourceTree = "<group>";
 		};
 		7C8E24E42C03E16000420913 = {
@@ -674,6 +685,7 @@
 				7C1AA3A12C0F731C00E4AAD5 /* ProductRepository.swift in Sources */,
 				7CCA114F2C10D2BF0043B67D /* PatientBO.swift in Sources */,
 				7CCA11392C10CFA90043B67D /* CarerDTO.swift in Sources */,
+				7C7C75D62C1767280068B6BF /* PatientMedicineView.swift in Sources */,
 				7CCA11402C10CFDB0043B67D /* CarerViewModel.swift in Sources */,
 				7C945FFE2C14FD0E0091376A /* PatientDetailView.swift in Sources */,
 				7CCA11612C10D3570043B67D /* MedicineBO.swift in Sources */,
