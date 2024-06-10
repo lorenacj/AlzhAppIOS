@@ -14,8 +14,8 @@ struct EventBO: Codable {
     let description: String?
     let status: String?
     let deleted: Bool?
-    let initialDate: Date?
-    let finalDate: Date?
-    let initialHour: Date?
-    let finalHour: Date?
+    let initialDate: String?
+    let finalDate: String?
+    let initialHour: String?
+    let finalHour: String?
 }

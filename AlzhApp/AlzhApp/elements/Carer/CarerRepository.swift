@@ -149,7 +149,7 @@ class CarerWS: CarerRepository {
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("\(token)", forHTTPHeaderField: "Authorization")
 
         print("DEBUG: Request URL: \(url.absoluteString)")
         print("DEBUG: Request Headers: \(request.allHTTPHeaderFields ?? [:])")

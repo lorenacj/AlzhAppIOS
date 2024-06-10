@@ -14,6 +14,7 @@ struct PatientsCare: Codable {
     let height, weight: Int?
     let disorder, passportid: String?
     let enabled, deleted: Bool?
+    let carer: [CarerDTO]?
     let familyUnit: FamilyUnitDTO?
     let medicines: [Medicine]?
     let events: [Event]?

@@ -11,6 +11,6 @@ struct SymptomBO: Codable {
     let id: Int?
     let type: String?
     let description: String?
-    let date: Date?
-    let hour: Date?
+    let date: String? // Se cambia a String para evitar problemas de formato
+    let hour: String? // Se cambia a String para evitar problemas de formato
 }
