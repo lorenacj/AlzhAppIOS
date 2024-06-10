@@ -4,6 +4,7 @@
 //
 //  Created by lorena.cruz on 5/6/24.
 //
+
 import Foundation
 
 enum RepositoryError: Error {
@@ -19,6 +20,9 @@ protocol CarerRepository {
     func loginCarer(username: String, password: String) async throws -> String
     func addCarerToPatientByCode(code: String, token: String) async throws
     func getPatientsByCarer(token: String) async throws -> [PatientsCareBO]
+    func addPatient(patient: PatientsCareBO, token: String) async throws
+    func getEventsByCarer(token: String) async throws -> [Event]
+    func createEventForPatient(patientId: Int, event: Event, token: String) async throws -> Event
 }
 
 class CarerWS: CarerRepository {
@@ -182,6 +186,126 @@ class CarerWS: CarerRepository {
         } catch {
             print("DEBUG: Fetch Error: \(error.localizedDescription)")
             throw RepositoryError.custom("Failed to fetch patients: \(error.localizedDescription)")
+        }
+    }
+
+    func addPatient(patient: PatientsCareBO, token: String) async throws {
+        guard let url = URL(string: "\(baseURL)/patientapi/add") else {
+            throw RepositoryError.invalidURL
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let dto = PatientsCare(
+            id: nil,
+            name: patient.name,
+            lastname: patient.lastname,
+            birthdate: patient.birthdate,
+            height: patient.height,
+            weight: patient.weight.flatMap { Int($0) },
+            disorder: patient.disorder,
+            passportid: patient.passportid,
+            enabled: nil,
+            deleted: nil,
+            familyUnit: nil,
+            medicines: nil,
+            events: nil,
+            symptoms: nil
+        )
+
+        do {
+            let jsonData = try JSONEncoder().encode(dto)
+            request.httpBody = jsonData
+        } catch {
+            throw error
+        }
+
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw RepositoryError.invalidResponse
+            }
+
+            guard 200 ..< 300 ~= httpResponse.statusCode else {
+                if let errorMessage = String(data: data, encoding: .utf8) {
+                    throw RepositoryError.custom(errorMessage)
+                } else {
+                    throw RepositoryError.statusCode(httpResponse.statusCode)
+                }
+            }
+        } catch {
+            throw error
+        }
+    }
+
+    func getEventsByCarer(token: String) async throws -> [Event] {
+        guard let url = URL(string: "\(baseURL)/eventapi/byCarer") else {
+            throw RepositoryError.invalidURL
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw RepositoryError.invalidResponse
+            }
+
+            guard 200 ..< 300 ~= httpResponse.statusCode else {
+                if let errorMessage = String(data: data, encoding: .utf8) {
+                    throw RepositoryError.custom(errorMessage)
+                } else {
+                    throw RepositoryError.statusCode(httpResponse.statusCode)
+                }
+            }
+
+            let events = try JSONDecoder().decode([Event].self, from: data)
+            return events
+        } catch {
+            throw error
+        }
+    }
+
+    func createEventForPatient(patientId: Int, event: Event, token: String) async throws -> Event {
+        guard let url = URL(string: "\(baseURL)/eventapi/add/\(patientId)") else {
+            throw RepositoryError.invalidURL
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        do {
+            let jsonData = try JSONEncoder().encode(event)
+            request.httpBody = jsonData
+        } catch {
+            throw error
+        }
+
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw RepositoryError.invalidResponse
+            }
+
+            guard 200 ..< 300 ~= httpResponse.statusCode else {
+                if let errorMessage = String(data: data, encoding: .utf8) {
+                    throw RepositoryError.custom(errorMessage)
+                } else {
+                    throw RepositoryError.statusCode(httpResponse.statusCode)
+                }
+            }
+
+            let createdEvent = try JSONDecoder().decode(Event.self, from: data)
+            return createdEvent
+        } catch {
+            throw error
         }
     }
 

@@ -13,7 +13,6 @@ struct InitialView: View {
     @EnvironmentObject private var carerViewModel: CarerViewModel
 
     var body: some View {
-        NavigationView {
             GeometryReader { proxy in
                 ScrollView {
                     VStack(spacing: 0) {
@@ -83,7 +82,7 @@ struct InitialView: View {
             .onAppear {
                 carerViewModel.getPatientsByCarer()
             }
-        }
+        
     }
 }
 

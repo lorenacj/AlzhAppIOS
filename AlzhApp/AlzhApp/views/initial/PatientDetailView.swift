@@ -12,7 +12,6 @@ struct PatientDetailView: View {
     @State private var showAlert = false
     @State private var isTapped = false
 
-
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
@@ -29,17 +28,14 @@ struct PatientDetailView: View {
                     VStack (alignment: .leading){
                         HStack {
                             Text("Ficha del paciente")
-                            Button {
-                                //editar
-                            } label: {
+                            NavigationLink(destination: ModifyPatientView(patient: patient)) {
                                 Image(systemName: AppIcons.edit.rawValue)
                                     .resizable()
-                                    .frame(width: 20,height: 20)
-                                    .foregroundStyle(AppColors.lightBlue)
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(AppColors.lightBlue)
                             }
-
                         }
-                            .font(.custom(AppFonts.OpenSans.semibold.rawValue, size: 20))
+                        .font(.custom(AppFonts.OpenSans.semibold.rawValue, size: 20))
                         Text("\(patient.name ?? "Unknown") \(patient.lastname ?? "Unknown")")
                         Text("Fecha de nacimiento: \(patient.birthdate ?? "Unknown")")
                         Text("Disorder: \(patient.disorder ?? "Unknown")")
@@ -50,11 +46,11 @@ struct PatientDetailView: View {
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 5)
-                            .fill(.white).opacity(0.8)
+                            .fill(Color.white).opacity(0.8)
                     )
-                    .padding(.bottom,5)
+                    .padding(.bottom, 5)
                     Text("Participantes:")
-                    //api que te dice los ROLE_CARER que pertenecen a la unidad familiar == patient.id
+                    // API que te dice los ROLE_CARER que pertenecen a la unidad familiar == patient.id
                 }
                 .frame(maxWidth: .infinity, minHeight: proxy.size.height)
             }
@@ -70,7 +66,7 @@ struct PatientDetailView: View {
                 title: Text("Confirmar"),
                 message: Text("¿Estás seguro de salir de la unidad familiar? AVISO: Si eres el último cuidador de la unidad familiar, esta y el perfil del paciente serán eliminados."),
                 primaryButton: .destructive(Text("Salir")) {
-                    // llamada a la api para salir de la unidad familiar
+                    // llamada a la API para salir de la unidad familiar
                 },
                 secondaryButton: .cancel()
             )

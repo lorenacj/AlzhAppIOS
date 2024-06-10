@@ -12,3 +12,9 @@ import SwiftUI
 func endEditing() {
     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
 }
+
+ func dateFormatter() -> DateFormatter {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "dd-MM-yyyy" // Ajustar al formato de fecha correcto
+    return formatter
+}

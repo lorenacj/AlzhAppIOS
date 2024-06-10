@@ -12,14 +12,18 @@ struct SharedEventsView: View {
         GeometryReader { proxy in
             ScrollView{
                 VStack {
-                    //Eventos
+                    Text("Listado")
                 }
+                .navigationBar(title: "Eventos compartidos")
                 .frame(maxWidth: .infinity, minHeight: proxy.size.height)
             }
+            .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
         }
     }
 }
 
 #Preview {
-    SharedEventsView()
+    NavigationView {
+        SharedEventsView()
+    }
 }

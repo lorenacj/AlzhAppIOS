@@ -14,8 +14,11 @@ final class CarerViewModel: ObservableObject {
     @Published var isAddCarerSuccessful = false
     @Published var patients: [PatientsCareBO] = []
     @Published var token: String?
+    @Published var events: [Event] = []
 
     private lazy var carerRepository: CarerRepository = CarerWS()
+
+    // MARK: - Authentication
 
     @MainActor
     func loginCarer(username: String, password: String) {
@@ -45,6 +48,8 @@ final class CarerViewModel: ObservableObject {
             }
         }
     }
+
+    // MARK: - Carer-Patient Management
 
     @MainActor
     func addCarerToPatientByCode(code: String) {
@@ -82,6 +87,63 @@ final class CarerViewModel: ObservableObject {
             }
         }
     }
+
+    @MainActor
+    func addPatient(patient: PatientsCareBO) {
+        Task {
+            guard let token = token else {
+                errorText = "No token available"
+                return
+            }
+
+            do {
+                try await carerRepository.addPatient(patient: patient, token: token)
+                errorText = nil
+            } catch {
+                handleError(error)
+            }
+        }
+    }
+
+    // MARK: - Event Management
+
+    @MainActor
+    func fetchEvents() {
+        Task {
+            guard let token = token else {
+                errorText = "No token available"
+                return
+            }
+
+            do {
+                let events = try await carerRepository.getEventsByCarer(token: token)
+                self.events = events
+                errorText = nil
+            } catch {
+                handleError(error)
+            }
+        }
+    }
+
+    @MainActor
+    func createEvent(patientId: Int, event: Event) {
+        Task {
+            guard let token = token else {
+                errorText = "No token available"
+                return
+            }
+
+            do {
+                let createdEvent = try await carerRepository.createEventForPatient(patientId: patientId, event: event, token: token)
+                self.events.append(createdEvent)
+                errorText = nil
+            } catch {
+                handleError(error)
+            }
+        }
+    }
+
+    // MARK: - Error Handling
 
     private func handleError(_ error: Error) {
         if let repoError = error as? RepositoryError {

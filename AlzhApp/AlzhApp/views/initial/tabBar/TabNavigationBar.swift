@@ -15,23 +15,27 @@ struct TabNavigationBar: View {
     
     var body: some View {
         TabView(selection: $selectionTab) {
-            InitialView()
-                .tabItem {
-                    Label("Initial", systemImage: AppIcons.familyunit.rawValue)
-                }
-                .tag(TabSelection.initial)
-//            SharedCalendar()
-            SharedEventsView()
-                .tabItem {
-                    Label("Calendario", systemImage: AppIcons.calendar.rawValue)
-                }
+            NavigationView {
+                InitialView()
+            }
+            .tabItem {
+                Label("Initial", systemImage: AppIcons.familyunit.rawValue)
+            }
+            .tag(TabSelection.initial)
+
+            NavigationView {
+                SharedEventsView()
+            }
+            .tabItem {
+                Label("Calendario", systemImage: AppIcons.calendar.rawValue)
+            }
+            .tag(TabSelection.calendar)
         }
         .navigationBarHidden(true)
-//        .navBarAddFamily(title: LocalizedString.unidadesFamiliares)
-        .onChange(of: appEnviroment.selectionTab) { newValue, oldValue in
+        .onChange(of: appEnviroment.selectionTab) { newValue in
             selectionTab = newValue
         }
-        .onChange(of: selectionTab) { newValue, oldValue in
+        .onChange(of: selectionTab) { newValue in
             appEnviroment.selectionTab = newValue
         }
         .accentColor(AppColors.pink)
@@ -43,16 +47,3 @@ struct TabNavigationBar: View {
 #Preview {
     TabNavigationBar()
 }
-
-
-struct TabSelectionView: View {
-    var body: some View {
-        VStack {
-            Text("TabSelectionView")
-        }
-    }
-}
-
-//#Preview {
-//    TabSelectionView()
-//}
