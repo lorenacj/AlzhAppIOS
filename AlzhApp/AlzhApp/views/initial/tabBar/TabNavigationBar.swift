@@ -20,14 +20,17 @@ struct TabNavigationBar: View {
                     Label("Initial", systemImage: AppIcons.familyunit.rawValue)
                 }
                 .tag(TabSelection.initial)
-//            SharedCalendar()
-            RegisterView()
-                .tabItem {
-                    Label("Calendario", systemImage: AppIcons.calendar.rawValue)
-                }
+            //            SharedCalendar()
+            NavigationView {
+                SharedEventsView()
+            }
+            .tabItem {
+                Label("Calendario", systemImage: AppIcons.calendar.rawValue)
+            }
+            .tag(TabSelection.calendar)
         }
         .navigationBarHidden(true)
-//        .navBarAddFamily(title: LocalizedString.unidadesFamiliares)
+        //        .navBarAddFamily(title: LocalizedString.unidadesFamiliares)
         .onChange(of: appEnviroment.selectionTab) { newValue, oldValue in
             selectionTab = newValue
         }
@@ -41,7 +44,7 @@ struct TabNavigationBar: View {
 }
 
 #Preview {
-    TabNavigationBar()
+    SharedEventsView()
 }
 
 
