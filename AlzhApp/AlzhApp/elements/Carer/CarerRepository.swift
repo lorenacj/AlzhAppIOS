@@ -53,17 +53,13 @@ class CarerWS: CarerRepository {
         }
 
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (_, response) = try await URLSession.shared.data(for: request)
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw RepositoryError.invalidResponse
             }
 
             guard 200 ..< 300 ~= httpResponse.statusCode else {
-                if let errorMessage = String(data: data, encoding: .utf8) {
-                    throw RepositoryError.custom(errorMessage)
-                } else {
-                    throw RepositoryError.statusCode(httpResponse.statusCode)
-                }
+                throw RepositoryError.statusCode(httpResponse.statusCode)
             }
         } catch {
             throw error
@@ -83,22 +79,14 @@ class CarerWS: CarerRepository {
         let formData = createFormData(parameters: ["username": username, "password": password], boundary: boundary)
         request.httpBody = formData
 
-        print("DEBUG: Login Request URL: \(url.absoluteString)")
-        print("DEBUG: Login Request Headers: \(request.allHTTPHeaderFields ?? [:])")
-        print("DEBUG: Login Request Body: \(String(data: formData, encoding: .utf8) ?? "")")
-
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
-
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw RepositoryError.invalidResponse
             }
 
-            print("DEBUG: Login Response Status Code: \(httpResponse.statusCode)")
-
             guard 200 ..< 300 ~= httpResponse.statusCode else {
                 if let errorMessage = String(data: data, encoding: .utf8) {
-                    print("DEBUG: Login Error Message: \(errorMessage)")
                     throw RepositoryError.custom(errorMessage)
                 } else {
                     throw RepositoryError.statusCode(httpResponse.statusCode)
@@ -107,13 +95,11 @@ class CarerWS: CarerRepository {
 
             if let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                let token = jsonResponse["token"] as? String {
-                print("DEBUG: Login Token: \(token)")
                 return token
             } else {
                 throw RepositoryError.custom("Failed to decode login response")
             }
         } catch {
-            print("DEBUG: Login Fetch Error: \(error.localizedDescription)")
             throw RepositoryError.custom("Login request failed: \(error.localizedDescription)")
         }
     }
@@ -129,17 +115,13 @@ class CarerWS: CarerRepository {
         urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
         do {
-            let (data, response) = try await URLSession.shared.data(for: urlRequest)
+            let (_, response) = try await URLSession.shared.data(for: urlRequest)
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw RepositoryError.invalidResponse
             }
 
             guard 200 ..< 300 ~= httpResponse.statusCode else {
-                if let errorMessage = String(data: data, encoding: .utf8) {
-                    throw RepositoryError.custom(errorMessage)
-                } else {
-                    throw RepositoryError.statusCode(httpResponse.statusCode)
-                }
+                throw RepositoryError.statusCode(httpResponse.statusCode)
             }
         } catch {
             throw error
@@ -155,20 +137,14 @@ class CarerWS: CarerRepository {
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        print("DEBUG: Request URL: \(url.absoluteString)")
-        print("DEBUG: Request Headers: \(request.allHTTPHeaderFields ?? [:])")
-
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw RepositoryError.invalidResponse
             }
 
-            print("DEBUG: Response Status Code: \(httpResponse.statusCode)")
-
             guard 200 ..< 300 ~= httpResponse.statusCode else {
                 if let errorMessage = String(data: data, encoding: .utf8) {
-                    print("DEBUG: Error Message: \(errorMessage)")
                     throw RepositoryError.custom(errorMessage)
                 } else {
                     throw RepositoryError.statusCode(httpResponse.statusCode)
@@ -176,15 +152,17 @@ class CarerWS: CarerRepository {
             }
 
             do {
-                let patients = try JSONDecoder().decode([PatientsCareBO].self, from: data)
-                print("DEBUG: Decoded Patients: \(patients)")
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase // Por si acaso hay diferencias de estilo de clave
+                let patients = try decoder.decode([PatientsCareBO].self, from: data)
                 return patients
             } catch {
-                print("DEBUG: Decoding Error: \(error.localizedDescription)")
+                print("DEBUG: Failed to decode patients data: \(error.localizedDescription)")
+                print("DEBUG: JSON Data: \(String(data: data, encoding: .utf8) ?? "Invalid JSON")")
                 throw RepositoryError.custom("Failed to decode patients data: \(error.localizedDescription)")
             }
         } catch {
-            print("DEBUG: Fetch Error: \(error.localizedDescription)")
+            print("DEBUG: Failed to fetch patients: \(error.localizedDescription)")
             throw RepositoryError.custom("Failed to fetch patients: \(error.localizedDescription)")
         }
     }
@@ -205,7 +183,7 @@ class CarerWS: CarerRepository {
             lastname: patient.lastname,
             birthdate: patient.birthdate,
             height: patient.height,
-            weight: patient.weight.flatMap { Int($0) },
+            weight: patient.weight,  // Asegurarse de que weight sea Double
             disorder: patient.disorder,
             passportid: patient.passportid,
             enabled: nil,

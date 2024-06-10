@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PatientsCareBO: Codable,Identifiable, Hashable {
+struct PatientsCareBO: Codable, Identifiable, Hashable {
     let id: Int?
     let name: String?
     let lastname: String?
@@ -23,15 +23,11 @@ struct PatientsCareBO: Codable,Identifiable, Hashable {
     let events: [EventBO]?
     let symptoms: [SymptomBO]?
     
-    
-    // Implementar el método hash(into:) para conformar a Hashable
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
 
-    // Implementar el operador de igualdad para conformar a Hashable
     static func == (lhs: PatientsCareBO, rhs: PatientsCareBO) -> Bool {
         return lhs.id == rhs.id
     }
 }
-

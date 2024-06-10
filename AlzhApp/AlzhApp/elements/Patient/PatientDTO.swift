@@ -10,10 +10,15 @@ import Foundation
 // MARK: - PatientsCare
 struct PatientsCare: Codable {
     let id: Int?
-    let name, lastname, birthdate: String?
-    let height, weight: Int?
-    let disorder, passportid: String?
-    let enabled, deleted: Bool?
+    let name: String?
+    let lastname: String?
+    let birthdate: String?
+    let height: Int?  
+    let weight: Double?
+    let disorder: String?
+    let passportid: String?
+    let enabled: Bool?
+    let deleted: Bool?
     let familyUnit: FamilyUnitDTO?
     let medicines: [Medicine]?
     let events: [Event]?
