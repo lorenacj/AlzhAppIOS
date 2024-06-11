@@ -11,17 +11,17 @@ struct PatientDetailView: View {
     let patient: PatientsCareBO
     @State private var showAlert = false
     @State private var isTapped = false
-
+    
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
                 VStack {
                     HStack {
-                        CustomButtonStyle(text: "Crear eventos", isTapped: $isTapped) {
-                            // Acción para crear eventos
+                        NavigationLink(destination: CreateEventsView(patientID: patient.id)) {
+                            CustomButtonStyle(text: "Crear eventos", isTapped: $isTapped, action: {} )
                         }
-                        CustomButtonStyle(text: "Visualizar eventos", isTapped: $isTapped) {
-                            // Acción para visualizar eventos
+                        NavigationLink(destination: IndividualEventsView(patientID: patient.id)) {
+                            CustomButtonStyle(text: "Visualizar eventos", isTapped: $isTapped, action: {})
                         }
                     }
                     .padding()
@@ -79,15 +79,6 @@ struct PatientDetailView: View {
                 },
                 secondaryButton: .cancel()
             )
-        }
-    }
-
-    private var exitFamilyButton: some View {
-        Button(action: {
-            showAlert = true
-        }) {
-            Image(systemName: AppIcons.exitfamily.rawValue)
-                .foregroundColor(.black)
         }
     }
 }

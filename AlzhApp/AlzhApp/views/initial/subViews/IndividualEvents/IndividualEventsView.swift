@@ -8,11 +8,55 @@
 import SwiftUI
 
 struct IndividualEventsView: View {
+    let patientID: Int?
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { proxy in
+            ScrollView {
+                VStack {
+                    Text("Listado de eventos del paciente")
+                        .font(.largeTitle)
+                        .padding(.top, 20)
+                    
+//                    if let errorText = viewModel.errorText {
+//                        Image(systemName: "exclamationmark.triangle")
+//                            .resizable()
+//                            .frame(width: 30, height: 30)
+//                            .foregroundColor(.red)
+//                        Text(errorText)
+//                            .foregroundColor(.red)
+//                        Button(action: {
+//                            Task {
+//                                await viewModel.fetchEvents()
+//                            }
+//                        }, label: {
+//                            Text("Reintentar")
+//                                .foregroundColor(.white)
+//                                .padding()
+//                        })
+//                        .background(
+//                            Capsule()
+//                                .fill(Color.red)
+//                        )
+//                    } else if viewModel.events.isEmpty {
+//                        ProgressView("Cargando eventos...")
+//                    } else {
+//                        ForEach(viewModel.events, id: \.id) { event in
+//                            EventRowView(event: event)
+//                        }
+//                    }
+                    
+                }
+                .navigationBar(title: "Eventos de paciente")
+
+                .frame(maxWidth: .infinity, minHeight: proxy.size.height)
+            }
+            .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
+            .onAppear {
+                Task {
+                    //await viewModel.fetchEvents()
+                }
+            }
+        }
     }
 }
 
-#Preview {
-    IndividualEventsView()
-}

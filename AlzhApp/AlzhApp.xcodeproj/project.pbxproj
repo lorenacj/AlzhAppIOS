@@ -59,6 +59,7 @@
 		7C2B35ED2C0CF08D0088338C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B35EC2C0CF08D0088338C /* TabBar.swift */; };
 		7C2B35F12C0CF36D0088338C /* CreatePatientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B35F02C0CF36D0088338C /* CreatePatientView.swift */; };
 		7C7C75D62C1767280068B6BF /* PatientMedicineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7C75D52C1767280068B6BF /* PatientMedicineView.swift */; };
+		7C7C75D92C176E4A0068B6BF /* CreateEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7C75D82C176E4A0068B6BF /* CreateEventsView.swift */; };
 		7C8654792C0CD4AB008AE334 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8654782C0CD4AB008AE334 /* NavBar.swift */; };
 		7C8E24F12C03E16000420913 /* AlzhAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E24F02C03E16000420913 /* AlzhAppApp.swift */; };
 		7C8E24F52C03E16200420913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E24F42C03E16200420913 /* Assets.xcassets */; };
@@ -149,6 +150,7 @@
 		7C2B35EC2C0CF08D0088338C /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		7C2B35F02C0CF36D0088338C /* CreatePatientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePatientView.swift; sourceTree = "<group>"; };
 		7C7C75D52C1767280068B6BF /* PatientMedicineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientMedicineView.swift; sourceTree = "<group>"; };
+		7C7C75D82C176E4A0068B6BF /* CreateEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventsView.swift; sourceTree = "<group>"; };
 		7C8654782C0CD4AB008AE334 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		7C8E24ED2C03E16000420913 /* AlzhApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlzhApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8E24F02C03E16000420913 /* AlzhAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlzhAppApp.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 		7C2B35EE2C0CF34F0088338C /* subViews */ = {
 			isa = PBXGroup;
 			children = (
+				7C7C75D72C176E170068B6BF /* CreateEvents */,
 				7C7C75D42C1767160068B6BF /* MedicinesView */,
 				7C945FF42C133D310091376A /* IndividualEvents */,
 				7C2B35EF2C0CF3560088338C /* CreatePatient */,
@@ -369,6 +372,14 @@
 				7C7C75D52C1767280068B6BF /* PatientMedicineView.swift */,
 			);
 			path = MedicinesView;
+			sourceTree = "<group>";
+		};
+		7C7C75D72C176E170068B6BF /* CreateEvents */ = {
+			isa = PBXGroup;
+			children = (
+				7C7C75D82C176E4A0068B6BF /* CreateEventsView.swift */,
+			);
+			path = CreateEvents;
 			sourceTree = "<group>";
 		};
 		7C8E24E42C03E16000420913 = {
@@ -673,6 +684,7 @@
 				7CCA115F2C10D3440043B67D /* FamilyUnitViewModel.swift in Sources */,
 				7CCA11592C10D31E0043B67D /* FamilyUnitBO.swift in Sources */,
 				7C2B35EB2C0CEB630088338C /* TabNavigationBar.swift in Sources */,
+				7C7C75D92C176E4A0068B6BF /* CreateEventsView.swift in Sources */,
 				7C273FC02C07A93E001557A0 /* AppStrings.swift in Sources */,
 				7C945FF62C133D4A0091376A /* IndividualEventsView.swift in Sources */,
 				7C1AA3A32C0F734D00E4AAD5 /* ProductViewModel.swift in Sources */,
@@ -838,6 +850,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AlzhApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 8B538GD8Q8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AlzhApp/Info.plist;
@@ -867,6 +880,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AlzhApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 8B538GD8Q8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AlzhApp/Info.plist;
