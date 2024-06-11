@@ -12,9 +12,10 @@ final class CarerViewModel: ObservableObject {
     @Published var isLoginSuccessful = false
     @Published var isRegisterSuccessful = false
     @Published var isAddCarerSuccessful = false
+    @Published var isAddPatientSuccessful = false // Nuevo estado
     @Published var patients: [PatientsCareBO] = []
     @Published var token: String?
-    @Published var isLoading = false 
+    @Published var isLoading = false
 
     private lazy var carerRepository: CarerRepository = CarerWS()
 
@@ -27,6 +28,7 @@ final class CarerViewModel: ObservableObject {
                 self.token = token
                 isLoginSuccessful = true
                 errorText = nil
+                print("DEBUG: Login successful, token: \(token)")
             } catch {
                 handleError(error)
                 isLoginSuccessful = false
@@ -43,6 +45,7 @@ final class CarerViewModel: ObservableObject {
                 try await carerRepository.registerCarer(carer: carer)
                 isRegisterSuccessful = true
                 errorText = nil
+                print("DEBUG: Carer registered successfully")
             } catch {
                 handleError(error)
                 isRegisterSuccessful = false
@@ -58,6 +61,7 @@ final class CarerViewModel: ObservableObject {
             guard let token = token else {
                 errorText = "No token available"
                 isLoading = false
+                print("DEBUG: No token available for adding carer to patient")
                 return
             }
 
@@ -65,9 +69,35 @@ final class CarerViewModel: ObservableObject {
                 try await carerRepository.addCarerToPatientByCode(code: code, token: token)
                 isAddCarerSuccessful = true
                 errorText = nil
+                print("DEBUG: Carer added to patient successfully")
             } catch {
                 handleError(error)
                 isAddCarerSuccessful = false
+            }
+            isLoading = false
+        }
+    }
+
+    @MainActor
+    func addPatient(patient: AddPatientDTO) {
+        Task {
+            isLoading = true
+            guard let token = token else {
+                errorText = "No token available"
+                isLoading = false
+                print("DEBUG: No token available for adding patient")
+                return
+            }
+
+            do {
+                print("DEBUG: Adding patient: \(patient)")
+                try await carerRepository.addPatient(patient: patient, token: token)
+                isAddPatientSuccessful = true
+                errorText = nil
+                print("DEBUG: Patient added successfully")
+            } catch {
+                handleError(error)
+                isAddPatientSuccessful = false
             }
             isLoading = false
         }
@@ -80,6 +110,7 @@ final class CarerViewModel: ObservableObject {
             guard let token = token else {
                 errorText = "No token available"
                 isLoading = false
+                print("DEBUG: No token available for getting patients")
                 return
             }
 
@@ -87,6 +118,7 @@ final class CarerViewModel: ObservableObject {
                 let patients = try await carerRepository.getPatientsByCarer(token: token)
                 self.patients = patients
                 errorText = nil
+                print("DEBUG: Patients retrieved successfully")
             } catch {
                 handleError(error)
             }
@@ -99,13 +131,17 @@ final class CarerViewModel: ObservableObject {
             switch repoError {
             case .statusCode(let code):
                 errorText = "Error: Código de estado \(code)"
+                print("DEBUG: Repository error with status code: \(code)")
             case .custom(let message):
                 errorText = message
+                print("DEBUG: Repository error with message: \(message)")
             default:
                 errorText = "Error desconocido: \(error.localizedDescription)"
+                print("DEBUG: Unknown repository error: \(error.localizedDescription)")
             }
         } else {
             errorText = error.localizedDescription
+            print("DEBUG: General error: \(error.localizedDescription)")
         }
     }
 }

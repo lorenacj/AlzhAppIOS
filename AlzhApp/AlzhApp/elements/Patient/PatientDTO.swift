@@ -19,4 +19,47 @@ struct PatientsCare: Codable {
     let medicines: [Medicine]?
     let events: [Event]?
     let symptoms: [Symptom]?
+
+    init(name: String, lastname: String, birthdate: Date, height: Int, weight: Int, disorder: String, passportid: String) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        self.birthdate = formatter.string(from: birthdate)
+        self.name = name
+        self.lastname = lastname
+        self.height = height
+        self.weight = weight
+        self.disorder = disorder
+        self.passportid = passportid
+        self.id = nil
+        self.enabled = true
+        self.deleted = false
+        self.carer = nil
+        self.familyUnit = nil
+        self.medicines = nil
+        self.events = nil
+        self.symptoms = nil
+    }
+}
+
+// MARK: - AddPatientDTO
+struct AddPatientDTO: Codable {
+    let name: String
+    let lastname: String
+    let height: Int
+    let weight: Int
+    let disorder: String
+    let birthdate: String
+    let passportId: String
+
+    init(name: String, lastname: String, birthdate: Date, height: Int, weight: Int, disorder: String, passportId: String) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        self.birthdate = formatter.string(from: birthdate)
+        self.name = name
+        self.lastname = lastname
+        self.height = height
+        self.weight = weight
+        self.disorder = disorder
+        self.passportId = passportId
+    }
 }

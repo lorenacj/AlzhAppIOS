@@ -153,8 +153,8 @@ struct CustomPickerField: View {
                 Text(LocalizedString.elegirOpcion).tag("Option 1")
                 Text(LocalizedString.alzheimer).tag("Option 2")
                 Text(LocalizedString.demencia).tag("Option 3")
-                Text(LocalizedString.alzheimerYdemencia).tag("Option 3")
-                Text(LocalizedString.otros).tag("Option 3")
+                Text(LocalizedString.alzheimerYdemencia).tag("Option 4")
+                Text(LocalizedString.otros).tag("Option 5")
             }
             .pickerStyle(MenuPickerStyle())
             .frame(maxWidth: .infinity, alignment: .leading)

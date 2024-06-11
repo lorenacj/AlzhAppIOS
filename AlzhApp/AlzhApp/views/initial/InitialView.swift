@@ -4,7 +4,6 @@
 // Created by lorena.cruz on 2/6/24.
 //
 
-
 import SwiftUI
 
 struct InitialView: View {
@@ -45,7 +44,7 @@ struct InitialView: View {
                                         .fill(AppColors.maroon)
                                 )
                                 .padding()
-                                NavigationLink(destination: CreatePatientView(), isActive: $navigateToCreatePatient) {
+                                NavigationLink(destination: CreatePatientView().environmentObject(carerViewModel), isActive: $navigateToCreatePatient) {
                                     EmptyView()
                                 }
                                 CustomButtonStyle(text: LocalizedString.agregarPaciente, isTapped: $isTapped) {
@@ -54,7 +53,7 @@ struct InitialView: View {
                                 .padding()
                                 .frame(maxWidth: .infinity)
                             } else {
-                                NavigationLink(destination: CreatePatientView(), isActive: $navigateToCreatePatient) {
+                                NavigationLink(destination: CreatePatientView().environmentObject(carerViewModel), isActive: $navigateToCreatePatient) {
                                     EmptyView()
                                 }
                                 CustomButtonStyle(text: LocalizedString.agregarPaciente, isTapped: $isTapped) {
@@ -66,7 +65,7 @@ struct InitialView: View {
                                     .foregroundColor(.white)
                             }
                         } else {
-                            NavigationLink(destination: CreatePatientView(), isActive: $navigateToCreatePatient) {
+                            NavigationLink(destination: CreatePatientView().environmentObject(carerViewModel), isActive: $navigateToCreatePatient) {
                                 EmptyView()
                             }
                             CustomButtonStyle(text: LocalizedString.agregarPaciente, isTapped: $isTapped) {

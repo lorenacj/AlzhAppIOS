@@ -4,6 +4,7 @@
 //
 //  Created by lorena.cruz on 2/6/24.
 //
+
 import SwiftUI
 
 struct CreatePatientView: View {
@@ -18,6 +19,7 @@ struct CreatePatientView: View {
     @State private var showAlert = false
     @State private var alertMessage = ""
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var carerViewModel: CarerViewModel
 
     var body: some View {
         GeometryReader { proxy in
@@ -116,20 +118,33 @@ struct CreatePatientView: View {
                         // Validación de campos
                         if dniText.isEmpty || nameText.isEmpty || lastnameText.isEmpty || weightValue.isEmpty || heightValue.isEmpty || disorderText.isEmpty {
                             alertMessage = LocalizedString.camposVacios
+                            showAlert = true
                         } else if !isValidDNI(dniText) {
                             alertMessage = LocalizedString.dniNoValido
+                            showAlert = true
                         } else if Float(weightValue) == nil {
                             alertMessage = LocalizedString.pesoNoValido
+                            showAlert = true
                         } else if Int(heightValue) == nil {
                             alertMessage = LocalizedString.alturaNoValida
+                            showAlert = true
                         } else if birthdate > Date() {
                             alertMessage = LocalizedString.fechaNoValida
+                            showAlert = true
                         } else {
                             // Lógica de registro
-                            #warning("Funcionalidad api")
-                            alertMessage = LocalizedString.registrocorrecto
+                            let patient = AddPatientDTO(
+                                name: nameText,
+                                lastname: lastnameText,
+                                birthdate: birthdate,
+                                height: Int(heightValue) ?? 0,
+                                weight: Int(weightValue) ?? 0,
+                                disorder: disorderText,
+                                passportId: dniText
+                            )
+                            print("DEBUG: Adding patient: \(patient)")
+                            carerViewModel.addPatient(patient: patient)
                         }
-                        showAlert = true
                     }
                     .padding(.bottom, 10)
                     .alert(isPresented: $showAlert) {
@@ -149,6 +164,14 @@ struct CreatePatientView: View {
         .onTapGesture {
             endEditing()
         }
+        .onChange(of: carerViewModel.isAddPatientSuccessful) { success in
+            if success {
+                alertMessage = LocalizedString.registrocorrecto
+            } else {
+                alertMessage = carerViewModel.errorText ?? "Error desconocido"
+            }
+            showAlert = true
+        }
     }
     
     func isValidDNI(_ dni: String) -> Bool {
@@ -157,7 +180,6 @@ struct CreatePatientView: View {
         return dniTest.evaluate(with: dni)
     }
 }
-
 
 #Preview {
     TabNavigationBar()
