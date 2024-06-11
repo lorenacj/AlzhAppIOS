@@ -18,6 +18,7 @@ struct CreatePatientView: View {
     @State private var isTapped = false
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @State private var showSuccessAlert = false
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var carerViewModel: CarerViewModel
 
@@ -153,13 +154,12 @@ struct CreatePatientView: View {
                     }
                     .padding(.bottom, 10)
                     .alert(isPresented: $showAlert) {
+                        Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)))
+                    }
+                    .alert(isPresented: $showSuccessAlert) {
                         Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)) {
-                            if alertMessage == LocalizedString.registrocorrecto {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                    presentationMode.wrappedValue.dismiss()
-                                    onPatientAdded()
-                                }
-                            }
+                            presentationMode.wrappedValue.dismiss()
+                            onPatientAdded()
                         })
                     }
                 }
@@ -175,10 +175,11 @@ struct CreatePatientView: View {
         .onChange(of: carerViewModel.isAddPatientSuccessful) { success in
             if success {
                 alertMessage = LocalizedString.registrocorrecto
+                showSuccessAlert = true
             } else {
                 alertMessage = carerViewModel.errorText ?? "Error desconocido"
+                showAlert = true
             }
-            showAlert = true
         }
     }
     
