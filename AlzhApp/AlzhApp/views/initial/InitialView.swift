@@ -44,7 +44,24 @@ struct InitialView: View {
                                     Capsule()
                                         .fill(AppColors.maroon)
                                 )
+                                .padding()
+                                NavigationLink(destination: CreatePatientView(), isActive: $navigateToCreatePatient) {
+                                    EmptyView()
+                                }
+                                CustomButtonStyle(text: LocalizedString.agregarPaciente, isTapped: $isTapped) {
+                                    navigateToCreatePatient = true
+                                }
+                                .padding()
+                                .frame(maxWidth: .infinity)
                             } else {
+                                NavigationLink(destination: CreatePatientView(), isActive: $navigateToCreatePatient) {
+                                    EmptyView()
+                                }
+                                CustomButtonStyle(text: LocalizedString.agregarPaciente, isTapped: $isTapped) {
+                                    navigateToCreatePatient = true
+                                }
+                                .padding()
+                                .frame(maxWidth: .infinity)
                                 Text("No patients found.")
                                     .foregroundColor(.white)
                             }
