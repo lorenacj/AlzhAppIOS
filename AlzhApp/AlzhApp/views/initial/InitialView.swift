@@ -44,7 +44,11 @@ struct InitialView: View {
                                         .fill(AppColors.maroon)
                                 )
                                 .padding()
-                                NavigationLink(destination: CreatePatientView().environmentObject(carerViewModel), isActive: $navigateToCreatePatient) {
+                                NavigationLink(destination: CreatePatientView(onPatientAdded: {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                        carerViewModel.getPatientsByCarer()
+                                    }
+                                }).environmentObject(carerViewModel), isActive: $navigateToCreatePatient) {
                                     EmptyView()
                                 }
                                 CustomButtonStyle(text: LocalizedString.agregarPaciente, isTapped: $isTapped) {
@@ -53,7 +57,11 @@ struct InitialView: View {
                                 .padding()
                                 .frame(maxWidth: .infinity)
                             } else {
-                                NavigationLink(destination: CreatePatientView().environmentObject(carerViewModel), isActive: $navigateToCreatePatient) {
+                                NavigationLink(destination: CreatePatientView(onPatientAdded: {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                        carerViewModel.getPatientsByCarer()
+                                    }
+                                }).environmentObject(carerViewModel), isActive: $navigateToCreatePatient) {
                                     EmptyView()
                                 }
                                 CustomButtonStyle(text: LocalizedString.agregarPaciente, isTapped: $isTapped) {
@@ -65,7 +73,11 @@ struct InitialView: View {
                                     .foregroundColor(.white)
                             }
                         } else {
-                            NavigationLink(destination: CreatePatientView().environmentObject(carerViewModel), isActive: $navigateToCreatePatient) {
+                            NavigationLink(destination: CreatePatientView(onPatientAdded: {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    carerViewModel.getPatientsByCarer()
+                                }
+                            }).environmentObject(carerViewModel), isActive: $navigateToCreatePatient) {
                                 EmptyView()
                             }
                             CustomButtonStyle(text: LocalizedString.agregarPaciente, isTapped: $isTapped) {
@@ -115,6 +127,11 @@ struct InitialView: View {
             }
             .onAppear {
                 carerViewModel.getPatientsByCarer()
+            }
+            .onChange(of: carerViewModel.shouldReloadPatients) { shouldReload in
+                if shouldReload {
+                    carerViewModel.getPatientsByCarer()
+                }
             }
         }
     }

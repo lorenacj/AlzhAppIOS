@@ -46,12 +46,12 @@ struct AddPatientDTO: Codable {
     let name: String
     let lastname: String
     let height: Int
-    let weight: Int
+    let weight: Float
     let disorder: String
     let birthdate: String
     let passportId: String
 
-    init(name: String, lastname: String, birthdate: Date, height: Int, weight: Int, disorder: String, passportId: String) {
+    init(name: String, lastname: String, birthdate: Date, height: Int, weight: Float, disorder: String, passportId: String) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         self.birthdate = formatter.string(from: birthdate)

@@ -12,10 +12,11 @@ final class CarerViewModel: ObservableObject {
     @Published var isLoginSuccessful = false
     @Published var isRegisterSuccessful = false
     @Published var isAddCarerSuccessful = false
-    @Published var isAddPatientSuccessful = false // Nuevo estado
+    @Published var isAddPatientSuccessful = false
     @Published var patients: [PatientsCareBO] = []
     @Published var token: String?
     @Published var isLoading = false
+    @Published var shouldReloadPatients = false
 
     private lazy var carerRepository: CarerRepository = CarerWS()
 
@@ -94,6 +95,7 @@ final class CarerViewModel: ObservableObject {
                 try await carerRepository.addPatient(patient: patient, token: token)
                 isAddPatientSuccessful = true
                 errorText = nil
+                shouldReloadPatients = true // Indicar que se deben recargar los pacientes
                 print("DEBUG: Patient added successfully")
             } catch {
                 handleError(error)
@@ -118,6 +120,7 @@ final class CarerViewModel: ObservableObject {
                 let patients = try await carerRepository.getPatientsByCarer(token: token)
                 self.patients = patients
                 errorText = nil
+                shouldReloadPatients = false // Resetear el indicador después de recargar
                 print("DEBUG: Patients retrieved successfully")
             } catch {
                 handleError(error)

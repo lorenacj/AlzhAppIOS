@@ -21,6 +21,8 @@ struct CreatePatientView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var carerViewModel: CarerViewModel
 
+    var onPatientAdded: () -> Void = {}
+
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
@@ -131,6 +133,9 @@ struct CreatePatientView: View {
                         } else if birthdate > Date() {
                             alertMessage = LocalizedString.fechaNoValida
                             showAlert = true
+                        } else if disorderText == "Option 1" {
+                            alertMessage = "Elige una opción válida"
+                            showAlert = true
                         } else {
                             // Lógica de registro
                             let patient = AddPatientDTO(
@@ -138,7 +143,7 @@ struct CreatePatientView: View {
                                 lastname: lastnameText,
                                 birthdate: birthdate,
                                 height: Int(heightValue) ?? 0,
-                                weight: Int(weightValue) ?? 0,
+                                weight: Float(weightValue) ?? 0,
                                 disorder: disorderText,
                                 passportId: dniText
                             )
@@ -150,7 +155,10 @@ struct CreatePatientView: View {
                     .alert(isPresented: $showAlert) {
                         Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)) {
                             if alertMessage == LocalizedString.registrocorrecto {
-                                presentationMode.wrappedValue.dismiss()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    presentationMode.wrappedValue.dismiss()
+                                    onPatientAdded()
+                                }
                             }
                         })
                     }
