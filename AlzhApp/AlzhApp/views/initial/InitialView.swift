@@ -4,6 +4,7 @@
 // Created by lorena.cruz on 2/6/24.
 //
 
+
 import SwiftUI
 
 struct InitialView: View {
@@ -17,7 +18,11 @@ struct InitialView: View {
             GeometryReader { proxy in
                 ScrollView {
                     VStack(spacing: 0) {
-                        if carerViewModel.patients.isEmpty {
+                        if carerViewModel.isLoading {
+                            ProgressView("Loading patients...")
+                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                .foregroundColor(.white)
+                        } else if carerViewModel.patients.isEmpty {
                             if let errorText = carerViewModel.errorText {
                                 Image(systemName: AppIcons.connection.rawValue)
                                     .resizable()
@@ -25,6 +30,9 @@ struct InitialView: View {
                                     .foregroundStyle(.white)
                                 Text(errorText)
                                     .foregroundColor(.white)
+                                    .padding(.horizontal,5)
+                                    .padding()
+                                    .frame(alignment: .center)
                                 Button(action: {
                                     carerViewModel.getPatientsByCarer()
                                 }, label: {
@@ -37,7 +45,8 @@ struct InitialView: View {
                                         .fill(AppColors.maroon)
                                 )
                             } else {
-                                ProgressView("Loading patients...")
+                                Text("No patients found.")
+                                    .foregroundColor(.white)
                             }
                         } else {
                             NavigationLink(destination: CreatePatientView(), isActive: $navigateToCreatePatient) {

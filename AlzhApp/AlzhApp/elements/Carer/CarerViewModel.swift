@@ -14,12 +14,14 @@ final class CarerViewModel: ObservableObject {
     @Published var isAddCarerSuccessful = false
     @Published var patients: [PatientsCareBO] = []
     @Published var token: String?
+    @Published var isLoading = false 
 
     private lazy var carerRepository: CarerRepository = CarerWS()
 
     @MainActor
     func loginCarer(username: String, password: String) {
         Task {
+            isLoading = true
             do {
                 let token = try await carerRepository.loginCarer(username: username, password: password)
                 self.token = token
@@ -29,12 +31,14 @@ final class CarerViewModel: ObservableObject {
                 handleError(error)
                 isLoginSuccessful = false
             }
+            isLoading = false
         }
     }
 
     @MainActor
     func registerCarer(carer: CarerBO) {
         Task {
+            isLoading = true
             do {
                 try await carerRepository.registerCarer(carer: carer)
                 isRegisterSuccessful = true
@@ -43,14 +47,17 @@ final class CarerViewModel: ObservableObject {
                 handleError(error)
                 isRegisterSuccessful = false
             }
+            isLoading = false
         }
     }
 
     @MainActor
     func addCarerToPatientByCode(code: String) {
         Task {
+            isLoading = true
             guard let token = token else {
                 errorText = "No token available"
+                isLoading = false
                 return
             }
 
@@ -62,14 +69,17 @@ final class CarerViewModel: ObservableObject {
                 handleError(error)
                 isAddCarerSuccessful = false
             }
+            isLoading = false
         }
     }
 
     @MainActor
     func getPatientsByCarer() {
         Task {
+            isLoading = true
             guard let token = token else {
                 errorText = "No token available"
+                isLoading = false
                 return
             }
 
@@ -80,6 +90,7 @@ final class CarerViewModel: ObservableObject {
             } catch {
                 handleError(error)
             }
+            isLoading = false
         }
     }
 
