@@ -14,8 +14,8 @@
             filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
             landmarkName = "addEvent(event:patientID:token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "addEvent(event:patientID:token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "297"
-            endingLineNumber = "297"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
             landmarkName = "addEvent(event:patientID:token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "addEvent(event:patientID:token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "addEvent(event:patientID:token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -88,22 +88,6 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9386D029-77FB-435C-8B71-E7759590E61E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316"
-            landmarkName = "addEvent(event:patientID:token:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E43F5B46-3333-4A22-9ECC-E2AD5B93A9F2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -119,7 +103,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9CC87493-ED19-4588-8D79-6C6ADF1290B7"
+            uuid = "E43F5B46-3333-4A22-9ECC-E2AD5B93A9F2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -132,7 +116,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "9CC87493-ED19-4588-8D79-6C6ADF1290B7 - baa252d04d4d43e0"
+                  uuid = "E43F5B46-3333-4A22-9ECC-E2AD5B93A9F2 - baa252d04d4d43e0"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -146,7 +130,7 @@
                   endingLineNumber = "320">
                </Location>
                <Location
-                  uuid = "9CC87493-ED19-4588-8D79-6C6ADF1290B7 - 1f8ba647fc39e1e3"
+                  uuid = "E43F5B46-3333-4A22-9ECC-E2AD5B93A9F2 - 1f8ba647fc39e1e3"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -165,23 +149,53 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7CE6EBD8-F501-4A29-A566-11FD417E850E"
+            uuid = "9CC87493-ED19-4588-8D79-6C6ADF1290B7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
             landmarkName = "addEvent(event:patientID:token:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9CC87493-ED19-4588-8D79-6C6ADF1290B7 - baa252d04d4d442e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for AlzhApp.CarerWS.addEvent(event: AlzhApp.AddEventDTO, patientID: Swift.Int, token: Swift.String) async throws -&gt; ()"
+                  moduleName = "AlzhApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/elements/Carer/CarerRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "322"
+                  endingLineNumber = "322">
+               </Location>
+               <Location
+                  uuid = "9CC87493-ED19-4588-8D79-6C6ADF1290B7 - 1f8ba647fc39e62d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for AlzhApp.CarerWS.addEvent(event: AlzhApp.AddEventDTO, patientID: Swift.Int, token: Swift.String) async throws -&gt; ()"
+                  moduleName = "AlzhApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/elements/Carer/CarerRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "322"
+                  endingLineNumber = "322">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "09220077-F542-4864-BC31-4FBEC48B0BC1"
+            uuid = "7CE6EBD8-F501-4A29-A566-11FD417E850E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -197,6 +211,22 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "09220077-F542-4864-BC31-4FBEC48B0BC1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
+            landmarkName = "addEvent(event:patientID:token:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             uuid = "FA008269-B81A-4433-8844-5EFD983B5CEC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -204,8 +234,8 @@
             filePath = "AlzhApp/elements/Carer/CarerViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "addEvent(event:patientID:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -220,10 +250,68 @@
             filePath = "AlzhApp/elements/Carer/CarerViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "addEvent(event:patientID:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5B0EA123-94B4-411A-B758-C61CD1E65322 - 9e3d75ff1232d0d9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in AlzhApp.CarerViewModel.addEvent(event: AlzhApp.AddEventDTO, patientID: Swift.Int) -&gt; ()"
+                  moduleName = "AlzhApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/elements/Carer/CarerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170">
+               </Location>
+               <Location
+                  uuid = "5B0EA123-94B4-411A-B758-C61CD1E65322 - 59a57ae135e86c5b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in AlzhApp.CarerViewModel.addEvent(event: AlzhApp.AddEventDTO, patientID: Swift.Int) -&gt; ()"
+                  moduleName = "AlzhApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/elements/Carer/CarerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170">
+               </Location>
+               <Location
+                  uuid = "5B0EA123-94B4-411A-B758-C61CD1E65322 - 1be3597797e62e19"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in AlzhApp.CarerViewModel.addEvent(event: AlzhApp.AddEventDTO, patientID: Swift.Int) -&gt; ()"
+                  moduleName = "AlzhApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/elements/Carer/CarerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170">
+               </Location>
+               <Location
+                  uuid = "5B0EA123-94B4-411A-B758-C61CD1E65322 - f1f9737a6029f718"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in AlzhApp.CarerViewModel.addEvent(event: AlzhApp.AddEventDTO, patientID: Swift.Int) -&gt; ()"
+                  moduleName = "AlzhApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/elements/Carer/CarerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -236,10 +324,40 @@
             filePath = "AlzhApp/elements/Carer/CarerViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "addEvent(event:patientID:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "690E4D4B-CFD0-4850-932E-2A12502A0074 - f1f9737a6029f79c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in AlzhApp.CarerViewModel.addEvent(event: AlzhApp.AddEventDTO, patientID: Swift.Int) -&gt; ()"
+                  moduleName = "AlzhApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/elements/Carer/CarerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "174"
+                  endingLineNumber = "174">
+               </Location>
+               <Location
+                  uuid = "690E4D4B-CFD0-4850-932E-2A12502A0074 - 9e3d75ff1232d05d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in AlzhApp.CarerViewModel.addEvent(event: AlzhApp.AddEventDTO, patientID: Swift.Int) -&gt; ()"
+                  moduleName = "AlzhApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/elements/Carer/CarerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "174"
+                  endingLineNumber = "174">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -252,8 +370,8 @@
             filePath = "AlzhApp/elements/Carer/CarerViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "addEvent(event:patientID:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -368,6 +486,132 @@
             endingLineNumber = "136"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "51002FBC-DF81-478F-81E8-1B65A2C7C2ED"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlzhApp/views/initial/PatientDetailView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FC8DD717-2CD6-48B0-BAF7-146235CD7DE4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlzhApp/views/initial/subViews/IndividualEvents/IndividualEventsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CF4924FE-DB0D-4784-AE78-C4A39D087230"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlzhApp/views/initial/subViews/IndividualEvents/IndividualEventsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9FD1B292-3CA2-457B-89CC-516B457E0219"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlzhApp/views/initial/subViews/IndividualEvents/IndividualEventsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "631EDA55-6378-4BA1-9DD1-0C1AF6F50412"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlzhApp/views/initial/subViews/IndividualEvents/IndividualEventsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F44A908A-9157-4234-8005-58686554A076"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlzhApp/views/initial/subViews/IndividualEvents/IndividualEventsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "F44A908A-9157-4234-8005-58686554A076 - 2991535b1a6aabb1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;AlzhApp.Event&gt;, Swift.Optional&lt;Swift.Int&gt;, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Text, &lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(_: &#x3c4;_1_0, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0)&gt;&gt;, SwiftUI._ConditionalContent&lt;SwiftUI.Text, SwiftUI.VStack&lt;SwiftUI.ForEach&lt;Swift.Array&lt;AlzhApp.Event&gt;, Swift.Optional&lt;Swift.Int&gt;, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt;&gt;&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.frame(minWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, minHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in closure #1 (SwiftUI.GeometryProxy) -&gt; &lt;&lt;opaque return type of SwiftUI.View.onAppear(perform: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; some&gt;&gt;.0 in AlzhApp.IndividualEventsView.body.getter : some"
+                  moduleName = "AlzhApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/views/initial/subViews/IndividualEvents/IndividualEventsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52">
+               </Location>
+               <Location
+                  uuid = "F44A908A-9157-4234-8005-58686554A076 - 21aa7bd1d3988daa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (AlzhApp.Event) -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in closure #3 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;AlzhApp.Event&gt;, Swift.Optional&lt;Swift.Int&gt;, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Text, &lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(_: &#x3c4;_1_0, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0)&gt;&gt;, SwiftUI._ConditionalContent&lt;SwiftUI.Text, SwiftUI.VStack&lt;SwiftUI.ForEach&lt;Swift.Array&lt;AlzhApp.Event&gt;, Swift.Optional&lt;Swift.Int&gt;, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt;&gt;&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.frame(minWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, minHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in closure #1 (SwiftUI.GeometryProxy) -&gt; &lt;&lt;opaque return type of SwiftUI.View.onAppear(perform: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; some&gt;&gt;.0 in AlzhApp.IndividualEventsView.body.getter : some"
+                  moduleName = "AlzhApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/views/initial/subViews/IndividualEvents/IndividualEventsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

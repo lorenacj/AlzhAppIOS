@@ -12,9 +12,10 @@ final class CarerViewModel: ObservableObject {
     @Published var isLoginSuccessful = false
     @Published var isRegisterSuccessful = false
     @Published var isAddCarerSuccessful = false
-    @Published var isAddEventSuccessful = false // Nuevo estado para agregar eventos
+    @Published var isAddEventSuccessful = false
     @Published var isAddPatientSuccessful = false
     @Published var patients: [PatientsCareBO] = []
+    @Published var events: [Event] = []
     @Published var token: String?
     @Published var isLoading = false
     @Published var shouldReloadPatients = false
@@ -183,6 +184,28 @@ final class CarerViewModel: ObservableObject {
     func addEventWithStaticData(patientID: Int, token: String) async throws {
         try await carerRepository.addEventWithStaticData(patientID: patientID, token: token)
     }
+    
+    @MainActor
+    func getEventsByPatient(patientID: Int) {
+        Task {
+            isLoading = true
+            guard let token = token else {
+                errorText = "No token available"
+                isLoading = false
+                return
+            }
+
+            do {
+                let events = try await carerRepository.getEventsByPatient(patientID: patientID, token: token)
+                self.events = events
+                errorText = nil
+            } catch {
+                handleError(error)
+            }
+            isLoading = false
+        }
+    }
+
     
     private func handleError(_ error: Error) {
         if let repoError = error as? RepositoryError {

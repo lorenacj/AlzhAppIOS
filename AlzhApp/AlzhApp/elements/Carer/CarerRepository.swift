@@ -24,6 +24,7 @@ protocol CarerRepository {
     func updatePatient(patient: UpdatePatientDTO, token: String) async throws
     func addEvent(event: AddEventDTO, patientID: Int, token: String) async throws
     func addEventWithStaticData(patientID: Int, token: String) async throws
+    func getEventsByPatient(patientID: Int, token: String) async throws -> [Event]
 }
 
 class CarerWS: CarerRepository {
@@ -378,7 +379,35 @@ class CarerWS: CarerRepository {
         }
     }
     
-    
+    func getEventsByPatient(patientID: Int, token: String) async throws -> [Event] {
+        guard let url = URL(string: "\(baseURL)/eventapi/idPatient/\(patientID)") else {
+            throw RepositoryError.invalidURL
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw RepositoryError.invalidResponse
+            }
+            
+            guard 200 ..< 300 ~= httpResponse.statusCode else {
+                if let errorMessage = String(data: data, encoding: .utf8) {
+                    throw RepositoryError.custom(errorMessage)
+                } else {
+                    throw RepositoryError.statusCode(httpResponse.statusCode)
+                }
+            }
+            
+            let events = try JSONDecoder().decode([Event].self, from: data)
+            return events
+        } catch {
+            throw RepositoryError.custom("Failed to fetch events: \(error.localizedDescription)")
+        }
+    }
     
     private func createFormData(parameters: [String: String], boundary: String) -> Data {
         var body = Data()

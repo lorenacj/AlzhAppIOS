@@ -30,6 +30,18 @@ struct PatientDetailView: View {
                                         .fill(Color.white).opacity(0.6)
                                 )
                         }
+                        
+                        NavigationLink(
+                            destination: IndividualEventsView(patientID: patient.id)
+                                .environmentObject(carerViewModel)
+                        ) {
+                            Text("Visualizar eventos")
+                                .padding()
+                                .background(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color.white).opacity(0.6)
+                                )
+                        }
                     }
                     .padding()
                     VStack(alignment: .leading) {
