@@ -22,6 +22,8 @@ protocol CarerRepository {
     func getPatientsByCarer(token: String) async throws -> [PatientsCareBO]
     func addPatient(patient: AddPatientDTO, token: String) async throws
     func updatePatient(patient: UpdatePatientDTO, token: String) async throws
+    func addEvent(event: AddEventDTO, patientID: Int, token: String) async throws
+    func addEventWithStaticData(patientID: Int, token: String) async throws
 }
 
 class CarerWS: CarerRepository {
@@ -236,53 +238,156 @@ class CarerWS: CarerRepository {
     }
     
     func updatePatient(patient: UpdatePatientDTO, token: String) async throws {
-            print("DEBUG: Starting updatePatient in CarerWS")
-            guard let url = URL(string: "\(baseURL)/patientapi/update") else {
-                print("DEBUG: Invalid URL")
-                throw RepositoryError.invalidURL
-            }
-            
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-            
-            do {
-                let jsonData = try JSONEncoder().encode(patient)
-                request.httpBody = jsonData
-                print("DEBUG: JSON Body for updatePatient: \(String(data: jsonData, encoding: .utf8) ?? "")")
-            } catch {
-                print("DEBUG: Error encoding patient data: \(error)")
-                throw error
-            }
-            
-            do {
-                let (data, response) = try await URLSession.shared.data(for: request)
-                guard let httpResponse = response as? HTTPURLResponse else {
-                    print("DEBUG: Invalid response")
-                    throw RepositoryError.invalidResponse
-                }
-                
-                guard 200 ..< 300 ~= httpResponse.statusCode else {
-                    let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
-                    print("DEBUG: Error response status code: \(httpResponse.statusCode), message: \(errorMessage)")
-                    throw RepositoryError.custom(errorMessage)
-                }
-                print("DEBUG: Successfully updated patient in CarerWS")
-            } catch {
-                print("DEBUG: Error in updatePatient request: \(error)")
-                throw error
-            }
+        print("DEBUG: Starting updatePatient in CarerWS")
+        guard let url = URL(string: "\(baseURL)/patientapi/update") else {
+            print("DEBUG: Invalid URL")
+            throw RepositoryError.invalidURL
         }
-
-private func createFormData(parameters: [String: String], boundary: String) -> Data {
-    var body = Data()
-    for (key, value) in parameters {
-        body.append("--\(boundary)\r\n".data(using: .utf8)!)
-        body.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n".data(using: .utf8)!)
-        body.append("\(value)\r\n".data(using: .utf8)!)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let jsonData = try JSONEncoder().encode(patient)
+            request.httpBody = jsonData
+            print("DEBUG: JSON Body for updatePatient: \(String(data: jsonData, encoding: .utf8) ?? "")")
+        } catch {
+            print("DEBUG: Error encoding patient data: \(error)")
+            throw error
+        }
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print("DEBUG: Invalid response")
+                throw RepositoryError.invalidResponse
+            }
+            
+            guard 200 ..< 300 ~= httpResponse.statusCode else {
+                let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
+                print("DEBUG: Error response status code: \(httpResponse.statusCode), message: \(errorMessage)")
+                throw RepositoryError.custom(errorMessage)
+            }
+            print("DEBUG: Successfully updated patient in CarerWS")
+        } catch {
+            print("DEBUG: Error in updatePatient request: \(error)")
+            throw error
+        }
     }
-    body.append("--\(boundary)--\r\n".data(using: .utf8)!)
-    return body
-}
+    
+    func addEvent(event: AddEventDTO, patientID: Int, token: String) async throws {
+        print("entra a addeventrepositorio")
+        guard let url = URL(string: "https://alzhappapilorenacruz.azurewebsites.net/eventapi/add/\(patientID)") else {
+            print("DEBUG: Invalid URL for adding event")
+            throw RepositoryError.invalidURL
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let jsonData = try JSONEncoder().encode(event)
+            request.httpBody = jsonData
+            print("DEBUG: JSON Body for addEvent: \(String(data: jsonData, encoding: .utf8) ?? "")")
+        } catch {
+            print("DEBUG: Error encoding event data: \(error.localizedDescription)")
+            throw error
+        }
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print("DEBUG: Invalid response for adding event")
+                throw RepositoryError.invalidResponse
+            }
+            
+            print("DEBUG: Response Status Code for addEvent: \(httpResponse.statusCode)")
+            if let responseData = String(data: data, encoding: .utf8) {
+                print("DEBUG: Response Data for addEvent: \(responseData)")
+            }
+            
+            guard 200..<300 ~= httpResponse.statusCode else {
+                let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
+                print("DEBUG: Adding event failed with status code: \(httpResponse.statusCode), message: \(errorMessage)")
+                throw RepositoryError.custom(errorMessage)
+            }
+            print("DEBUG: Event added successfully")
+        } catch {
+            print("DEBUG: Adding event request failed: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    
+    func addEventWithStaticData(patientID: Int, token: String) async throws {
+        guard let url = URL(string: "\(baseURL)/eventapi/add/\(patientID)") else {
+            print("DEBUG: Invalid URL for adding event")
+            throw RepositoryError.invalidURL
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let staticEvent = AddEventDTO(
+            name: "EstaticooOOoo",
+            type: "Conference",
+            description: "This is a valid description of the event that has sufficient length.",
+            status: "Active",
+            initialDate: "2024-05-21",
+            finalDate: "2024-05-22",
+            initialHour: "08:00:00",
+            finalHour: "17:00:00"
+        )
+        
+        do {
+            let jsonData = try JSONEncoder().encode(staticEvent)
+            request.httpBody = jsonData
+            print("DEBUG: JSON Body for addEventWithStaticData: \(String(data: jsonData, encoding: .utf8) ?? "")")
+        } catch {
+            print("DEBUG: Error encoding static event data: \(error)")
+            throw error
+        }
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print("DEBUG: Invalid response for adding static event")
+                throw RepositoryError.invalidResponse
+            }
+            
+            print("DEBUG: Response Status Code for addEventWithStaticData: \(httpResponse.statusCode)")
+            if let responseData = String(data: data, encoding: .utf8) {
+                print("DEBUG: Response Data for addEventWithStaticData: \(responseData)")
+            }
+            
+            guard 200 ..< 300 ~= httpResponse.statusCode else {
+                let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
+                print("DEBUG: Adding static event failed with status code: \(httpResponse.statusCode), message: \(errorMessage)")
+                throw RepositoryError.custom(errorMessage)
+            }
+            print("DEBUG: Static event added successfully")
+        } catch {
+            print("DEBUG: Adding static event request failed: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    
+    
+    private func createFormData(parameters: [String: String], boundary: String) -> Data {
+        var body = Data()
+        for (key, value) in parameters {
+            body.append("--\(boundary)\r\n".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n".data(using: .utf8)!)
+            body.append("\(value)\r\n".data(using: .utf8)!)
+        }
+        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+        return body
+    }
 }

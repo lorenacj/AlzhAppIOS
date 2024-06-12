@@ -12,14 +12,15 @@ final class CarerViewModel: ObservableObject {
     @Published var isLoginSuccessful = false
     @Published var isRegisterSuccessful = false
     @Published var isAddCarerSuccessful = false
+    @Published var isAddEventSuccessful = false // Nuevo estado para agregar eventos
     @Published var isAddPatientSuccessful = false
     @Published var patients: [PatientsCareBO] = []
     @Published var token: String?
     @Published var isLoading = false
     @Published var shouldReloadPatients = false
-
+    
     private lazy var carerRepository: CarerRepository = CarerWS()
-
+    
     @MainActor
     func loginCarer(username: String, password: String) {
         Task {
@@ -37,7 +38,7 @@ final class CarerViewModel: ObservableObject {
             isLoading = false
         }
     }
-
+    
     @MainActor
     func registerCarer(carer: CarerBO) {
         Task {
@@ -54,7 +55,7 @@ final class CarerViewModel: ObservableObject {
             isLoading = false
         }
     }
-
+    
     @MainActor
     func addCarerToPatientByCode(code: String) {
         Task {
@@ -65,7 +66,7 @@ final class CarerViewModel: ObservableObject {
                 print("DEBUG: No token available for adding carer to patient")
                 return
             }
-
+            
             do {
                 try await carerRepository.addCarerToPatientByCode(code: code, token: token)
                 isAddCarerSuccessful = true
@@ -78,7 +79,7 @@ final class CarerViewModel: ObservableObject {
             isLoading = false
         }
     }
-
+    
     @MainActor
     func addPatient(patient: AddPatientDTO) {
         Task {
@@ -89,7 +90,7 @@ final class CarerViewModel: ObservableObject {
                 print("DEBUG: No token available for adding patient")
                 return
             }
-
+            
             do {
                 print("DEBUG: Adding patient: \(patient)")
                 try await carerRepository.addPatient(patient: patient, token: token)
@@ -104,7 +105,7 @@ final class CarerViewModel: ObservableObject {
             isLoading = false
         }
     }
-
+    
     @MainActor
     func getPatientsByCarer() {
         Task {
@@ -115,7 +116,7 @@ final class CarerViewModel: ObservableObject {
                 print("DEBUG: No token available for getting patients")
                 return
             }
-
+            
             do {
                 let patients = try await carerRepository.getPatientsByCarer(token: token)
                 self.patients = patients
@@ -130,28 +131,59 @@ final class CarerViewModel: ObservableObject {
     }
     
     @MainActor
-        func updatePatient(patient: UpdatePatientDTO) async throws {
-            print("DEBUG: Starting updatePatient in ViewModel")
+    func updatePatient(patient: UpdatePatientDTO) async throws {
+        print("DEBUG: Starting updatePatient in ViewModel")
+        isLoading = true
+        guard let token = token else {
+            errorText = "No token available"
+            isLoading = false
+            print("DEBUG: No token available")
+            throw RepositoryError.custom("No token available")
+        }
+        
+        do {
+            try await carerRepository.updatePatient(patient: patient, token: token)
+            shouldReloadPatients = true
+            isLoading = false
+            print("DEBUG: Successfully updated patient in ViewModel")
+        } catch {
+            isLoading = false
+            print("DEBUG: Error updating patient in ViewModel: \(error)")
+            throw error
+        }
+    }
+    
+    @MainActor
+    func addEvent(event: AddEventDTO, patientID: Int) {
+        Task {
             isLoading = true
             guard let token = token else {
                 errorText = "No token available"
                 isLoading = false
-                print("DEBUG: No token available")
-                throw RepositoryError.custom("No token available")
+                print("DEBUG: No token available for adding event")
+                return
             }
 
             do {
-                try await carerRepository.updatePatient(patient: patient, token: token)
-                shouldReloadPatients = true
-                isLoading = false
-                print("DEBUG: Successfully updated patient in ViewModel")
+                print("DEBUG: Adding event: \(event) for patientID: \(patientID)")
+                try await carerRepository.addEvent(event: event, patientID: patientID, token: token)
+                isAddEventSuccessful = true
+                errorText = nil
+                print("DEBUG: Event added successfully")
             } catch {
-                isLoading = false
-                print("DEBUG: Error updating patient in ViewModel: \(error)")
-                throw error
+                handleError(error)
+                isAddEventSuccessful = false
             }
+            isLoading = false
         }
+    }
 
+    
+    @MainActor
+    func addEventWithStaticData(patientID: Int, token: String) async throws {
+        try await carerRepository.addEventWithStaticData(patientID: patientID, token: token)
+    }
+    
     private func handleError(_ error: Error) {
         if let repoError = error as? RepositoryError {
             switch repoError {

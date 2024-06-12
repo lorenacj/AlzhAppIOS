@@ -19,6 +19,7 @@ struct CreateEventsView: View {
     @State private var finalHour: Date = Date()
     @State private var isTapped = false
     @State private var showAlert = false
+    @State private var showSuccessAlert = false
     @State private var alertMessage = ""
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var carerViewModel: CarerViewModel
@@ -105,38 +106,59 @@ struct CreateEventsView: View {
                     
                     CustomButtonStyle(text: "Registrar Evento", isTapped: $isTapped) {
                         if validateFields() {
-                            // Lógica de registro
+                            // Formateo de las fechas y horas
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd"
+                            let timeFormatter = DateFormatter()
+                            timeFormatter.dateFormat = "HH:mm:ss"
+                            
+                            let formattedInitialDate = dateFormatter.string(from: initialDate)
+                            let formattedFinalDate = dateFormatter.string(from: finalDate)
+                            let formattedInitialHour = timeFormatter.string(from: initialHour)
+                            let formattedFinalHour = timeFormatter.string(from: finalHour)
+                            
+                            // Creación del evento
                             let event = AddEventDTO(
                                 name: name,
                                 type: type,
                                 description: description,
                                 status: status,
-                                initialDate: initialDate,
-                                finalDate: finalDate,
-                                initialHour: initialHour,
-                                finalHour: finalHour
+                                initialDate: formattedInitialDate,
+                                finalDate: formattedFinalDate,
+                                initialHour: formattedInitialHour,
+                                finalHour: formattedFinalHour
                             )
                             print("DEBUG: Adding event: \(event)")
                             Task {
                                 do {
-//                                    try await carerViewModel.addEvent(event: event)
+                                    guard let patientID = patientID else {
+                                        alertMessage = "ID del paciente no disponible."
+                                        showAlert = true
+                                        return
+                                    }
+                                    print("DEBUG: Calling addEvent on carerViewModel with patientID: \(patientID)")
+                                    try await carerViewModel.addEvent(event: event, patientID: patientID)
                                     alertMessage = "Evento registrado correctamente."
-                                    showAlert = true
+                                    print("DEBUG: Event added successfully")
+                                    showSuccessAlert = true
                                 } catch {
                                     alertMessage = "Error al registrar el evento: \(error.localizedDescription)"
+                                    print("DEBUG: Error adding event: \(error.localizedDescription)")
                                     showAlert = true
                                 }
                             }
                         } else {
+                            print("DEBUG: Validation failed with message: \(alertMessage)")
                             showAlert = true
                         }
                     }
                     .padding(.bottom, 10)
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Registrar Evento"), message: Text(alertMessage), dismissButton: .default(Text("OK")) {
-                            if alertMessage == "Evento registrado correctamente." {
-                                presentationMode.wrappedValue.dismiss()
-                            }
+                        Alert(title: Text("Registrar Evento"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                    }
+                    .alert(isPresented: $showSuccessAlert) {
+                        Alert(title: Text("Registrar Evento"), message: Text("Evento registrado correctamente."), dismissButton: .default(Text("OK")) {
+                            presentationMode.wrappedValue.dismiss()
                         })
                     }
                 }
@@ -154,10 +176,7 @@ struct CreateEventsView: View {
     private func pickerField(title: String, placeholder: String, selection: Binding<String>, options: [String]) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             Text(title)
-                .frame(alignment: .leading)
-                .font(.system(size: 12))
-                .foregroundColor(.black.opacity(0.7))
-                .padding(.leading, 8)
+                .font(.headline)
             Picker(selection: selection, label: Text(placeholder)) {
                 ForEach(options, id: \.self) { option in
                     Text(option).tag(option)
@@ -210,10 +229,7 @@ struct CustomTimeField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text(title)
-                .frame(alignment: .leading)
-                .font(.system(size: 12))
-                .foregroundColor(.black.opacity(0.7))
-                .padding(.leading, 8)
+                .font(.headline)
             DatePicker(
                 placeholder,
                 selection: $time,

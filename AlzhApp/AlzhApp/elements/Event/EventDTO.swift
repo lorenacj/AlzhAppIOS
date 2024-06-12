@@ -17,6 +17,12 @@ struct Event: Codable {
 
 
 struct AddEventDTO: Codable {
-    let name, type, description, status: String
-    let initialDate, finalDate, initialHour, finalHour: Date
+    let name: String
+    let type: String
+    let description: String
+    let status: String
+    let initialDate: String
+    let finalDate: String
+    let initialHour: String
+    let finalHour: String
 }
