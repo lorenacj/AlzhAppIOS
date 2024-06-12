@@ -328,11 +328,11 @@
 		7C273FCE2C07B044001557A0 /* initial */ = {
 			isa = PBXGroup;
 			children = (
+				7C9380392C08FD2A00A04805 /* InitialView.swift */,
+				7C945FFD2C14FD0E0091376A /* PatientDetailView.swift */,
 				7C945FF72C133D700091376A /* SharedEvents */,
 				7C2B35EE2C0CF34F0088338C /* subViews */,
 				7C2B35E92C0CEB450088338C /* tabBar */,
-				7C9380392C08FD2A00A04805 /* InitialView.swift */,
-				7C945FFD2C14FD0E0091376A /* PatientDetailView.swift */,
 			);
 			path = initial;
 			sourceTree = "<group>";

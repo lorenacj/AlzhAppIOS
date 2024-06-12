@@ -12,5 +12,5 @@ struct Event: Codable {
     let id: Int?
     let name, type, description, status: String?
     let deleted: Bool?
-    let initialDate, finalDate, initialHour, finalHour: String?
+    let initialDate, finalDate, initialHour, finalHour: Date?
 }

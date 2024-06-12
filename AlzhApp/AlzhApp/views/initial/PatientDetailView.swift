@@ -11,17 +11,26 @@ struct PatientDetailView: View {
     let patient: PatientsCareBO
     @State private var showAlert = false
     @State private var isTapped = false
-    
+    @State private var isTapped2 = false
+    @EnvironmentObject var carerViewModel: CarerViewModel
+
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
                 VStack {
                     HStack {
-                        NavigationLink(destination: CreateEventsView(patientID: patient.id)) {
-                            CustomButtonStyle(text: "Crear eventos", isTapped: $isTapped, action: {} )
-                        }
-                        NavigationLink(destination: IndividualEventsView(patientID: patient.id)) {
-                            CustomButtonStyle(text: "Visualizar eventos", isTapped: $isTapped, action: {})
+                        
+//                        NavigationLink(destination: CreateEventsView(patientID: nil)
+//                                        .environmentObject(carerViewModel)) {
+//                                            CustomButtonStyle(text: "Crear eventos", isTapped: $isTapped, action: {})
+//                        }
+                        NavigationLink(destination: IndividualEventsView(patientID: patient.id, carerViewModel: _carerViewModel)) {
+                            Text("Visualizar eventos")
+                                .padding()
+                                .background(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .fill(.white).opacity(0.6)
+                                )
                         }
                     }
                     .padding()
@@ -56,7 +65,7 @@ struct PatientDetailView: View {
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 5)
-                            .fill(.white)
+                            .fill(Color.white)
                             .opacity(0.8)
                     )
                     .padding(.bottom, 5)
