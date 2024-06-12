@@ -14,3 +14,9 @@ struct Event: Codable {
     let deleted: Bool?
     let initialDate, finalDate, initialHour, finalHour: Date?
 }
+
+
+struct AddEventDTO: Codable {
+    let name, type, description, status: String
+    let initialDate, finalDate, initialHour, finalHour: Date
+}
