@@ -130,36 +130,6 @@
             endingLineNumber = "320"
             landmarkName = "addEvent(event:patientID:token:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "9CC87493-ED19-4588-8D79-6C6ADF1290B7 - baa252d04d4d43e0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for AlzhApp.CarerWS.addEvent(event: AlzhApp.AddEventDTO, patientID: Swift.Int, token: Swift.String) async throws -&gt; ()"
-                  moduleName = "AlzhApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/elements/Carer/CarerRepository.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "320"
-                  endingLineNumber = "320">
-               </Location>
-               <Location
-                  uuid = "9CC87493-ED19-4588-8D79-6C6ADF1290B7 - 1f8ba647fc39e1e3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for AlzhApp.CarerWS.addEvent(event: AlzhApp.AddEventDTO, patientID: Swift.Int, token: Swift.String) async throws -&gt; ()"
-                  moduleName = "AlzhApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/elements/Carer/CarerRepository.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "320"
-                  endingLineNumber = "320">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
