@@ -128,6 +128,29 @@ final class CarerViewModel: ObservableObject {
             isLoading = false
         }
     }
+    
+    @MainActor
+        func updatePatient(patient: UpdatePatientDTO) async throws {
+            print("DEBUG: Starting updatePatient in ViewModel")
+            isLoading = true
+            guard let token = token else {
+                errorText = "No token available"
+                isLoading = false
+                print("DEBUG: No token available")
+                throw RepositoryError.custom("No token available")
+            }
+
+            do {
+                try await carerRepository.updatePatient(patient: patient, token: token)
+                shouldReloadPatients = true
+                isLoading = false
+                print("DEBUG: Successfully updated patient in ViewModel")
+            } catch {
+                isLoading = false
+                print("DEBUG: Error updating patient in ViewModel: \(error)")
+                throw error
+            }
+        }
 
     private func handleError(_ error: Error) {
         if let repoError = error as? RepositoryError {

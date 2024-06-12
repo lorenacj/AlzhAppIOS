@@ -18,7 +18,6 @@ struct CreatePatientView: View {
     @State private var isTapped = false
     @State private var showAlert = false
     @State private var alertMessage = ""
-    @State private var showSuccessAlert = false
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var carerViewModel: CarerViewModel
 
@@ -118,26 +117,7 @@ struct CreatePatientView: View {
                     Spacer()
                     
                     CustomButtonStyle(text: LocalizedString.register, isTapped: $isTapped) {
-                        // Validación de campos
-                        if dniText.isEmpty || nameText.isEmpty || lastnameText.isEmpty || weightValue.isEmpty || heightValue.isEmpty || disorderText.isEmpty {
-                            alertMessage = LocalizedString.camposVacios
-                            showAlert = true
-                        } else if !isValidDNI(dniText) {
-                            alertMessage = LocalizedString.dniNoValido
-                            showAlert = true
-                        } else if Float(weightValue) == nil {
-                            alertMessage = LocalizedString.pesoNoValido
-                            showAlert = true
-                        } else if Int(heightValue) == nil {
-                            alertMessage = LocalizedString.alturaNoValida
-                            showAlert = true
-                        } else if birthdate > Date() {
-                            alertMessage = LocalizedString.fechaNoValida
-                            showAlert = true
-                        } else if disorderText == "Option 1" {
-                            alertMessage = "Elige una opción válida"
-                            showAlert = true
-                        } else {
+                        if validateFields() {
                             // Lógica de registro
                             let patient = AddPatientDTO(
                                 name: nameText,
@@ -149,17 +129,27 @@ struct CreatePatientView: View {
                                 passportId: dniText
                             )
                             print("DEBUG: Adding patient: \(patient)")
-                            carerViewModel.addPatient(patient: patient)
+                            Task {
+                                do {
+                                    try await carerViewModel.addPatient(patient: patient)
+                                    alertMessage = LocalizedString.registrocorrecto
+                                    showAlert = true
+                                } catch {
+                                    alertMessage = "Error al registrar: \(error.localizedDescription)"
+                                    showAlert = true
+                                }
+                            }
+                        } else {
+                            showAlert = true
                         }
                     }
                     .padding(.bottom, 10)
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)))
-                    }
-                    .alert(isPresented: $showSuccessAlert) {
                         Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)) {
-                            presentationMode.wrappedValue.dismiss()
-                            onPatientAdded()
+                            if alertMessage == LocalizedString.registrocorrecto {
+                                presentationMode.wrappedValue.dismiss()
+                                onPatientAdded()
+                            }
                         })
                     }
                 }
@@ -172,15 +162,51 @@ struct CreatePatientView: View {
         .onTapGesture {
             endEditing()
         }
-        .onChange(of: carerViewModel.isAddPatientSuccessful) { success in
-            if success {
-                alertMessage = LocalizedString.registrocorrecto
-                showSuccessAlert = true
-            } else {
-                alertMessage = carerViewModel.errorText ?? "Error desconocido"
-                showAlert = true
-            }
+    }
+    
+    func validateFields() -> Bool {
+        if dniText.isEmpty {
+            alertMessage = LocalizedString.camposVacios
+            print("DEBUG: dniText is empty")
+            return false
+        } else if nameText.isEmpty {
+            alertMessage = LocalizedString.camposVacios
+            print("DEBUG: nameText is empty")
+            return false
+        } else if lastnameText.isEmpty {
+            alertMessage = LocalizedString.camposVacios
+            print("DEBUG: lastnameText is empty")
+            return false
+        } else if weightValue.isEmpty {
+            alertMessage = LocalizedString.camposVacios
+            print("DEBUG: weightValue is empty")
+            return false
+        } else if heightValue.isEmpty {
+            alertMessage = LocalizedString.camposVacios
+            print("DEBUG: heightValue is empty")
+            return false
+        } else if disorderText.isEmpty {
+            alertMessage = LocalizedString.camposVacios
+            print("DEBUG: disorderText is empty")
+            return false
+        } else if !isValidDNI(dniText) {
+            alertMessage = LocalizedString.dniNoValido
+            print("DEBUG: dniText is not valid")
+            return false
+        } else if Float(weightValue) == nil {
+            alertMessage = LocalizedString.pesoNoValido
+            print("DEBUG: weightValue is not a valid float")
+            return false
+        } else if Int(heightValue) == nil {
+            alertMessage = LocalizedString.alturaNoValida
+            print("DEBUG: heightValue is not a valid int")
+            return false
+        } else if birthdate > Date() {
+            alertMessage = LocalizedString.fechaNoValida
+            print("DEBUG: birthdate is in the future")
+            return false
         }
+        return true
     }
     
     func isValidDNI(_ dni: String) -> Bool {

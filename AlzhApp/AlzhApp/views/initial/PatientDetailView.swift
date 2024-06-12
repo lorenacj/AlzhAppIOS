@@ -24,14 +24,14 @@ struct PatientDetailView: View {
 //                                        .environmentObject(carerViewModel)) {
 //                                            CustomButtonStyle(text: "Crear eventos", isTapped: $isTapped, action: {})
 //                        }
-                        NavigationLink(destination: IndividualEventsView(patientID: patient.id, carerViewModel: _carerViewModel)) {
-                            Text("Visualizar eventos")
-                                .padding()
-                                .background(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .fill(.white).opacity(0.6)
-                                )
-                        }
+//                        NavigationLink(destination: IndividualEventsView(patientID: patient.id, carerViewModel: _carerViewModel)) {
+//                            Text("Visualizar eventos")
+//                                .padding()
+//                                .background(
+//                                    RoundedRectangle(cornerRadius: 5)
+//                                        .fill(.white).opacity(0.6)
+//                                )
+//                        }
                     }
                     .padding()
                     VStack(alignment: .leading) {

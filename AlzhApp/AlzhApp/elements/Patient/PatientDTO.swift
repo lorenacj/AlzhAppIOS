@@ -41,6 +41,17 @@ struct PatientsCare: Codable {
     }
 }
 
+struct UpdatePatientDTO: Codable {
+    let id: Int
+    let name: String
+    let lastname: String
+    let birthdate: String
+    let height: Int
+    let weight: Double
+    let disorder: String
+    let passportId: String
+}
+
 // MARK: - AddPatientDTO
 struct AddPatientDTO: Codable {
     let name: String
