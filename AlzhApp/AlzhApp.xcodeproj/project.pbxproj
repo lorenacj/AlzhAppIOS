@@ -78,20 +78,14 @@
 		7CCA11402C10CFDB0043B67D /* CarerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA113F2C10CFDB0043B67D /* CarerViewModel.swift */; };
 		7CCA11432C10D1AF0043B67D /* SymptomDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11422C10D1AF0043B67D /* SymptomDTO.swift */; };
 		7CCA11452C10D2590043B67D /* SymptomBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11442C10D2590043B67D /* SymptomBO.swift */; };
-		7CCA11472C10D2640043B67D /* SymptomRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11462C10D2640043B67D /* SymptomRepository.swift */; };
-		7CCA11492C10D26F0043B67D /* SymptomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11482C10D26F0043B67D /* SymptomViewModel.swift */; };
 		7CCA114F2C10D2BF0043B67D /* PatientBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA114E2C10D2BF0043B67D /* PatientBO.swift */; };
 		7CCA11512C10D2C70043B67D /* PatientDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11502C10D2C70043B67D /* PatientDTO.swift */; };
-		7CCA11532C10D2D10043B67D /* PatientRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11522C10D2D10043B67D /* PatientRepository.swift */; };
-		7CCA11552C10D2DA0043B67D /* PatientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11542C10D2DA0043B67D /* PatientViewModel.swift */; };
 		7CCA11592C10D31E0043B67D /* FamilyUnitBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11582C10D31E0043B67D /* FamilyUnitBO.swift */; };
 		7CCA115B2C10D32A0043B67D /* FamilyUnitDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA115A2C10D32A0043B67D /* FamilyUnitDTO.swift */; };
 		7CCA115D2C10D3350043B67D /* FamilyUnitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA115C2C10D3350043B67D /* FamilyUnitRepository.swift */; };
 		7CCA115F2C10D3440043B67D /* FamilyUnitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA115E2C10D3440043B67D /* FamilyUnitViewModel.swift */; };
 		7CCA11612C10D3570043B67D /* MedicineBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11602C10D3570043B67D /* MedicineBO.swift */; };
 		7CCA11632C10D3630043B67D /* MedicineDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11622C10D3630043B67D /* MedicineDTO.swift */; };
-		7CCA11652C10D36F0043B67D /* MedicineRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11642C10D36F0043B67D /* MedicineRepository.swift */; };
-		7CCA11672C10D3800043B67D /* MedicineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11662C10D3800043B67D /* MedicineViewModel.swift */; };
 		7CEE3A462C07D50B007604D6 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEE3A452C07D50B007604D6 /* Buttons.swift */; };
 /* End PBXBuildFile section */
 
@@ -170,20 +164,14 @@
 		7CCA113F2C10CFDB0043B67D /* CarerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarerViewModel.swift; sourceTree = "<group>"; };
 		7CCA11422C10D1AF0043B67D /* SymptomDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomDTO.swift; sourceTree = "<group>"; };
 		7CCA11442C10D2590043B67D /* SymptomBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomBO.swift; sourceTree = "<group>"; };
-		7CCA11462C10D2640043B67D /* SymptomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomRepository.swift; sourceTree = "<group>"; };
-		7CCA11482C10D26F0043B67D /* SymptomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomViewModel.swift; sourceTree = "<group>"; };
 		7CCA114E2C10D2BF0043B67D /* PatientBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientBO.swift; sourceTree = "<group>"; };
 		7CCA11502C10D2C70043B67D /* PatientDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDTO.swift; sourceTree = "<group>"; };
-		7CCA11522C10D2D10043B67D /* PatientRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRepository.swift; sourceTree = "<group>"; };
-		7CCA11542C10D2DA0043B67D /* PatientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientViewModel.swift; sourceTree = "<group>"; };
 		7CCA11582C10D31E0043B67D /* FamilyUnitBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyUnitBO.swift; sourceTree = "<group>"; };
 		7CCA115A2C10D32A0043B67D /* FamilyUnitDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyUnitDTO.swift; sourceTree = "<group>"; };
 		7CCA115C2C10D3350043B67D /* FamilyUnitRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyUnitRepository.swift; sourceTree = "<group>"; };
 		7CCA115E2C10D3440043B67D /* FamilyUnitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyUnitViewModel.swift; sourceTree = "<group>"; };
 		7CCA11602C10D3570043B67D /* MedicineBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineBO.swift; sourceTree = "<group>"; };
 		7CCA11622C10D3630043B67D /* MedicineDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineDTO.swift; sourceTree = "<group>"; };
-		7CCA11642C10D36F0043B67D /* MedicineRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineRepository.swift; sourceTree = "<group>"; };
-		7CCA11662C10D3800043B67D /* MedicineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineViewModel.swift; sourceTree = "<group>"; };
 		7CEE3A452C07D50B007604D6 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -498,8 +486,6 @@
 			children = (
 				7CCA11422C10D1AF0043B67D /* SymptomDTO.swift */,
 				7CCA11442C10D2590043B67D /* SymptomBO.swift */,
-				7CCA11462C10D2640043B67D /* SymptomRepository.swift */,
-				7CCA11482C10D26F0043B67D /* SymptomViewModel.swift */,
 			);
 			path = Symptom;
 			sourceTree = "<group>";
@@ -509,8 +495,6 @@
 			children = (
 				7CCA114E2C10D2BF0043B67D /* PatientBO.swift */,
 				7CCA11502C10D2C70043B67D /* PatientDTO.swift */,
-				7CCA11522C10D2D10043B67D /* PatientRepository.swift */,
-				7CCA11542C10D2DA0043B67D /* PatientViewModel.swift */,
 			);
 			path = Patient;
 			sourceTree = "<group>";
@@ -531,8 +515,6 @@
 			children = (
 				7CCA11602C10D3570043B67D /* MedicineBO.swift */,
 				7CCA11622C10D3630043B67D /* MedicineDTO.swift */,
-				7CCA11642C10D36F0043B67D /* MedicineRepository.swift */,
-				7CCA11662C10D3800043B67D /* MedicineViewModel.swift */,
 			);
 			path = Medicines;
 			sourceTree = "<group>";
@@ -654,9 +636,7 @@
 				7CCA11632C10D3630043B67D /* MedicineDTO.swift in Sources */,
 				7C945FFC2C133DEF0091376A /* MonitoringView.swift in Sources */,
 				7C17B4D92C122B7D0026F2D2 /* EventDTO.swift in Sources */,
-				7CCA11472C10D2640043B67D /* SymptomRepository.swift in Sources */,
 				7C17B4DD2C122C0C0026F2D2 /* EventRepository.swift in Sources */,
-				7CCA11652C10D36F0043B67D /* MedicineRepository.swift in Sources */,
 				7C945FEE2C13394E0091376A /* ModifyPatientView.swift in Sources */,
 				7C945FF32C133D0A0091376A /* AddEventsView.swift in Sources */,
 				7C1AA3982C0F6A2000E4AAD5 /* SharedCalendar.swift in Sources */,
@@ -678,7 +658,6 @@
 				7C1AA39F2C0F730700E4AAD5 /* ProductDTO.swift in Sources */,
 				7C273FC52C07AC58001557A0 /* AppColors.swift in Sources */,
 				7C1AA39D2C0F72F000E4AAD5 /* ProductBO.swift in Sources */,
-				7CCA11532C10D2D10043B67D /* PatientRepository.swift in Sources */,
 				7CCA113C2C10CFBD0043B67D /* CarerBO.swift in Sources */,
 				7CCA11432C10D1AF0043B67D /* SymptomDTO.swift in Sources */,
 				7CCA115F2C10D3440043B67D /* FamilyUnitViewModel.swift in Sources */,
@@ -688,10 +667,8 @@
 				7C273FC02C07A93E001557A0 /* AppStrings.swift in Sources */,
 				7C945FF62C133D4A0091376A /* IndividualEventsView.swift in Sources */,
 				7C1AA3A32C0F734D00E4AAD5 /* ProductViewModel.swift in Sources */,
-				7CCA11492C10D26F0043B67D /* SymptomViewModel.swift in Sources */,
 				7C2B35F12C0CF36D0088338C /* CreatePatientView.swift in Sources */,
 				7CCA115B2C10D32A0043B67D /* FamilyUnitDTO.swift in Sources */,
-				7CCA11672C10D3800043B67D /* MedicineViewModel.swift in Sources */,
 				7C8E24F12C03E16000420913 /* AlzhAppApp.swift in Sources */,
 				7C273FD02C07CA05001557A0 /* TextFields.swift in Sources */,
 				7C1AA3A12C0F731C00E4AAD5 /* ProductRepository.swift in Sources */,
@@ -701,7 +678,6 @@
 				7CCA11402C10CFDB0043B67D /* CarerViewModel.swift in Sources */,
 				7C945FFE2C14FD0E0091376A /* PatientDetailView.swift in Sources */,
 				7CCA11612C10D3570043B67D /* MedicineBO.swift in Sources */,
-				7CCA11552C10D2DA0043B67D /* PatientViewModel.swift in Sources */,
 				7C2B35ED2C0CF08D0088338C /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
