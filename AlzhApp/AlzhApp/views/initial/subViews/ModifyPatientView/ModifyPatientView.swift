@@ -28,7 +28,7 @@ struct ModifyPatientView: View {
         _nameText = State(initialValue: patient.name ?? "")
         _lastnameText = State(initialValue: patient.lastname ?? "")
         _weightValue = State(initialValue: "\(patient.weight ?? 0)")
-        _heightValue = State(initialValue: "\(patient.height ?? 0)")
+        _heightValue = State(initialValue: "\(Int(patient.height ?? 0))") // Formatear como entero
         _disorderText = State(initialValue: patient.disorder ?? "")
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -211,4 +211,8 @@ struct ModifyPatientView: View {
         }
         return true
     }
+}
+
+#Preview {
+    TabNavigationBar()
 }
