@@ -206,6 +206,25 @@ final class CarerViewModel: ObservableObject {
         }
     }
 
+    @MainActor
+    func exitCarerFromPatient(patientID: Int) {
+        Task {
+            isLoading = true
+            guard let token = token else {
+                errorText = "No token available"
+                isLoading = false
+                return
+            }
+
+            do {
+                try await carerRepository.exitCarerFromPatient(patientID: patientID, token: token)
+                errorText = nil
+            } catch {
+                handleError(error)
+            }
+            isLoading = false
+        }
+    }
     
     private func handleError(_ error: Error) {
         if let repoError = error as? RepositoryError {

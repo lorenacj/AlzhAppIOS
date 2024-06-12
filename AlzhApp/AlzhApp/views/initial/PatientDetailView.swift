@@ -88,13 +88,23 @@ struct PatientDetailView: View {
             .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
             .opacity(0.8)
         }
-        .navigationBarTitle("Detalle del Paciente", displayMode: .inline)
+        .navigationBarExitFamily(
+            title: "Detalle del paciente",
+            trailingButton: AnyView(Button(action: {
+                showAlert = true
+            }) {
+                Image(systemName: "rectangle.portrait.and.arrow.right")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(AppColors.lightBlue)
+            })
+        )
         .alert(isPresented: $showAlert) {
             Alert(
                 title: Text("Confirmar"),
                 message: Text("¿Estás seguro de salir de la unidad familiar? AVISO: Si eres el último cuidador de la unidad familiar, esta y el perfil del paciente serán eliminados."),
                 primaryButton: .destructive(Text("Salir")) {
-                    // Llamada a la API para salir de la unidad familiar
+                    carerViewModel.exitCarerFromPatient(patientID: patient.id ?? 0)
                 },
                 secondaryButton: .cancel()
             )

@@ -14,8 +14,8 @@
             filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "addEvent(event:patientID:token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "addEvent(event:patientID:token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
             landmarkName = "addEvent(event:patientID:token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "addEvent(event:patientID:token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -72,22 +72,6 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "2B36B1FF-70F4-4D67-A085-3A942FB92530"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
-            landmarkName = "addEvent(event:patientID:token:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9386D029-77FB-435C-8B71-E7759590E61E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -103,6 +87,22 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "9386D029-77FB-435C-8B71-E7759590E61E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
+            landmarkName = "addEvent(event:patientID:token:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             uuid = "E43F5B46-3333-4A22-9ECC-E2AD5B93A9F2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -110,13 +110,13 @@
             filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "addEvent(event:patientID:token:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "E43F5B46-3333-4A22-9ECC-E2AD5B93A9F2 - baa252d04d4d43e0"
+                  uuid = "E43F5B46-3333-4A22-9ECC-E2AD5B93A9F2 - baa252d04d4d4401"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -126,11 +126,11 @@
                   urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/elements/Carer/CarerRepository.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "320"
-                  endingLineNumber = "320">
+                  startingLineNumber = "321"
+                  endingLineNumber = "321">
                </Location>
                <Location
-                  uuid = "E43F5B46-3333-4A22-9ECC-E2AD5B93A9F2 - 1f8ba647fc39e1e3"
+                  uuid = "E43F5B46-3333-4A22-9ECC-E2AD5B93A9F2 - 1f8ba647fc39e602"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -140,8 +140,8 @@
                   urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/elements/Carer/CarerRepository.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "320"
-                  endingLineNumber = "320">
+                  startingLineNumber = "321"
+                  endingLineNumber = "321">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -156,13 +156,13 @@
             filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "addEvent(event:patientID:token:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "9CC87493-ED19-4588-8D79-6C6ADF1290B7 - baa252d04d4d442e"
+                  uuid = "9CC87493-ED19-4588-8D79-6C6ADF1290B7 - baa252d04d4d444f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -172,11 +172,11 @@
                   urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/elements/Carer/CarerRepository.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "322"
-                  endingLineNumber = "322">
+                  startingLineNumber = "323"
+                  endingLineNumber = "323">
                </Location>
                <Location
-                  uuid = "9CC87493-ED19-4588-8D79-6C6ADF1290B7 - 1f8ba647fc39e62d"
+                  uuid = "9CC87493-ED19-4588-8D79-6C6ADF1290B7 - 1f8ba647fc39e64c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -186,8 +186,8 @@
                   urlString = "file:///Users/lorena.cruz/Documents/AlzhAppIOS/AlzhApp/AlzhApp/elements/Carer/CarerRepository.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "322"
-                  endingLineNumber = "322">
+                  startingLineNumber = "323"
+                  endingLineNumber = "323">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -202,8 +202,8 @@
             filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "310"
-            endingLineNumber = "310"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
             landmarkName = "addEvent(event:patientID:token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,8 +218,8 @@
             filePath = "AlzhApp/elements/Carer/CarerRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
             landmarkName = "addEvent(event:patientID:token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -484,22 +484,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
             endingLineNumber = "136"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "51002FBC-DF81-478F-81E8-1B65A2C7C2ED"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AlzhApp/views/initial/PatientDetailView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>

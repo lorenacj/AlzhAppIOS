@@ -57,6 +57,13 @@ struct InitialView: View {
                                 .padding()
                                 .frame(maxWidth: .infinity)
                             } else {
+                                Button(action: {
+                                    carerViewModel.getPatientsByCarer()
+                                }, label: {
+                                    Image(systemName: "arrow.clockwise")
+                                })
+                                .padding()
+                                .foregroundStyle(.white)
                                 NavigationLink(destination: CreatePatientView(onPatientAdded: {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                                         carerViewModel.getPatientsByCarer()
@@ -73,6 +80,13 @@ struct InitialView: View {
                                     .foregroundColor(.white)
                             }
                         } else {
+                            Button(action: {
+                                carerViewModel.getPatientsByCarer()
+                            }, label: {
+                                Image(systemName: "arrow.clockwise")
+                            })
+                            .padding()
+                            .foregroundStyle(.white)
                             NavigationLink(destination: CreatePatientView(onPatientAdded: {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                                     carerViewModel.getPatientsByCarer()
