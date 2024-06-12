@@ -163,7 +163,7 @@ final class CarerViewModel: ObservableObject {
                 print("DEBUG: No token available for adding event")
                 return
             }
-
+            
             do {
                 print("DEBUG: Adding event: \(event) for patientID: \(patientID)")
                 try await carerRepository.addEvent(event: event, patientID: patientID, token: token)
@@ -176,12 +176,6 @@ final class CarerViewModel: ObservableObject {
             }
             isLoading = false
         }
-    }
-
-    
-    @MainActor
-    func addEventWithStaticData(patientID: Int, token: String) async throws {
-        try await carerRepository.addEventWithStaticData(patientID: patientID, token: token)
     }
     
     private func handleError(_ error: Error) {

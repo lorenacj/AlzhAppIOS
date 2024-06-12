@@ -23,10 +23,10 @@ struct CreateEventsView: View {
     @State private var alertMessage = ""
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var carerViewModel: CarerViewModel
-
+    
     let eventTypes = ["Elige", "Calendario", "Medicina", "Seguimiento"]
     let eventStatuses = ["Elige", "Por hacer", "Hecho"]
-
+    
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
@@ -225,7 +225,7 @@ struct CustomTimeField: View {
     var title: String
     var placeholder: String
     @Binding var time: Date
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text(title)

@@ -23,7 +23,6 @@ protocol CarerRepository {
     func addPatient(patient: AddPatientDTO, token: String) async throws
     func updatePatient(patient: UpdatePatientDTO, token: String) async throws
     func addEvent(event: AddEventDTO, patientID: Int, token: String) async throws
-    func addEventWithStaticData(patientID: Int, token: String) async throws
 }
 
 class CarerWS: CarerRepository {
@@ -321,64 +320,6 @@ class CarerWS: CarerRepository {
             throw error
         }
     }
-    
-    
-    func addEventWithStaticData(patientID: Int, token: String) async throws {
-        guard let url = URL(string: "\(baseURL)/eventapi/add/\(patientID)") else {
-            print("DEBUG: Invalid URL for adding event")
-            throw RepositoryError.invalidURL
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        let staticEvent = AddEventDTO(
-            name: "EstaticooOOoo",
-            type: "Conference",
-            description: "This is a valid description of the event that has sufficient length.",
-            status: "Active",
-            initialDate: "2024-05-21",
-            finalDate: "2024-05-22",
-            initialHour: "08:00:00",
-            finalHour: "17:00:00"
-        )
-        
-        do {
-            let jsonData = try JSONEncoder().encode(staticEvent)
-            request.httpBody = jsonData
-            print("DEBUG: JSON Body for addEventWithStaticData: \(String(data: jsonData, encoding: .utf8) ?? "")")
-        } catch {
-            print("DEBUG: Error encoding static event data: \(error)")
-            throw error
-        }
-        
-        do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            guard let httpResponse = response as? HTTPURLResponse else {
-                print("DEBUG: Invalid response for adding static event")
-                throw RepositoryError.invalidResponse
-            }
-            
-            print("DEBUG: Response Status Code for addEventWithStaticData: \(httpResponse.statusCode)")
-            if let responseData = String(data: data, encoding: .utf8) {
-                print("DEBUG: Response Data for addEventWithStaticData: \(responseData)")
-            }
-            
-            guard 200 ..< 300 ~= httpResponse.statusCode else {
-                let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
-                print("DEBUG: Adding static event failed with status code: \(httpResponse.statusCode), message: \(errorMessage)")
-                throw RepositoryError.custom(errorMessage)
-            }
-            print("DEBUG: Static event added successfully")
-        } catch {
-            print("DEBUG: Adding static event request failed: \(error.localizedDescription)")
-            throw error
-        }
-    }
-    
-    
     
     private func createFormData(parameters: [String: String], boundary: String) -> Data {
         var body = Data()
