@@ -164,3 +164,117 @@ struct CustomPickerField: View {
         .padding(.horizontal, 40)
     }
 }
+
+struct CustomEventDateField: View {
+    var title: String
+    var placeholder: String
+    @Binding var date: Date?
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack{
+                Text(title)
+                    .font(.system(size: 12))
+                    .foregroundColor(.black.opacity(0.7))
+                    .padding(.leading, -105)
+            }
+            
+            ZStack() {
+                if date == nil {
+                    Text(placeholder)
+                        .foregroundColor(.gray)
+                    //.padding(.leading, 17)
+                }
+                
+                DatePicker(
+                    "",
+                    selection: Binding<Date>(
+                        get: { date ?? Date() },
+                        set: { newValue in date = newValue }
+                    ),
+                    displayedComponents: .date
+                )
+                .labelsHidden()
+                .accentColor(.black)
+                //.padding(.leading, 17)
+                .frame(height: 40)
+                .background(
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color.white.opacity(0.6))
+                        .frame(width: 320)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 4)
+                        .stroke(Color.black.opacity(0.7), lineWidth: 1)
+                        .frame(width: 320)
+                )
+            }
+        }
+        .padding(.horizontal, 40)
+    }
+}
+
+struct CustomTextFieldEvent<T: LosslessStringConvertible>: View {
+    var title: String
+    var placeholder: String
+    @Binding var text: T?
+    var isSecureField: Bool = false
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(title)
+                .font(.system(size: 12))
+                .foregroundColor(.black.opacity(0.7))
+            ZStack(alignment: .leading) {
+                if isSecureField {
+                    SecureField("", text: Binding<String>(
+                        get: { text?.description ?? "" },
+                        set: {
+                            if let value = T($0) {
+                                text = value
+                            } else {
+                                text = nil
+                            }
+                        }
+                    ))
+                    .placeholder(when: text == nil || text!.description.isEmpty) {
+                        Text(placeholder).foregroundColor(.gray)
+                    }
+                    .foregroundColor(.black)
+                    .frame(width: 311, height: 40)
+                    .padding(.leading, 17)
+                    .background(
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(.white.opacity(0.6))
+                    )
+                } else {
+                    TextField("", text: Binding<String>(
+                        get: { text?.description ?? "" },
+                        set: {
+                            if let value = T($0) {
+                                text = value
+                            } else {
+                                text = nil
+                            }
+                        }
+                    ))
+                    .placeholder(when: text == nil || text!.description.isEmpty) {
+                        Text(placeholder).foregroundColor(.gray)
+                    }
+                    .foregroundColor(.black)
+                    .keyboardType(T.self == String.self ? .default : .numberPad)
+                    .frame(width: 311, height: 40)
+                    .padding(.leading, 17)
+                    .background(
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(.white.opacity(0.6))
+                    )
+                }
+            }
+            .overlay(
+                RoundedRectangle(cornerRadius: 4)
+                    .stroke(Color.black.opacity(0.7), lineWidth: 1)
+            )
+        }
+    }
+}
