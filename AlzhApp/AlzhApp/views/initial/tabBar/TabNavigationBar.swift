@@ -23,7 +23,7 @@ struct TabNavigationBar: View {
             SharedCalendar()
                 .navigationViewStyle(.stack)
                 .tabItem {
-                    Label("Calendario", systemImage: AppIcons.calendar.rawValue)
+                    Label("Eventos compartido", systemImage: AppIcons.calendar.rawValue)
                 }
                 .tag(TabSelection.calendar)
         }
