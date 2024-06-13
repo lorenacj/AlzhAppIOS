@@ -13,10 +13,6 @@ struct SharedCalendar: View {
         GeometryReader { proxy in
             ScrollView {
                 VStack {
-                    Text("Listado de eventos del cuidador")
-                        .font(.largeTitle)
-                        .padding(.top, 20)
-
                     if carerViewModel.isLoading {
                         ProgressView("Cargando eventos...")
                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
@@ -43,12 +39,53 @@ struct SharedCalendar: View {
                                 .fill(Color.red)
                         )
                     } else if carerViewModel.eventsCarer.isEmpty {
+                        Button(action: {
+                            Task {
+                                await carerViewModel.getEventsByCarer()
+                            }
+                        }, label: {
+                            Image(systemName: "arrow.clockwise")
+                        })
+                        .padding()
+                        .foregroundStyle(.white)
+                        .background(
+                            Circle()
+                                .frame(width: 52, height: 52)
+                                .foregroundStyle(AppColors.lightBlue)
+                        )
+                        .overlay(
+                            Circle()
+                                .stroke(Color.black.opacity(0.7), lineWidth: 2)
+                                .frame(width: 52, height: 52)
+                        )
+                        .padding()
                         Text("No se encontraron eventos.")
                             .foregroundColor(.white)
                     } else {
                         VStack(spacing: 0) {
+                            Button(action: {
+                                Task {
+                                    await carerViewModel.getEventsByCarer()
+                                }
+                            }, label: {
+                                Image(systemName: "arrow.clockwise")
+                            })
+                            .padding()
+                            .foregroundStyle(.white)
+                            .background(
+                                Circle()
+                                    .frame(width: 52, height: 52)
+                                    .foregroundStyle(AppColors.lightBlue)
+                            )
+                            .overlay(
+                                Circle()
+                                    .stroke(Color.black.opacity(0.7), lineWidth: 2)
+                                    .frame(width: 52, height: 52)
+                            )
+                            .padding()
                             ForEach(carerViewModel.eventsCarer, id: \.id) { event in
                                 EventRowView(event: event)
+                                    .padding()
                                     .frame(maxWidth: .infinity)
                                     .padding(.vertical, 15)
                                     .background(Color.white)
@@ -56,10 +93,11 @@ struct SharedCalendar: View {
                                     .shadow(radius: 2)
                                     .padding(.horizontal)
                             }
+                            .padding()
                         }
                     }
                 }
-                .navigationBarTitle("Eventos de paciente")
+                .navBarAddFamily(title: "Eventos por cuidador", viewModel: carerViewModel)
                 .frame(maxWidth: .infinity, minHeight: proxy.size.height)
             }
             .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))

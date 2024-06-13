@@ -23,17 +23,17 @@ struct CreateEventsView: View {
     @State private var alertMessage = ""
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var carerViewModel: CarerViewModel
-
+    
     let eventTypes = ["Elige", "Calendario", "Medicina", "Seguimiento"]
     let eventStatuses = ["Elige", "Por hacer", "Hecho"]
-
+    
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
                 VStack(spacing: 20) {
                     Spacer()
                     // Nombre
-                    CustomTextFieldAuth(
+                    CustomTextFieldEvent(
                         title: "Nombre del Evento",
                         placeholder: "Ingrese el nombre del evento",
                         text: Binding(
@@ -44,12 +44,11 @@ struct CreateEventsView: View {
                     )
                     .padding(.horizontal, 40)
                     .frame(maxWidth: .infinity)
-                    
                     // Tipo
-                    pickerField(title: "Tipo de Evento", placeholder: "Elige", selection: $type, options: eventTypes)
+                    pickerFieldEvents(title: "Tipo de Evento", placeholder: "Elige", selection: $type, options: eventTypes)
                     
                     // Descripción
-                    CustomTextFieldAuth(
+                    CustomTextFieldEvent(
                         title: "Descripción",
                         placeholder: "Ingrese una descripción del evento",
                         text: Binding(
@@ -62,10 +61,9 @@ struct CreateEventsView: View {
                     .frame(maxWidth: .infinity)
                     
                     // Estado
-                    pickerField(title: "Estado", placeholder: "Elige", selection: $status, options: eventStatuses)
-                    
+                    pickerFieldEvents(title: "Estado", placeholder: "Elige", selection: $status, options: eventStatuses)
                     // Fecha Inicial
-                    CustomDateField(
+                    CustomEventDateField(
                         title: "Fecha Inicial",
                         placeholder: "",
                         date: Binding(
@@ -76,7 +74,7 @@ struct CreateEventsView: View {
                     .frame(maxWidth: .infinity)
                     
                     // Fecha Final
-                    CustomDateField(
+                    CustomEventDateField(
                         title: "Fecha Final",
                         placeholder: "",
                         date: Binding(
@@ -87,7 +85,7 @@ struct CreateEventsView: View {
                     .frame(maxWidth: .infinity)
                     
                     // Hora Inicial
-                    CustomTimeField(
+                    CustomTimeFieldEvents(
                         title: "Hora Inicial",
                         placeholder: "",
                         time: $initialHour
@@ -95,7 +93,7 @@ struct CreateEventsView: View {
                     .frame(maxWidth: .infinity)
                     
                     // Hora Final
-                    CustomTimeField(
+                    CustomTimeFieldEvents(
                         title: "Hora Final",
                         placeholder: "",
                         time: $finalHour
@@ -176,7 +174,8 @@ struct CreateEventsView: View {
     private func pickerField(title: String, placeholder: String, selection: Binding<String>, options: [String]) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             Text(title)
-                .font(.headline)
+                .font(.system(size: 12))
+                .foregroundColor(.black.opacity(0.7))
             Picker(selection: selection, label: Text(placeholder)) {
                 ForEach(options, id: \.self) { option in
                     Text(option).tag(option)
@@ -219,17 +218,46 @@ struct CreateEventsView: View {
     private func endEditing() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
+    
+    private func pickerFieldEvents(title: String, placeholder: String, selection: Binding<String>, options: [String]) -> some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text(title)
+                .font(.system(size: 12))
+                .foregroundColor(.black.opacity(0.7))
+            Picker(selection: selection, label: Text(placeholder)) {
+                ForEach(options, id: \.self) { option in
+                    Text(option).tag(option)
+                }
+            }
+            .pickerStyle(MenuPickerStyle())
+            .frame(maxWidth: .infinity)
+            //.background(Color.white.opacity(0.6))
+            .background(
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.white.opacity(0.6))
+                    .frame(width: 320, height: 40)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 4)
+                    .stroke(Color.black.opacity(0.7), lineWidth: 1)
+                    .frame(width: 320, height: 40)
+            )
+        }
+        .padding(.horizontal, 40)
+    }
 }
 
 struct CustomTimeField: View {
     var title: String
     var placeholder: String
     @Binding var time: Date
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text(title)
-                .font(.headline)
+                .font(.system(size: 12))
+                .foregroundColor(.black.opacity(0.7))
+                .padding(.leading, 8)
             DatePicker(
                 placeholder,
                 selection: $time,
@@ -241,6 +269,39 @@ struct CustomTimeField: View {
             .background(Color.white)
             .cornerRadius(5)
             .shadow(color: .gray, radius: 2, x: 0, y: 2)
+        }
+        .padding(.horizontal, 40)
+    }
+}
+
+struct CustomTimeFieldEvents: View {
+    var title: String
+    var placeholder: String
+    @Binding var time: Date
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text(title)
+                .font(.system(size: 12))
+                .foregroundColor(.black.opacity(0.7))
+            DatePicker(
+                placeholder,
+                selection: $time,
+                displayedComponents: .hourAndMinute
+            )
+            .datePickerStyle(WheelDatePickerStyle())
+            .labelsHidden()
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.white.opacity(0.6))
+                    .frame(width: 320, height: 40)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 4)
+                    .stroke(Color.black.opacity(0.7), lineWidth: 1)
+                    .frame(width: 320, height: 40)
+            )
         }
         .padding(.horizontal, 40)
     }

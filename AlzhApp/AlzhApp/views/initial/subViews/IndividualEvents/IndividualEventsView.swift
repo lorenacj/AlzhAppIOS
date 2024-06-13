@@ -81,21 +81,35 @@ struct EventRowView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(event.name ?? "Unknown")
-                .font(.headline)
-                .foregroundColor(.black)
-            Text(event.description ?? "No description")
-                .font(.subheadline)
-                .foregroundColor(.black)
-            if let initialDate = event.initialDate, let finalDate = event.finalDate {
-                Text("Fecha: \(initialDate, formatter: Event.dateFormatter) - \(finalDate, formatter: Event.dateFormatter)")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-            }
-            if let initialHour = event.initialHour, let finalHour = event.finalHour {
-                Text("Hora: \(initialHour, formatter: Event.timeFormatter) - \(finalHour, formatter: Event.timeFormatter)")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
+            HStack {
+                Image(systemName: event.status == "Por hacer" ? "exclamationmark.triangle.fill" : "checkmark.circle.fill")
+                    .resizable()
+                    .frame(width: 20,height: 20)
+                    .foregroundStyle(event.status == "Por hacer" ? AppColors.pink : AppColors.lilac)
+                VStack{
+                    HStack {
+                        Text("\(event.name ?? "Unknown") -" )
+                            .font(.headline)
+                            .foregroundColor(.black)
+                        Text(event.type ?? "Unknown")
+                            .font(.headline)
+                            .foregroundColor(.black)
+                            .underline()
+                    }
+                    Text(event.description ?? "No description")
+                        .font(.subheadline)
+                        .foregroundColor(.black)
+                    if let initialDate = event.initialDate, let finalDate = event.finalDate {
+                        Text("Fecha: \(initialDate, formatter: Event.dateFormatter) - \(finalDate, formatter: Event.dateFormatter)")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                    }
+                    if let initialHour = event.initialHour, let finalHour = event.finalHour {
+                        Text("Hora: \(initialHour, formatter: Event.timeFormatter) - \(finalHour, formatter: Event.timeFormatter)")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                    }
+                }
             }
         }
         .padding(10)

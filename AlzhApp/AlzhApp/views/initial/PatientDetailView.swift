@@ -5,6 +5,7 @@
 //  Created by lorena.cruz on 8/6/24.
 //
 
+
 import SwiftUI
 
 struct PatientDetailView: View {
@@ -18,32 +19,6 @@ struct PatientDetailView: View {
         GeometryReader { proxy in
             ScrollView {
                 VStack {
-                    HStack {
-                        NavigationLink(
-                            destination: CreateEventsView(patientID: patient.id)
-                                .environmentObject(carerViewModel)
-                        ) {
-                            Text("Crear eventos")
-                                .padding()
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color.white).opacity(0.6)
-                                )
-                        }
-                        
-                        NavigationLink(
-                            destination: IndividualEventsView(patientID: patient.id)
-                                .environmentObject(carerViewModel)
-                        ) {
-                            Text("Visualizar eventos")
-                                .padding()
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color.white).opacity(0.6)
-                                )
-                        }
-                    }
-                    .padding()
                     VStack(alignment: .leading) {
                         HStack {
                             Text("Ficha del paciente")
@@ -55,7 +30,7 @@ struct PatientDetailView: View {
                             }
                         }
                         .font(.custom(AppFonts.OpenSans.semibold.rawValue, size: 20))
-                        
+                        Text("Código del paciente: \(carerViewModel.patientCode)")
                         Text("\(patient.name ?? "Unknown") \(patient.lastname ?? "Unknown")")
                         Text("Fecha de nacimiento: \(patient.birthdate ?? "Unknown")")
                         Text("Disorder: \(patient.disorder ?? "Unknown")")
@@ -63,12 +38,31 @@ struct PatientDetailView: View {
                         Text("Peso: \(patient.weight?.formatted(.number.precision(.fractionLength(2))) ?? "0.00")Kg")
                         Text("Altura: \(patient.height?.formatted(.number.precision(.integerLength(0))) ?? "0")cm")
                         HStack {
-                            Text("Medicinas: ")
-                            Image(systemName: "pills")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(AppColors.lightBlue)
+                            NavigationLink(
+                                destination: CreateEventsView(patientID: patient.id)
+                                    .environmentObject(carerViewModel)
+                            ) {
+                                Text("Crear eventos")
+                                    .padding()
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color.white).opacity(0.6)
+                                    )
+                            }
+                            
+                            NavigationLink(
+                                destination: IndividualEventsView(patientID: patient.id)
+                                    .environmentObject(carerViewModel)
+                            ) {
+                                Text("Visualizar eventos")
+                                    .padding()
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color.white).opacity(0.6)
+                                    )
+                            }
                         }
+                        .padding()
                     }
                     .padding()
                     .background(
@@ -77,18 +71,19 @@ struct PatientDetailView: View {
                             .opacity(0.8)
                     )
                     .padding(.bottom, 5)
-                    
-                    Text("Participantes:")
-                    // API para obtener los ROLE_CARER que pertenecen a la unidad familiar == patient.id
                 }
                 .frame(maxWidth: .infinity, minHeight: proxy.size.height)
             }
             .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
             .opacity(1)
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Detalle del paciente")
+        .onAppear {
+            carerViewModel.fetchPatientCode(patientID: patient.id ?? 0)
+        }
         .navigationBarExitFamily(
-            title: "Detalle del paciente",
-            trailingButton: AnyView(Button(action: {
+            title: "Detalle del paciente", trailingButton: AnyView(Button(action: {
                 showAlert = true
             }) {
                 Image(systemName: "rectangle.portrait.and.arrow.right")

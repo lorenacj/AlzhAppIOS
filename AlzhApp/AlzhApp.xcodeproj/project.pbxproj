@@ -64,7 +64,6 @@
 		7C9380382C088CE700A04805 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9380372C088CE700A04805 /* RegisterView.swift */; };
 		7C93803A2C08FD2A00A04805 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9380392C08FD2A00A04805 /* InitialView.swift */; };
 		7C945FEE2C13394E0091376A /* ModifyPatientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C945FED2C13394E0091376A /* ModifyPatientView.swift */; };
-		7C945FF32C133D0A0091376A /* AddEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C945FF22C133D0A0091376A /* AddEventsView.swift */; };
 		7C945FF62C133D4A0091376A /* IndividualEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C945FF52C133D4A0091376A /* IndividualEventsView.swift */; };
 		7C945FFC2C133DEF0091376A /* MonitoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C945FFB2C133DEF0091376A /* MonitoringView.swift */; };
 		7C945FFE2C14FD0E0091376A /* PatientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C945FFD2C14FD0E0091376A /* PatientDetailView.swift */; };
@@ -146,7 +145,6 @@
 		7C9380372C088CE700A04805 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		7C9380392C08FD2A00A04805 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		7C945FED2C13394E0091376A /* ModifyPatientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPatientView.swift; sourceTree = "<group>"; };
-		7C945FF22C133D0A0091376A /* AddEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventsView.swift; sourceTree = "<group>"; };
 		7C945FF52C133D4A0091376A /* IndividualEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualEventsView.swift; sourceTree = "<group>"; };
 		7C945FFB2C133DEF0091376A /* MonitoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringView.swift; sourceTree = "<group>"; };
 		7C945FFD2C14FD0E0091376A /* PatientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailView.swift; sourceTree = "<group>"; };
@@ -404,7 +402,6 @@
 			isa = PBXGroup;
 			children = (
 				7C945FFA2C133DD20091376A /* SymptomMonitoring */,
-				7C945FEF2C133CE70091376A /* createEvents */,
 				7C273FCB2C07AF39001557A0 /* register */,
 				7C273FCA2C07AF32001557A0 /* login */,
 				7C273FCE2C07B044001557A0 /* initial */,
@@ -418,14 +415,6 @@
 				7C945FED2C13394E0091376A /* ModifyPatientView.swift */,
 			);
 			path = ModifyPatientView;
-			sourceTree = "<group>";
-		};
-		7C945FEF2C133CE70091376A /* createEvents */ = {
-			isa = PBXGroup;
-			children = (
-				7C945FF22C133D0A0091376A /* AddEventsView.swift */,
-			);
-			path = createEvents;
 			sourceTree = "<group>";
 		};
 		7C945FF42C133D310091376A /* IndividualEvents */ = {
@@ -609,7 +598,6 @@
 				7C945FFC2C133DEF0091376A /* MonitoringView.swift in Sources */,
 				7C17B4D92C122B7D0026F2D2 /* EventDTO.swift in Sources */,
 				7C945FEE2C13394E0091376A /* ModifyPatientView.swift in Sources */,
-				7C945FF32C133D0A0091376A /* AddEventsView.swift in Sources */,
 				7C1AA3982C0F6A2000E4AAD5 /* SharedCalendar.swift in Sources */,
 				7C93803A2C08FD2A00A04805 /* InitialView.swift in Sources */,
 				7C17B4DB2C122C000026F2D2 /* EventBO.swift in Sources */,
