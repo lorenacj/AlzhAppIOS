@@ -77,9 +77,6 @@ struct PatientDetailView: View {
                             .opacity(0.8)
                     )
                     .padding(.bottom, 5)
-                    
-                    Text("Participantes:")
-                    // API para obtener los ROLE_CARER que pertenecen a la unidad familiar == patient.id
                 }
                 .frame(maxWidth: .infinity, minHeight: proxy.size.height)
             }

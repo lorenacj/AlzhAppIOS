@@ -11,7 +11,7 @@ struct InitialView: View {
     @State private var navigateToCreatePatient = false
     @State private var selectedPatient: PatientsCareBO?
     @EnvironmentObject private var carerViewModel: CarerViewModel
-
+    
     var body: some View {
         NavigationView {
             GeometryReader { proxy in
@@ -64,6 +64,7 @@ struct InitialView: View {
                                 })
                                 .padding()
                                 .foregroundStyle(.white)
+                                
                                 NavigationLink(destination: CreatePatientView(onPatientAdded: {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                                         carerViewModel.getPatientsByCarer()
@@ -80,26 +81,43 @@ struct InitialView: View {
                                     .foregroundColor(.white)
                             }
                         } else {
-                            Button(action: {
-                                carerViewModel.getPatientsByCarer()
-                            }, label: {
-                                Image(systemName: "arrow.clockwise")
-                            })
-                            .padding()
-                            .foregroundStyle(.white)
-                            NavigationLink(destination: CreatePatientView(onPatientAdded: {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                    carerViewModel.getPatientsByCarer()
+                            HStack {
+                                Button(action: {
+                                    Task {
+                                        await carerViewModel.getEventsByCarer()
+                                    }
+                                }, label: {
+                                    Image(systemName: "arrow.clockwise")
+                                })
+                                .padding()
+                                .foregroundStyle(.white)
+                                .background(
+                                    Circle()
+                                        .frame(width: 52, height: 52)
+                                        .foregroundStyle(AppColors.lightBlue)
+                                )
+                                .overlay(
+                                    Circle()
+                                        .stroke(Color.black.opacity(0.7), lineWidth: 2)
+                                        .frame(width: 52, height: 52)
+                                )
+                                .padding()
+                                
+                                NavigationLink(destination: CreatePatientView(onPatientAdded: {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                        carerViewModel.getPatientsByCarer()
+                                    }
+                                }).environmentObject(carerViewModel), isActive: $navigateToCreatePatient) {
+                                    EmptyView()
                                 }
-                            }).environmentObject(carerViewModel), isActive: $navigateToCreatePatient) {
-                                EmptyView()
+                                CustomButtonStyle(text: LocalizedString.agregarPaciente, isTapped: $isTapped) {
+                                    navigateToCreatePatient = true
+                                }
+                                .padding()
+                                .frame(alignment: .center)
+                                .frame(maxWidth: .infinity)
+                                .padding(.trailing,10)
                             }
-                            CustomButtonStyle(text: LocalizedString.agregarPaciente, isTapped: $isTapped) {
-                                navigateToCreatePatient = true
-                            }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-
                             VStack(spacing: 0) {
                                 ForEach(carerViewModel.patients, id: \.id) { patient in
                                     NavigationLink(
