@@ -27,6 +27,7 @@ protocol CarerRepository {
     func getEventsByPatient(patientID: Int, token: String) async throws -> [Event]
     func getEventsByCarer(token: String) async throws -> [Event]
     func exitCarerFromPatient(patientID: Int, token: String) async throws
+    func fetchPatientCode(patientID: Int, token: String) async throws -> String
 }
 
 class CarerWS: CarerRepository {
@@ -411,6 +412,39 @@ class CarerWS: CarerRepository {
         }
     }
     
+    func fetchPatientCode(patientID: Int, token: String) async throws -> String {
+           guard let url = URL(string: "\(baseURL)/patientapi/getcode/\(patientID)") else {
+               throw RepositoryError.invalidURL
+           }
+
+           var request = URLRequest(url: url)
+           request.httpMethod = "GET"
+           request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+           do {
+               let (data, response) = try await URLSession.shared.data(for: request)
+               guard let httpResponse = response as? HTTPURLResponse else {
+                   throw RepositoryError.invalidResponse
+               }
+
+               guard 200 ..< 300 ~= httpResponse.statusCode else {
+                   if let errorMessage = String(data: data, encoding: .utf8) {
+                       throw RepositoryError.custom(errorMessage)
+                   } else {
+                       throw RepositoryError.statusCode(httpResponse.statusCode)
+                   }
+               }
+
+               if let code = String(data: data, encoding: .utf8) {
+                   return code
+               } else {
+                   throw RepositoryError.noData
+               }
+           } catch {
+               throw error
+           }
+       }
+    
     func getEventsByCarer(token: String) async throws -> [Event] {
         guard let url = URL(string: "\(baseURL)/eventapi/byCarer") else {
             print("Error: URL inválida")
@@ -476,6 +510,7 @@ class CarerWS: CarerRepository {
             throw error
         }
     }
+    
     
     
     private func createFormData(parameters: [String: String], boundary: String) -> Data {

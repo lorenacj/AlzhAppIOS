@@ -10,6 +10,7 @@ import Foundation
 final class CarerViewModel: ObservableObject {
     @Published var errorText: String?
     @Published var errorTextEvent: String?
+    @Published var errorTextCode: String?
     @Published var isLoginSuccessful = false
     @Published var isRegisterSuccessful = false
     @Published var isAddCarerSuccessful = false
@@ -21,7 +22,9 @@ final class CarerViewModel: ObservableObject {
     @Published var token: String?
     @Published var isLoading = false
     @Published var isLoadingEvent = false
+    @Published var isLoadingCode = false
     @Published var shouldReloadPatients = false
+    @Published var patientCode: String?
     
     private lazy var carerRepository: CarerRepository = CarerWS()
     
@@ -252,6 +255,49 @@ final class CarerViewModel: ObservableObject {
             isLoading = false
         }
     }
+    
+    @MainActor
+        func fetchPatientCode(patientID: Int) {
+            Task {
+                isLoadingCode = true
+                guard let token = token else {
+                    errorTextCode = "No token available"
+                    isLoadingCode = false
+                    return
+                }
+
+                do {
+                    let code = try await carerRepository.fetchPatientCode(patientID: patientID, token: token)
+                    self.patientCode = code
+                    errorTextCode = nil
+                    print("DEBUG: Patient code fetched successfully: \(code)")
+                } catch {
+                    handleErrorPatientCode(error)
+                }
+                isLoadingCode = false
+            }
+        }
+
+    
+    private func handleErrorPatientCode(_ error: Error) {
+        if let repoError = error as? RepositoryError {
+            switch repoError {
+            case .statusCode(let code):
+                errorTextCode = "Error: Código de estado \(code)"
+                print("DEBUG: Repository error with status code: \(code)")
+            case .custom(let message):
+                errorTextCode = message
+                print("DEBUG: Repository error with message: \(message)")
+            default:
+                errorTextCode = "Error desconocido: \(error.localizedDescription)"
+                print("DEBUG: Unknown repository error: \(error.localizedDescription)")
+            }
+        } else {
+            errorTextCode = error.localizedDescription
+            print("DEBUG: General error: \(error.localizedDescription)")
+        }
+    }
+    
     
     private func handleError(_ error: Error) {
         if let repoError = error as? RepositoryError {
