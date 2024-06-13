@@ -1,8 +1,8 @@
 //
-//  RegisterView.swift
+//  LoginView.swift
 //  AlzhApp
 //
-//  Created by lorena.cruz on 30/5/24.
+//  Created by lorena.cruz on 29/5/24.
 //
 
 import SwiftUI
@@ -16,83 +16,107 @@ struct RegisterView: View {
     @State private var isTapped = false
     @State private var showAlert = false
     @State private var alertMessage = ""
-    
+    @Environment(\.presentationMode) var presentationMode
+
+    @StateObject private var viewModel = CarerViewModel()
+
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
-                VStack (spacing:20) {
+                VStack(spacing: 20) {
                     Spacer()
                     Image("logo")
                         .resizable()
                         .frame(width: 150, height: 150)
-                    //DNI
+                    // DNI
                     CustomTextFieldAuth(title: LocalizedString.dni, placeholder: LocalizedString.dniplaceholder, text: $dniText, isSecureField: false)
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
-                    //nombre
+                    // Nombre
                     CustomTextFieldAuth(title: LocalizedString.name, placeholder: LocalizedString.placeholderGeneral, text: $nameText, isSecureField: false)
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
-                    //apellidos
+                    // Apellidos
                     CustomTextFieldAuth(title: LocalizedString.lastname, placeholder: LocalizedString.placeholderGeneral, text: $lastnameText, isSecureField: false)
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
-                    //telefono
+                    // Teléfono
                     CustomTextFieldAuth(title: LocalizedString.telephone, placeholder: LocalizedString.placeholderGeneral, text: $telephoneText, isSecureField: false)
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
                         .keyboardType(.phonePad)
-                    //password
+                    // Contraseña
                     CustomTextFieldAuth(title: LocalizedString.password, placeholder: LocalizedString.placeholderGeneral, text: $passwordText, isSecureField: true)
                         .padding(.horizontal, 40)
                         .frame(maxWidth: .infinity)
                     Spacer()
-#warning("Falta funcionalidad con la API")
                     CustomButtonStyle(text: LocalizedString.register, isTapped: $isTapped) {
                         if dniText?.isEmpty ?? true || passwordText?.isEmpty ?? true || nameText?.isEmpty ?? true || lastnameText?.isEmpty ?? true || telephoneText?.isEmpty ?? true {
                             alertMessage = LocalizedString.camposVacios
+                            showAlert = true
                         } else {
-                            if isValidDNI(dni: dniText!) {
-                                if isValidTelephone(telephone: telephoneText!) {
-                                    // if(user no existe) {
-                                    //     alertMessage = LocalizedString.registrocorrecto
-                                    // } else {
-                                    //     alertMessage = LocalizedString.registroDuplicado
-                                    // }
-                                    alertMessage = LocalizedString.registrocorrecto
-                                    dniText = ""
-                                    telephoneText = ""
-                                    nameText = ""
-                                    passwordText = ""
-                                    lastnameText = ""
-                                    #warning("comprobar que no existe")
+                            guard let dni = dniText, let password = passwordText, let name = nameText, let lastname = lastnameText, let telephone = telephoneText else {
+                                alertMessage = LocalizedString.camposVacios
+                                showAlert = true
+                                return
+                            }
+                            
+                            if isValidDNI(dni: dni) {
+                                if isValidTelephone(telephone: telephone) {
+                                    let carer = CarerBO(
+                                        name: name,
+                                        lastname: lastname,
+                                        telephone: telephone,
+                                        username: dni,
+                                        password: password
+                                    )
+                                    viewModel.registerCarer(carer: carer)
                                 } else {
                                     // Teléfono no válido
                                     alertMessage = LocalizedString.registroErrorTelefono
+                                    showAlert = true
                                 }
                             } else {
                                 // DNI no válido
                                 alertMessage = LocalizedString.registroErrorDni
+                                showAlert = true
                             }
                         }
-                        showAlert = true
                     }
-                    .padding(.bottom,10)
+                    .padding(.bottom, 10)
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)))
+                        Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)) {
+                            if viewModel.isRegisterSuccessful {
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
+                        })
                     }
                 }
                 .frame(maxWidth: .infinity, minHeight: proxy.size.height)
             }
             .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
-            .opacity(0.8)
+            .opacity(1)
         }
-        .navBarDefault(title: LocalizedString.register)
+        .navigationBar(title: LocalizedString.register)
         .onTapGesture {
             endEditing()
         }
+        .onReceive(viewModel.$isRegisterSuccessful) { success in
+            if success {
+                alertMessage = LocalizedString.registrocorrecto
+                dniText = ""
+                passwordText = ""
+                nameText = ""
+                lastnameText = ""
+                telephoneText = ""
+                showAlert = true
+            } else if let errorText = viewModel.errorText {
+                alertMessage = errorText
+                showAlert = true
+            }
+        }
     }
-    
+
     func isValidTelephone(telephone: String) -> Bool {
         let phoneRegex = "^[0-9]{9}$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)

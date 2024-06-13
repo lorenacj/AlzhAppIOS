@@ -11,10 +11,11 @@ struct LoginView: View {
     @State private var dniText: String? = ""
     @State private var passwordText: String? = ""
     @State private var isTapped = false
-    @State private var isLoginSuccessful = false
     @State private var showAlert = false
     @State private var alertMessage = ""
     @State private var navigateToInitialView = false
+    
+    @StateObject private var viewModel = CarerViewModel()
     
     var body: some View {
         NavigationView {
@@ -25,49 +26,45 @@ struct LoginView: View {
                         Image("logo")
                             .resizable()
                             .frame(width: 150, height: 150)
-                        Text("AlzhApp") // Asegúrate de tener una cadena aquí en lugar de LocalizedString
+                        Text(LocalizedString.alzhapp)
                             .font(.custom("OpenSans-Regular", size: 40))
                             .foregroundColor(.white)
                             .bold()
                             .shadow(color: .black, radius: 3, x: 0, y: 0)
                             .padding(.bottom, 20)
-                        CustomTextFieldAuth(title: "DNI", placeholder: "Ingrese su DNI", text: $dniText, isSecureField: false)
+                        CustomTextFieldAuth(title: LocalizedString.dni, placeholder: LocalizedString.dniplaceholder, text: $dniText, isSecureField: false)
                             .padding(.horizontal, 40)
                             .frame(maxWidth: .infinity)
-                        CustomTextFieldAuth(title: "Contraseña", placeholder: "Ingrese su contraseña", text: $passwordText, isSecureField: true)
+                        CustomTextFieldAuth(title: LocalizedString.password, placeholder: LocalizedString.placeholderGeneral, text: $passwordText, isSecureField: true)
                             .padding(.horizontal, 40)
                             .frame(maxWidth: .infinity)
                         NavigationLink(destination: RegisterView()) {
-                            Text("¿No tiene cuenta?")
+                            Text(LocalizedString.noTieneCuenta)
                                 .font(.system(size: 12))
-                                .foregroundColor(Color.blue)
+                                .foregroundColor(AppColors.darkBlue)
+                                .underline()
                                 .opacity(1)
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                                 .padding(.trailing, 40)
                         }
                         Spacer()
-                        NavigationLink(destination: TabNavigationBar(), isActive: $navigateToInitialView) {
+                        NavigationLink(destination: TabNavigationBar().environmentObject(viewModel), isActive: $navigateToInitialView) {
                             EmptyView()
                         }
-                        CustomButtonStyle(text: "Iniciar Sesión", isTapped: $isTapped) {
+                        CustomButtonStyle(text: LocalizedString.login, isTapped: $isTapped) {
                             if dniText?.isEmpty ?? true || passwordText?.isEmpty ?? true {
-                                alertMessage = "Todos los campos son obligatorios"
+                                alertMessage = LocalizedString.camposVacios
                                 showAlert = true
-                                isLoginSuccessful = false // Asegurarse de que no navegue
                             } else {
-                                alertMessage = "Inicio de sesión correcto"
-                                dniText = ""
-                                passwordText = ""
-                                showAlert = true
-                                isLoginSuccessful = true
+                                viewModel.loginCarer(username: dniText ?? "", password: passwordText ?? "")
                             }
                         }
                         .alert(isPresented: $showAlert) {
                             Alert(
-                                title: Text("Validación"),
+                                title: Text(LocalizedString.validacion),
                                 message: Text(alertMessage),
-                                dismissButton: .default(Text("OK")) {
-                                    if isLoginSuccessful {
+                                dismissButton: .default(Text(LocalizedString.okbutton)) {
+                                    if viewModel.isLoginSuccessful {
                                         navigateToInitialView = true
                                     }
                                 }
@@ -79,10 +76,21 @@ struct LoginView: View {
                     .frame(maxWidth: .infinity, minHeight: proxy.size.height)
                 }
                 .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
-                .opacity(0.8)
             }
             .onTapGesture {
                 endEditing()
+            }
+            .onReceive(viewModel.$isLoginSuccessful) { success in
+                if success {
+                    alertMessage = LocalizedString.loginCorrecto
+                    dniText = ""
+                    passwordText = ""
+                    showAlert = true
+                } else if let errorText = viewModel.errorText {
+                    alertMessage = LocalizedString.loginIncorrecto
+                    showAlert = true
+                    print("Error: \(errorText)")
+                }
             }
         }
     }

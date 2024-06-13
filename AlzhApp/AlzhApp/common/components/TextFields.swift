@@ -151,10 +151,10 @@ struct CustomPickerField: View {
                 .padding(.leading, 8)
             Picker(selection: $selectedOption, label: Text(placeholder)) {
                 Text(LocalizedString.elegirOpcion).tag("Option 1")
-                Text(LocalizedString.alzheimer).tag("Option 2")
-                Text(LocalizedString.demencia).tag("Option 3")
-                Text(LocalizedString.alzheimerYdemencia).tag("Option 3")
-                Text(LocalizedString.otros).tag("Option 3")
+                Text(LocalizedString.alzheimer).tag("alzheimer")
+                Text(LocalizedString.demencia).tag("demencia")
+                Text(LocalizedString.alzheimerYdemencia).tag("alzheimer_demencia")
+                Text(LocalizedString.otros).tag("otros")
             }
             .pickerStyle(MenuPickerStyle())
             .frame(maxWidth: .infinity, alignment: .leading)

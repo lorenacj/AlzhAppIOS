@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C17B4D92C122B7D0026F2D2 /* EventDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C17B4D82C122B7D0026F2D2 /* EventDTO.swift */; };
+		7C17B4DB2C122C000026F2D2 /* EventBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C17B4DA2C122C000026F2D2 /* EventBO.swift */; };
 		7C1AA3982C0F6A2000E4AAD5 /* SharedCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AA3972C0F6A2000E4AAD5 /* SharedCalendar.swift */; };
 		7C1AA39D2C0F72F000E4AAD5 /* ProductBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AA39C2C0F72F000E4AAD5 /* ProductBO.swift */; };
 		7C1AA39F2C0F730700E4AAD5 /* ProductDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AA39E2C0F730700E4AAD5 /* ProductDTO.swift */; };
@@ -54,16 +56,38 @@
 		7C2B35EB2C0CEB630088338C /* TabNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B35EA2C0CEB630088338C /* TabNavigationBar.swift */; };
 		7C2B35ED2C0CF08D0088338C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B35EC2C0CF08D0088338C /* TabBar.swift */; };
 		7C2B35F12C0CF36D0088338C /* CreatePatientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B35F02C0CF36D0088338C /* CreatePatientView.swift */; };
+		7C7C75D92C176E4A0068B6BF /* CreateEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7C75D82C176E4A0068B6BF /* CreateEventsView.swift */; };
 		7C8654792C0CD4AB008AE334 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8654782C0CD4AB008AE334 /* NavBar.swift */; };
 		7C8E24F12C03E16000420913 /* AlzhAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E24F02C03E16000420913 /* AlzhAppApp.swift */; };
 		7C8E24F52C03E16200420913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E24F42C03E16200420913 /* Assets.xcassets */; };
 		7C8E24F82C03E16200420913 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E24F72C03E16200420913 /* Preview Assets.xcassets */; };
 		7C9380382C088CE700A04805 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9380372C088CE700A04805 /* RegisterView.swift */; };
 		7C93803A2C08FD2A00A04805 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9380392C08FD2A00A04805 /* InitialView.swift */; };
+		7C945FEE2C13394E0091376A /* ModifyPatientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C945FED2C13394E0091376A /* ModifyPatientView.swift */; };
+		7C945FF32C133D0A0091376A /* AddEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C945FF22C133D0A0091376A /* AddEventsView.swift */; };
+		7C945FF62C133D4A0091376A /* IndividualEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C945FF52C133D4A0091376A /* IndividualEventsView.swift */; };
+		7C945FFC2C133DEF0091376A /* MonitoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C945FFB2C133DEF0091376A /* MonitoringView.swift */; };
+		7C945FFE2C14FD0E0091376A /* PatientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C945FFD2C14FD0E0091376A /* PatientDetailView.swift */; };
+		7CCA11392C10CFA90043B67D /* CarerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11382C10CFA90043B67D /* CarerDTO.swift */; };
+		7CCA113C2C10CFBD0043B67D /* CarerBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA113B2C10CFBD0043B67D /* CarerBO.swift */; };
+		7CCA113E2C10CFD00043B67D /* CarerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA113D2C10CFD00043B67D /* CarerRepository.swift */; };
+		7CCA11402C10CFDB0043B67D /* CarerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA113F2C10CFDB0043B67D /* CarerViewModel.swift */; };
+		7CCA11432C10D1AF0043B67D /* SymptomDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11422C10D1AF0043B67D /* SymptomDTO.swift */; };
+		7CCA11452C10D2590043B67D /* SymptomBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11442C10D2590043B67D /* SymptomBO.swift */; };
+		7CCA114F2C10D2BF0043B67D /* PatientBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA114E2C10D2BF0043B67D /* PatientBO.swift */; };
+		7CCA11512C10D2C70043B67D /* PatientDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11502C10D2C70043B67D /* PatientDTO.swift */; };
+		7CCA11592C10D31E0043B67D /* FamilyUnitBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11582C10D31E0043B67D /* FamilyUnitBO.swift */; };
+		7CCA115B2C10D32A0043B67D /* FamilyUnitDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA115A2C10D32A0043B67D /* FamilyUnitDTO.swift */; };
+		7CCA115D2C10D3350043B67D /* FamilyUnitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA115C2C10D3350043B67D /* FamilyUnitRepository.swift */; };
+		7CCA115F2C10D3440043B67D /* FamilyUnitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA115E2C10D3440043B67D /* FamilyUnitViewModel.swift */; };
+		7CCA11612C10D3570043B67D /* MedicineBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11602C10D3570043B67D /* MedicineBO.swift */; };
+		7CCA11632C10D3630043B67D /* MedicineDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA11622C10D3630043B67D /* MedicineDTO.swift */; };
 		7CEE3A462C07D50B007604D6 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEE3A452C07D50B007604D6 /* Buttons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C17B4D82C122B7D0026F2D2 /* EventDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDTO.swift; sourceTree = "<group>"; };
+		7C17B4DA2C122C000026F2D2 /* EventBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBO.swift; sourceTree = "<group>"; };
 		7C1AA3972C0F6A2000E4AAD5 /* SharedCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedCalendar.swift; sourceTree = "<group>"; };
 		7C1AA39C2C0F72F000E4AAD5 /* ProductBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBO.swift; sourceTree = "<group>"; };
 		7C1AA39E2C0F730700E4AAD5 /* ProductDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDTO.swift; sourceTree = "<group>"; };
@@ -113,6 +137,7 @@
 		7C2B35EA2C0CEB630088338C /* TabNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavigationBar.swift; sourceTree = "<group>"; };
 		7C2B35EC2C0CF08D0088338C /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		7C2B35F02C0CF36D0088338C /* CreatePatientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePatientView.swift; sourceTree = "<group>"; };
+		7C7C75D82C176E4A0068B6BF /* CreateEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventsView.swift; sourceTree = "<group>"; };
 		7C8654782C0CD4AB008AE334 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		7C8E24ED2C03E16000420913 /* AlzhApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlzhApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8E24F02C03E16000420913 /* AlzhAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlzhAppApp.swift; sourceTree = "<group>"; };
@@ -120,6 +145,25 @@
 		7C8E24F72C03E16200420913 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7C9380372C088CE700A04805 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		7C9380392C08FD2A00A04805 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		7C945FED2C13394E0091376A /* ModifyPatientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPatientView.swift; sourceTree = "<group>"; };
+		7C945FF22C133D0A0091376A /* AddEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventsView.swift; sourceTree = "<group>"; };
+		7C945FF52C133D4A0091376A /* IndividualEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualEventsView.swift; sourceTree = "<group>"; };
+		7C945FFB2C133DEF0091376A /* MonitoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringView.swift; sourceTree = "<group>"; };
+		7C945FFD2C14FD0E0091376A /* PatientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailView.swift; sourceTree = "<group>"; };
+		7CCA11382C10CFA90043B67D /* CarerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarerDTO.swift; sourceTree = "<group>"; };
+		7CCA113B2C10CFBD0043B67D /* CarerBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarerBO.swift; sourceTree = "<group>"; };
+		7CCA113D2C10CFD00043B67D /* CarerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarerRepository.swift; sourceTree = "<group>"; };
+		7CCA113F2C10CFDB0043B67D /* CarerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarerViewModel.swift; sourceTree = "<group>"; };
+		7CCA11422C10D1AF0043B67D /* SymptomDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomDTO.swift; sourceTree = "<group>"; };
+		7CCA11442C10D2590043B67D /* SymptomBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomBO.swift; sourceTree = "<group>"; };
+		7CCA114E2C10D2BF0043B67D /* PatientBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientBO.swift; sourceTree = "<group>"; };
+		7CCA11502C10D2C70043B67D /* PatientDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDTO.swift; sourceTree = "<group>"; };
+		7CCA11582C10D31E0043B67D /* FamilyUnitBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyUnitBO.swift; sourceTree = "<group>"; };
+		7CCA115A2C10D32A0043B67D /* FamilyUnitDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyUnitDTO.swift; sourceTree = "<group>"; };
+		7CCA115C2C10D3350043B67D /* FamilyUnitRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyUnitRepository.swift; sourceTree = "<group>"; };
+		7CCA115E2C10D3440043B67D /* FamilyUnitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyUnitViewModel.swift; sourceTree = "<group>"; };
+		7CCA11602C10D3570043B67D /* MedicineBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineBO.swift; sourceTree = "<group>"; };
+		7CCA11622C10D3630043B67D /* MedicineDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineDTO.swift; sourceTree = "<group>"; };
 		7CEE3A452C07D50B007604D6 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +189,12 @@
 		7C1AA3992C0F72D500E4AAD5 /* elements */ = {
 			isa = PBXGroup;
 			children = (
+				7CCA114D2C10D2AB0043B67D /* Event */,
+				7CCA114C2C10D2840043B67D /* Medicines */,
+				7CCA114B2C10D27E0043B67D /* FamilyUnit */,
+				7CCA114A2C10D2760043B67D /* Patient */,
+				7CCA11412C10D15F0043B67D /* Symptom */,
+				7CCA113A2C10CFB00043B67D /* Carer */,
 				7C1AA39A2C0F72DC00E4AAD5 /* product */,
 			);
 			path = elements;
@@ -258,9 +308,10 @@
 		7C273FCE2C07B044001557A0 /* initial */ = {
 			isa = PBXGroup;
 			children = (
+				7C9380392C08FD2A00A04805 /* InitialView.swift */,
+				7C945FFD2C14FD0E0091376A /* PatientDetailView.swift */,
 				7C2B35EE2C0CF34F0088338C /* subViews */,
 				7C2B35E92C0CEB450088338C /* tabBar */,
-				7C9380392C08FD2A00A04805 /* InitialView.swift */,
 			);
 			path = initial;
 			sourceTree = "<group>";
@@ -276,8 +327,11 @@
 		7C2B35EE2C0CF34F0088338C /* subViews */ = {
 			isa = PBXGroup;
 			children = (
-				7C1AA3942C0F6A0300E4AAD5 /* SharedCalendar */,
+				7C7C75D72C176E170068B6BF /* CreateEvents */,
+				7C945FF42C133D310091376A /* IndividualEvents */,
 				7C2B35EF2C0CF3560088338C /* CreatePatient */,
+				7C945FEC2C1339170091376A /* ModifyPatientView */,
+				7C1AA3942C0F6A0300E4AAD5 /* SharedCalendar */,
 			);
 			path = subViews;
 			sourceTree = "<group>";
@@ -288,6 +342,14 @@
 				7C2B35F02C0CF36D0088338C /* CreatePatientView.swift */,
 			);
 			path = CreatePatient;
+			sourceTree = "<group>";
+		};
+		7C7C75D72C176E170068B6BF /* CreateEvents */ = {
+			isa = PBXGroup;
+			children = (
+				7C7C75D82C176E4A0068B6BF /* CreateEventsView.swift */,
+			);
+			path = CreateEvents;
 			sourceTree = "<group>";
 		};
 		7C8E24E42C03E16000420913 = {
@@ -341,11 +403,103 @@
 		7C8E24FF2C03E25E00420913 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				7C945FFA2C133DD20091376A /* SymptomMonitoring */,
+				7C945FEF2C133CE70091376A /* createEvents */,
 				7C273FCB2C07AF39001557A0 /* register */,
 				7C273FCA2C07AF32001557A0 /* login */,
 				7C273FCE2C07B044001557A0 /* initial */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		7C945FEC2C1339170091376A /* ModifyPatientView */ = {
+			isa = PBXGroup;
+			children = (
+				7C945FED2C13394E0091376A /* ModifyPatientView.swift */,
+			);
+			path = ModifyPatientView;
+			sourceTree = "<group>";
+		};
+		7C945FEF2C133CE70091376A /* createEvents */ = {
+			isa = PBXGroup;
+			children = (
+				7C945FF22C133D0A0091376A /* AddEventsView.swift */,
+			);
+			path = createEvents;
+			sourceTree = "<group>";
+		};
+		7C945FF42C133D310091376A /* IndividualEvents */ = {
+			isa = PBXGroup;
+			children = (
+				7C945FF52C133D4A0091376A /* IndividualEventsView.swift */,
+			);
+			path = IndividualEvents;
+			sourceTree = "<group>";
+		};
+		7C945FFA2C133DD20091376A /* SymptomMonitoring */ = {
+			isa = PBXGroup;
+			children = (
+				7C945FFB2C133DEF0091376A /* MonitoringView.swift */,
+			);
+			path = SymptomMonitoring;
+			sourceTree = "<group>";
+		};
+		7CCA113A2C10CFB00043B67D /* Carer */ = {
+			isa = PBXGroup;
+			children = (
+				7CCA113B2C10CFBD0043B67D /* CarerBO.swift */,
+				7CCA11382C10CFA90043B67D /* CarerDTO.swift */,
+				7CCA113D2C10CFD00043B67D /* CarerRepository.swift */,
+				7CCA113F2C10CFDB0043B67D /* CarerViewModel.swift */,
+			);
+			path = Carer;
+			sourceTree = "<group>";
+		};
+		7CCA11412C10D15F0043B67D /* Symptom */ = {
+			isa = PBXGroup;
+			children = (
+				7CCA11422C10D1AF0043B67D /* SymptomDTO.swift */,
+				7CCA11442C10D2590043B67D /* SymptomBO.swift */,
+			);
+			path = Symptom;
+			sourceTree = "<group>";
+		};
+		7CCA114A2C10D2760043B67D /* Patient */ = {
+			isa = PBXGroup;
+			children = (
+				7CCA114E2C10D2BF0043B67D /* PatientBO.swift */,
+				7CCA11502C10D2C70043B67D /* PatientDTO.swift */,
+			);
+			path = Patient;
+			sourceTree = "<group>";
+		};
+		7CCA114B2C10D27E0043B67D /* FamilyUnit */ = {
+			isa = PBXGroup;
+			children = (
+				7CCA11582C10D31E0043B67D /* FamilyUnitBO.swift */,
+				7CCA115A2C10D32A0043B67D /* FamilyUnitDTO.swift */,
+				7CCA115C2C10D3350043B67D /* FamilyUnitRepository.swift */,
+				7CCA115E2C10D3440043B67D /* FamilyUnitViewModel.swift */,
+			);
+			path = FamilyUnit;
+			sourceTree = "<group>";
+		};
+		7CCA114C2C10D2840043B67D /* Medicines */ = {
+			isa = PBXGroup;
+			children = (
+				7CCA11602C10D3570043B67D /* MedicineBO.swift */,
+				7CCA11622C10D3630043B67D /* MedicineDTO.swift */,
+			);
+			path = Medicines;
+			sourceTree = "<group>";
+		};
+		7CCA114D2C10D2AB0043B67D /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				7C17B4D82C122B7D0026F2D2 /* EventDTO.swift */,
+				7C17B4DA2C122C000026F2D2 /* EventBO.swift */,
+			);
+			path = Event;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,10 +604,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CCA11452C10D2590043B67D /* SymptomBO.swift in Sources */,
+				7CCA11632C10D3630043B67D /* MedicineDTO.swift in Sources */,
+				7C945FFC2C133DEF0091376A /* MonitoringView.swift in Sources */,
+				7C17B4D92C122B7D0026F2D2 /* EventDTO.swift in Sources */,
+				7C945FEE2C13394E0091376A /* ModifyPatientView.swift in Sources */,
+				7C945FF32C133D0A0091376A /* AddEventsView.swift in Sources */,
 				7C1AA3982C0F6A2000E4AAD5 /* SharedCalendar.swift in Sources */,
 				7C93803A2C08FD2A00A04805 /* InitialView.swift in Sources */,
+				7C17B4DB2C122C000026F2D2 /* EventBO.swift in Sources */,
 				7CEE3A462C07D50B007604D6 /* Buttons.swift in Sources */,
+				7CCA115D2C10D3350043B67D /* FamilyUnitRepository.swift in Sources */,
+				7CCA113E2C10CFD00043B67D /* CarerRepository.swift in Sources */,
 				7C9380382C088CE700A04805 /* RegisterView.swift in Sources */,
+				7CCA11512C10D2C70043B67D /* PatientDTO.swift in Sources */,
 				7C273FBD2C07A808001557A0 /* AppFonts.swift in Sources */,
 				7C273FCD2C07AF85001557A0 /* LoginView.swift in Sources */,
 				7C8654792C0CD4AB008AE334 /* NavBar.swift in Sources */,
@@ -463,13 +627,25 @@
 				7C1AA39F2C0F730700E4AAD5 /* ProductDTO.swift in Sources */,
 				7C273FC52C07AC58001557A0 /* AppColors.swift in Sources */,
 				7C1AA39D2C0F72F000E4AAD5 /* ProductBO.swift in Sources */,
+				7CCA113C2C10CFBD0043B67D /* CarerBO.swift in Sources */,
+				7CCA11432C10D1AF0043B67D /* SymptomDTO.swift in Sources */,
+				7CCA115F2C10D3440043B67D /* FamilyUnitViewModel.swift in Sources */,
+				7CCA11592C10D31E0043B67D /* FamilyUnitBO.swift in Sources */,
 				7C2B35EB2C0CEB630088338C /* TabNavigationBar.swift in Sources */,
+				7C7C75D92C176E4A0068B6BF /* CreateEventsView.swift in Sources */,
 				7C273FC02C07A93E001557A0 /* AppStrings.swift in Sources */,
+				7C945FF62C133D4A0091376A /* IndividualEventsView.swift in Sources */,
 				7C1AA3A32C0F734D00E4AAD5 /* ProductViewModel.swift in Sources */,
 				7C2B35F12C0CF36D0088338C /* CreatePatientView.swift in Sources */,
+				7CCA115B2C10D32A0043B67D /* FamilyUnitDTO.swift in Sources */,
 				7C8E24F12C03E16000420913 /* AlzhAppApp.swift in Sources */,
 				7C273FD02C07CA05001557A0 /* TextFields.swift in Sources */,
 				7C1AA3A12C0F731C00E4AAD5 /* ProductRepository.swift in Sources */,
+				7CCA114F2C10D2BF0043B67D /* PatientBO.swift in Sources */,
+				7CCA11392C10CFA90043B67D /* CarerDTO.swift in Sources */,
+				7CCA11402C10CFDB0043B67D /* CarerViewModel.swift in Sources */,
+				7C945FFE2C14FD0E0091376A /* PatientDetailView.swift in Sources */,
+				7CCA11612C10D3570043B67D /* MedicineBO.swift in Sources */,
 				7C2B35ED2C0CF08D0088338C /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,6 +794,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AlzhApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 8B538GD8Q8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AlzhApp/Info.plist;
@@ -631,7 +808,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = lorenacruz.AlzhApp;
+				PRODUCT_BUNDLE_IDENTIFIER = lcj.AlzhAppIOS.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -647,6 +824,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AlzhApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 8B538GD8Q8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AlzhApp/Info.plist;
@@ -660,7 +838,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = lorenacruz.AlzhApp;
+				PRODUCT_BUNDLE_IDENTIFIER = lcj.AlzhAppIOS.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

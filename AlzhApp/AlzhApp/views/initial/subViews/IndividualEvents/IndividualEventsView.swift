@@ -1,19 +1,22 @@
-//  SharedCalendar.swift
+//
+//  IndividualEventsView.swift
 //  AlzhApp
 //
-//  Created by lorena.cruz on 4/6/24.
+//  Created by lorena.cruz on 7/6/24.
+//
 //
 
 import SwiftUI
 
-struct SharedCalendar: View {
+struct IndividualEventsView: View {
+    let patientID: Int?
     @EnvironmentObject var carerViewModel: CarerViewModel
 
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
                 VStack {
-                    Text("Listado de eventos del cuidador")
+                    Text("Listado de eventos del paciente")
                         .font(.largeTitle)
                         .padding(.top, 20)
 
@@ -31,7 +34,6 @@ struct SharedCalendar: View {
                         Button(action: {
                             Task {
                                 carerViewModel.errorText = nil
-                                await carerViewModel.getEventsByCarer()
                             }
                         }, label: {
                             Text("Reintentar")
@@ -42,12 +44,12 @@ struct SharedCalendar: View {
                             Capsule()
                                 .fill(Color.red)
                         )
-                    } else if carerViewModel.eventsCarer.isEmpty {
+                    } else if carerViewModel.events.isEmpty {
                         Text("No se encontraron eventos.")
                             .foregroundColor(.white)
                     } else {
                         VStack(spacing: 0) {
-                            ForEach(carerViewModel.eventsCarer, id: \.id) { event in
+                            ForEach(carerViewModel.events, id: \.id) { event in
                                 EventRowView(event: event)
                                     .frame(maxWidth: .infinity)
                                     .padding(.vertical, 15)
@@ -65,10 +67,37 @@ struct SharedCalendar: View {
             .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
             .onAppear {
                 Task {
-                    await carerViewModel.getEventsByCarer()
+                    if let patientID = patientID {
+                        await carerViewModel.getEventsByPatient(patientID: patientID)
+                    }
                 }
             }
         }
     }
 }
 
+struct EventRowView: View {
+    let event: Event
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(event.name ?? "Unknown")
+                .font(.headline)
+                .foregroundColor(.black)
+            Text(event.description ?? "No description")
+                .font(.subheadline)
+                .foregroundColor(.black)
+            if let initialDate = event.initialDate, let finalDate = event.finalDate {
+                Text("Fecha: \(initialDate, formatter: Event.dateFormatter) - \(finalDate, formatter: Event.dateFormatter)")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+            }
+            if let initialHour = event.initialHour, let finalHour = event.finalHour {
+                Text("Hora: \(initialHour, formatter: Event.timeFormatter) - \(finalHour, formatter: Event.timeFormatter)")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+            }
+        }
+        .padding(10)
+    }
+}

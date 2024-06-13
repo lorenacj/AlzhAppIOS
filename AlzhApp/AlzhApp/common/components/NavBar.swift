@@ -1,20 +1,20 @@
-//
 //  NavBar.swift
 //  AlzhApp
 //
 //  Created by lorena.cruz on 2/6/24.
 //
-
 import SwiftUI
 import Foundation
 
-// MARK: -  ---------------  NAVBAR DEFAULT -------------
-struct NavigationBarDefault: ViewModifier {
+// MARK: -  ---------------  NAVBAR BASE -------------
+struct NavigationBarBase: ViewModifier {
     var title: String
+    var trailingButton: AnyView?
 
     func body(content: Content) -> some View {
         content
             .navigationBarTitle(Text(title), displayMode: .inline)
+            .navigationBarItems(trailing: trailingButton)
             .onAppear {
                 let appearance = UINavigationBarAppearance()
                 appearance.configureWithTransparentBackground()
@@ -30,46 +30,51 @@ struct NavigationBarDefault: ViewModifier {
 }
 
 extension View {
-    func navBarDefault(title: String) -> some View {
-        self.modifier(NavigationBarDefault(title: title))
-    }
-    func navBarAddFamily(title: String) -> some View {
-        self.modifier(NavigationBarAddFamily(title: title))
+    func navigationBar(title: String, trailingButton: AnyView? = nil) -> some View {
+        self.modifier(NavigationBarBase(title: title, trailingButton: trailingButton))
     }
 }
 
-
-// MARK: -  --------------- AÑADIR CÓDIGO FAMILIA NAVBAR -------------
-
+// MARK: -  --------------- NAVBAR ADD FAMILY -------------
 struct NavigationBarAddFamily: ViewModifier {
     var title: String
-    @Environment(\.presentationMode) var presentationMode
     @State private var showSheet = false
     @State private var familyCode = ""
+    @ObservedObject var viewModel: CarerViewModel
 
     func body(content: Content) -> some View {
         content
-            .modifier(NavigationBarDefault(title: title)) // Reutilizar NavigationBarDefault con título
-            .navigationBarItems(trailing:
-                Button(action: {
-                    showSheet = true
-                }) {
-                    Image(systemName: "person.3.fill")
-                        .foregroundColor(.black)
-                }
-            )
+            .navigationBarBackButtonHidden(false)
+            .navigationBar(title: title, trailingButton: AnyView(addFamilyButton))
             .sheet(isPresented: $showSheet) {
-                AddFamilySheet(showSheet: $showSheet, familyCode: $familyCode)
+                AddFamilySheet(showSheet: $showSheet, familyCode: $familyCode, viewModel: viewModel)
             }
+    }
+
+    private var addFamilyButton: some View {
+        Button(action: {
+            showSheet = true
+        }) {
+            Image(systemName: "person.3.fill")
+                .foregroundColor(.black)
+        }
     }
 }
 
-// MARK: -  --------------- SHEET AÑADIR CÓDIGO FAMILIA NAVBAR -------------
+extension View {
+    func navBarAddFamily(title: String, viewModel: CarerViewModel) -> some View {
+        self.modifier(NavigationBarAddFamily(title: title, viewModel: viewModel))
+    }
+}
 
+// MARK: -  --------------- SHEET ADD FAMILY CODE -------------
 struct AddFamilySheet: View {
     @Binding var showSheet: Bool
     @Binding var familyCode: String
-    
+    @ObservedObject var viewModel: CarerViewModel
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+
     var body: some View {
         ZStack {
             LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom)
@@ -89,11 +94,17 @@ struct AddFamilySheet: View {
                     .padding()
                     Spacer()
                     Button(LocalizedString.okbutton) {
-                        // Aquí se haría la comprobación del código por API
-                        // Realizar la llamada a la API con familyCode
-                        // validateFamilyCode(familyCode)
-                        print("Código introducido: \(familyCode)")
-                        showSheet = false
+                        Task {
+                            do {
+                                try await viewModel.addCarerToPatientByCode(code: familyCode)
+                                alertMessage = "Family added successfully"
+                            } catch {
+                                alertMessage = "Failed to add family: \(error.localizedDescription)"
+                            }
+                            showAlert = true
+                            showSheet = false
+                            viewModel.getPatientsByCarer() // Trigger data refresh
+                        }
                     }
                     .padding()
                 }
@@ -103,5 +114,26 @@ struct AddFamilySheet: View {
             .cornerRadius(10)
             .padding()
         }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Family Registration"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+        }
+    }
+}
+
+// MARK: -  --------------- NAVBAR OUT FAMILY -------------
+struct NavigationBarExitFamily: ViewModifier {
+    var title: String
+    var trailingButton: AnyView
+
+    func body(content: Content) -> some View {
+        content
+            .navigationBarBackButtonHidden(false)
+            .navigationBar(title: title, trailingButton: trailingButton)
+    }
+}
+
+extension View {
+    func navigationBarExitFamily(title: String, trailingButton: AnyView) -> some View {
+        self.modifier(NavigationBarExitFamily(title: title, trailingButton: trailingButton))
     }
 }

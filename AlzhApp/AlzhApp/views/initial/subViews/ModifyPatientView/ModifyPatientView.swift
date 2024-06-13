@@ -1,46 +1,49 @@
 //
-//  CreatePatientView.swift
+//  ModifyPatientView.swift
 //  AlzhApp
 //
-//  Created by lorena.cruz on 2/6/24.
+//  Created by lorena.cruz on 7/6/24.
 //
 
 import SwiftUI
 
-struct CreatePatientView: View {
-    @State private var dniText: String = ""
-    @State private var nameText: String = ""
-    @State private var lastnameText: String = ""
-    @State private var weightValue: String = ""
-    @State private var heightValue: String = ""
-    @State private var disorderText: String = ""
-    @State private var birthdate: Date = Date()
+struct ModifyPatientView: View {
+    @State private var dniText: String
+    @State private var nameText: String
+    @State private var lastnameText: String
+    @State private var weightValue: String
+    @State private var heightValue: String
+    @State private var disorderText: String
+    @State private var birthdate: Date
     @State private var isTapped = false
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @State private var idPatient: Int
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var carerViewModel: CarerViewModel
+    @EnvironmentObject var viewModel: CarerViewModel
 
-    var onPatientAdded: () -> Void = {}
+    init(patient: PatientsCareBO) {
+        _idPatient = State(initialValue: patient.id ?? 0)
+        _dniText = State(initialValue: patient.passportid ?? "")
+        _nameText = State(initialValue: patient.name ?? "")
+        _lastnameText = State(initialValue: patient.lastname ?? "")
+        _weightValue = State(initialValue: "\(patient.weight ?? 0)")
+        _heightValue = State(initialValue: "\(Int(patient.height ?? 0))") // Formatear como entero
+        _disorderText = State(initialValue: patient.disorder ?? "")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        if let birthdateString = patient.birthdate, let birthdate = dateFormatter.date(from: birthdateString) {
+            _birthdate = State(initialValue: birthdate)
+        } else {
+            _birthdate = State(initialValue: Date())
+        }
+    }
 
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
                 VStack(spacing: 20) {
                     Spacer()
-                    // DNI
-                    CustomTextFieldAuth(
-                        title: LocalizedString.dni,
-                        placeholder: LocalizedString.dniplaceholder,
-                        text: Binding(
-                            get: { self.dniText },
-                            set: { self.dniText = $0 ?? "" }
-                        ),
-                        isSecureField: false
-                    )
-                    .padding(.horizontal, 40)
-                    .frame(maxWidth: .infinity)
-                    
                     // Nombre
                     CustomTextFieldAuth(
                         title: LocalizedString.name,
@@ -93,7 +96,7 @@ struct CreatePatientView: View {
                     )
                     .padding(.horizontal, 40)
                     .frame(maxWidth: .infinity)
-                    .keyboardType(.numberPad)
+                    .keyboardType(.decimalPad)
                     
                     // Disorder
                     CustomPickerField(
@@ -116,28 +119,37 @@ struct CreatePatientView: View {
                     
                     Spacer()
                     
-                    CustomButtonStyle(text: LocalizedString.register, isTapped: $isTapped) {
+                    CustomButtonStyle(text: "actualizar", isTapped: $isTapped) {
+                        print("DEBUG: Update button tapped")
+                        
+                        // Validación de campos
                         if validateFields() {
-                            // Lógica de registro
-                            let patient = AddPatientDTO(
+                            // Lógica de actualización
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd"
+                            let birthdateString = dateFormatter.string(from: birthdate)
+
+                            let patientDTO = UpdatePatientDTO(
+                                id: idPatient,
                                 name: nameText,
                                 lastname: lastnameText,
-                                birthdate: birthdate,
+                                birthdate: birthdateString,
                                 height: Int(heightValue) ?? 0,
-                                weight: Float(weightValue) ?? 0,
+                                weight: Double(weightValue) ?? 0.0,
                                 disorder: disorderText,
                                 passportId: dniText
                             )
-                            print("DEBUG: Adding patient: \(patient)")
                             Task {
+                                print("DEBUG: Starting Task to update patient")
                                 do {
-                                    try await carerViewModel.addPatient(patient: patient)
-                                    alertMessage = LocalizedString.registrocorrecto
-                                    showAlert = true
+                                    try await viewModel.updatePatient(patient: patientDTO)
+                                    alertMessage = "Actualización correcta"
+                                    print("DEBUG: Update successful")
                                 } catch {
-                                    alertMessage = "Error al registrar: \(error.localizedDescription)"
-                                    showAlert = true
+                                    alertMessage = "Error al actualizar: \(error.localizedDescription)"
+                                    print("DEBUG: Update failed with error: \(error)")
                                 }
+                                showAlert = true
                             }
                         } else {
                             showAlert = true
@@ -145,10 +157,9 @@ struct CreatePatientView: View {
                     }
                     .padding(.bottom, 10)
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text(LocalizedString.register), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)) {
-                            if alertMessage == LocalizedString.registrocorrecto {
+                        Alert(title: Text("Actualización"), message: Text(alertMessage), dismissButton: .default(Text(LocalizedString.okbutton)) {
+                            if alertMessage == "Actualización correcta" {
                                 presentationMode.wrappedValue.dismiss()
-                                onPatientAdded()
                             }
                         })
                     }
@@ -158,18 +169,14 @@ struct CreatePatientView: View {
             .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
             .opacity(1)
         }
-        .navigationBarTitle("Agregar Paciente", displayMode: .inline)
+        .navigationBarTitle("Editar Paciente", displayMode: .inline)
         .onTapGesture {
             endEditing()
         }
     }
     
     func validateFields() -> Bool {
-        if dniText.isEmpty {
-            alertMessage = LocalizedString.camposVacios
-            print("DEBUG: dniText is empty")
-            return false
-        } else if nameText.isEmpty {
+        if nameText.isEmpty {
             alertMessage = LocalizedString.camposVacios
             print("DEBUG: nameText is empty")
             return false
@@ -189,17 +196,13 @@ struct CreatePatientView: View {
             alertMessage = LocalizedString.camposVacios
             print("DEBUG: disorderText is empty")
             return false
-        } else if !isValidDNI(dniText) {
-            alertMessage = LocalizedString.dniNoValido
-            print("DEBUG: dniText is not valid")
-            return false
         } else if Float(weightValue) == nil {
             alertMessage = LocalizedString.pesoNoValido
             print("DEBUG: weightValue is not a valid float")
             return false
         } else if Int(heightValue) == nil {
             alertMessage = LocalizedString.alturaNoValida
-            print("DEBUG: heightValue is not a valid int")
+            print("DEBUG: heightValue is not a valid double")
             return false
         } else if birthdate > Date() {
             alertMessage = LocalizedString.fechaNoValida
@@ -207,12 +210,6 @@ struct CreatePatientView: View {
             return false
         }
         return true
-    }
-    
-    func isValidDNI(_ dni: String) -> Bool {
-        let dniRegex = "^[0-9]{8}[A-Za-z]$"
-        let dniTest = NSPredicate(format:"SELF MATCHES %@", dniRegex)
-        return dniTest.evaluate(with: dni)
     }
 }
 
