@@ -229,9 +229,7 @@ struct CustomTimeField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text(title)
-                .font(.system(size: 12))
-                .foregroundColor(.black.opacity(0.7))
-                .padding(.leading, 8)
+                .font(.headline)
             DatePicker(
                 placeholder,
                 selection: $time,

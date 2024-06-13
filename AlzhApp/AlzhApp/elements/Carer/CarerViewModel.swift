@@ -9,6 +9,7 @@ import Foundation
 
 final class CarerViewModel: ObservableObject {
     @Published var errorText: String?
+    @Published var errorTextEvent: String?
     @Published var isLoginSuccessful = false
     @Published var isRegisterSuccessful = false
     @Published var isAddCarerSuccessful = false
@@ -19,6 +20,7 @@ final class CarerViewModel: ObservableObject {
     @Published var eventsCarer: [Event] = []
     @Published var token: String?
     @Published var isLoading = false
+    @Published var isLoadingEvent = false
     @Published var shouldReloadPatients = false
     
     private lazy var carerRepository: CarerRepository = CarerWS()
@@ -189,21 +191,21 @@ final class CarerViewModel: ObservableObject {
     @MainActor
     func getEventsByPatient(patientID: Int) {
         Task {
-            isLoading = true
+            isLoadingEvent = true
             guard let token = token else {
-                errorText = "No token available"
-                isLoading = false
+                errorTextEvent = "No token available"
+                isLoadingEvent = false
                 return
             }
 
             do {
                 let events = try await carerRepository.getEventsByPatient(patientID: patientID, token: token)
                 self.events = events
-                errorText = nil
+                errorTextEvent = nil
             } catch {
-                handleError(error)
+                handleErrorEvent(error)
             }
-            isLoading = false
+            isLoadingEvent = false
         }
     }
     
@@ -266,6 +268,25 @@ final class CarerViewModel: ObservableObject {
             }
         } else {
             errorText = error.localizedDescription
+            print("DEBUG: General error: \(error.localizedDescription)")
+        }
+    }
+    
+    private func handleErrorEvent(_ error: Error) {
+        if let repoError = error as? RepositoryError {
+            switch repoError {
+            case .statusCode(let code):
+                errorTextEvent = "Error: Código de estado \(code)"
+                print("DEBUG: Repository error with status code: \(code)")
+            case .custom(let message):
+                errorTextEvent = message
+                print("DEBUG: Repository error with message: \(message)")
+            default:
+                errorTextEvent = "Error desconocido: \(error.localizedDescription)"
+                print("DEBUG: Unknown repository error: \(error.localizedDescription)")
+            }
+        } else {
+            errorTextEvent = error.localizedDescription
             print("DEBUG: General error: \(error.localizedDescription)")
         }
     }

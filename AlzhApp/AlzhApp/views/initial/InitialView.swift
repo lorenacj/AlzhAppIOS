@@ -18,7 +18,7 @@ struct InitialView: View {
                 ScrollView {
                     VStack(spacing: 0) {
                         if carerViewModel.isLoading {
-                            ProgressView("Loading patients...")
+                            ProgressView("Cargando pacientes...")
                                 .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                 .foregroundColor(.white)
                         } else if carerViewModel.patients.isEmpty {
@@ -166,6 +166,7 @@ struct InitialView: View {
                 }
             }
         }
+        .navigationViewStyle(.stack)
     }
 }
 
@@ -195,9 +196,9 @@ struct PatientRow: View {
     }
 }
 
-#Preview {
-    NavigationView {
-        InitialView()
-            .environmentObject(CarerViewModel())
-    }
-}
+//#Preview {
+//    NavigationView {
+//        InitialView()
+//            .environmentObject(CarerViewModel())
+//    }
+//}
