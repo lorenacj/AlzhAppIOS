@@ -22,7 +22,7 @@ struct TabNavigationBar: View {
                 .tag(TabSelection.initial)
             //            SharedCalendar()
             NavigationView {
-                SharedEventsView()
+                SharedCalendar()
             }
             .tabItem {
                 Label("Calendario", systemImage: AppIcons.calendar.rawValue)
@@ -43,9 +43,9 @@ struct TabNavigationBar: View {
     }
 }
 
-#Preview {
-    SharedEventsView()
-}
+//#Preview {
+//    SharedEventsView(patientID: <#Int?#>)
+//}
 
 
 struct TabSelectionView: View {

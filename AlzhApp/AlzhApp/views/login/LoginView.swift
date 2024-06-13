@@ -76,7 +76,6 @@ struct LoginView: View {
                     .frame(maxWidth: .infinity, minHeight: proxy.size.height)
                 }
                 .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
-                .opacity(1)
             }
             .onTapGesture {
                 endEditing()

@@ -25,6 +25,7 @@ protocol CarerRepository {
     func addEvent(event: AddEventDTO, patientID: Int, token: String) async throws
     func addEventWithStaticData(patientID: Int, token: String) async throws
     func getEventsByPatient(patientID: Int, token: String) async throws -> [Event]
+    func getEventsByCarer(token: String) async throws -> [Event]
     func exitCarerFromPatient(patientID: Int, token: String) async throws
 }
 
@@ -410,32 +411,72 @@ class CarerWS: CarerRepository {
         }
     }
     
-    func exitCarerFromPatient(patientID: Int, token: String) async throws {
-            guard let url = URL(string: "\(baseURL)/patientapi/exit/\(patientID)") else {
-                throw RepositoryError.invalidURL
-            }
-            
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-            
-            do {
-                let (data, response) = try await URLSession.shared.data(for: request)
-                guard let httpResponse = response as? HTTPURLResponse else {
-                    throw RepositoryError.invalidResponse
-                }
-                
-                guard 200..<300 ~= httpResponse.statusCode else {
-                    if let errorMessage = String(data: data, encoding: .utf8) {
-                        throw RepositoryError.custom(errorMessage)
-                    } else {
-                        throw RepositoryError.statusCode(httpResponse.statusCode)
-                    }
-                }
-            } catch {
-                throw error
-            }
+    func getEventsByCarer(token: String) async throws -> [Event] {
+        guard let url = URL(string: "\(baseURL)/eventapi/byCarer") else {
+            print("Error: URL inválida")
+            throw RepositoryError.invalidURL
         }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            print("Enviando petición a \(url)")
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print("Error: Respuesta inválida")
+                throw RepositoryError.invalidResponse
+            }
+            
+            print("Respuesta HTTP recibida: \(httpResponse.statusCode)")
+            guard 200 ..< 300 ~= httpResponse.statusCode else {
+                if let errorMessage = String(data: data, encoding: .utf8) {
+                    print("Error: \(errorMessage)")
+                    throw RepositoryError.custom(errorMessage)
+                } else {
+                    print("Error: Código de estado \(httpResponse.statusCode)")
+                    throw RepositoryError.statusCode(httpResponse.statusCode)
+                }
+            }
+            
+            print("Datos recibidos: \(String(data: data, encoding: .utf8) ?? "")")
+            let events = try JSONDecoder().decode([Event].self, from: data)
+            return events
+        } catch {
+            print("Error al obtener los eventos: \(error.localizedDescription)")
+            throw RepositoryError.custom("Failed to fetch events: \(error.localizedDescription)")
+        }
+    }
+    
+    func exitCarerFromPatient(patientID: Int, token: String) async throws {
+        guard let url = URL(string: "\(baseURL)/patientapi/exit/\(patientID)") else {
+            throw RepositoryError.invalidURL
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw RepositoryError.invalidResponse
+            }
+            
+            guard 200..<300 ~= httpResponse.statusCode else {
+                if let errorMessage = String(data: data, encoding: .utf8) {
+                    throw RepositoryError.custom(errorMessage)
+                } else {
+                    throw RepositoryError.statusCode(httpResponse.statusCode)
+                }
+            }
+        } catch {
+            throw error
+        }
+    }
+    
     
     private func createFormData(parameters: [String: String], boundary: String) -> Data {
         var body = Data()

@@ -13,7 +13,7 @@ struct CustomTabBarAppearance: ViewModifier {
     init() {
         let tabBarAppearance = UITabBarAppearance()
 //        tabBarAppearance.configureWithTransparentBackground()
-        tabBarAppearance.backgroundColor = .white.withAlphaComponent(0.5)
+        tabBarAppearance.backgroundColor = .white.withAlphaComponent(1)
         
         UITabBar.appearance().standardAppearance = tabBarAppearance
         if #available(iOS 15.0, *) {

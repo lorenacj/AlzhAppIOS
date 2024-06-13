@@ -16,6 +16,7 @@ final class CarerViewModel: ObservableObject {
     @Published var isAddPatientSuccessful = false
     @Published var patients: [PatientsCareBO] = []
     @Published var events: [Event] = []
+    @Published var eventsCarer: [Event] = []
     @Published var token: String?
     @Published var isLoading = false
     @Published var shouldReloadPatients = false
@@ -205,6 +206,30 @@ final class CarerViewModel: ObservableObject {
             isLoading = false
         }
     }
+    
+    func getEventsByCarer() {
+            Task {
+                isLoading = true
+                guard let token = token else {
+                    print("Error: No hay token disponible")
+                    errorText = "No token available"
+                    isLoading = false
+                    return
+                }
+
+                do {
+                    print("Intentando obtener eventos con el token: \(token)")
+                    let events = try await carerRepository.getEventsByCarer(token: token)
+                    self.eventsCarer = events
+                    errorText = nil
+                    print("Eventos obtenidos correctamente: \(events)")
+                } catch {
+                    print("Error al manejar los eventos: \(error.localizedDescription)")
+                    handleError(error)
+                }
+                isLoading = false
+            }
+        }
 
     @MainActor
     func exitCarerFromPatient(patientID: Int) {

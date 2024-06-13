@@ -64,12 +64,10 @@ struct PatientDetailView: View {
                         Text("Altura: \(patient.height?.formatted(.number.precision(.integerLength(0))) ?? "0")cm")
                         HStack {
                             Text("Medicinas: ")
-                            NavigationLink(destination: MedicinesView(medicines: patient.medicines ?? [])) {
-                                Image(systemName: "pills")
-                                    .resizable()
-                                    .frame(width: 20, height: 20)
-                                    .foregroundColor(AppColors.lightBlue)
-                            }
+                            Image(systemName: "pills")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(AppColors.lightBlue)
                         }
                     }
                     .padding()
