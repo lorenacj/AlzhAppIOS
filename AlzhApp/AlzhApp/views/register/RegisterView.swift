@@ -95,7 +95,7 @@ struct RegisterView: View {
                 .frame(maxWidth: .infinity, minHeight: proxy.size.height)
             }
             .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
-            .opacity(0.8)
+            .opacity(1)
         }
         .navigationBar(title: LocalizedString.register)
         .onTapGesture {

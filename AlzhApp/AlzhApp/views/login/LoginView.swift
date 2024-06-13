@@ -41,7 +41,8 @@ struct LoginView: View {
                         NavigationLink(destination: RegisterView()) {
                             Text(LocalizedString.noTieneCuenta)
                                 .font(.system(size: 12))
-                                .foregroundColor(Color.blue)
+                                .foregroundColor(AppColors.darkBlue)
+                                .underline()
                                 .opacity(1)
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                                 .padding(.trailing, 40)
@@ -75,7 +76,7 @@ struct LoginView: View {
                     .frame(maxWidth: .infinity, minHeight: proxy.size.height)
                 }
                 .background(LinearGradient(colors: AppColors.gradientBackground, startPoint: .top, endPoint: .bottom))
-                .opacity(0.8)
+                .opacity(1)
             }
             .onTapGesture {
                 endEditing()
