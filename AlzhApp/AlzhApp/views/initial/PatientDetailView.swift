@@ -30,13 +30,31 @@ struct PatientDetailView: View {
                             }
                         }
                         .font(.custom(AppFonts.OpenSans.semibold.rawValue, size: 20))
-                        Text("Código del paciente: \(carerViewModel.patientCode)")
                         Text("\(patient.name ?? "Unknown") \(patient.lastname ?? "Unknown")")
                         Text("Fecha de nacimiento: \(patient.birthdate ?? "Unknown")")
                         Text("Disorder: \(patient.disorder ?? "Unknown")")
                         Text("DNI: \(patient.passportid ?? "Unknown")")
                         Text("Peso: \(patient.weight?.formatted(.number.precision(.fractionLength(2))) ?? "0.00")Kg")
                         Text("Altura: \(patient.height?.formatted(.number.precision(.integerLength(0))) ?? "0")cm")
+                        Text("Código del paciente: \(carerViewModel.patientCode ?? "")")
+                            .onTapGesture {
+                                if let code = carerViewModel.patientCode {
+                                    UIPasteboard.general.string = code
+                                }
+                            }
+                            .padding()
+                            .background(Color.gray.opacity(0.2))
+                            .cornerRadius(8)
+                            .contextMenu {
+                                Button(action: {
+                                    if let code = carerViewModel.patientCode {
+                                        UIPasteboard.general.string = code
+                                    }
+                                }) {
+                                    Text("Copiar")
+                                    Image(systemName: "doc.on.doc")
+                                }
+                            }
                         HStack {
                             NavigationLink(
                                 destination: CreateEventsView(patientID: patient.id)
