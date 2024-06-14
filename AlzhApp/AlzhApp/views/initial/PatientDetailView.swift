@@ -32,7 +32,7 @@ struct PatientDetailView: View {
                         .font(.custom(AppFonts.OpenSans.semibold.rawValue, size: 20))
                         Text("\(patient.name ?? "Unknown") \(patient.lastname ?? "Unknown")")
                         Text("Fecha de nacimiento: \(patient.birthdate ?? "Unknown")")
-                        Text("Disorder: \(patient.disorder ?? "Unknown")")
+                        Text("Transtorno: \(patient.disorder ?? "Unknown")")
                         Text("DNI: \(patient.passportid ?? "Unknown")")
                         Text("Peso: \(patient.weight?.formatted(.number.precision(.fractionLength(2))) ?? "0.00")Kg")
                         Text("Altura: \(patient.height?.formatted(.number.precision(.integerLength(0))) ?? "0")cm")

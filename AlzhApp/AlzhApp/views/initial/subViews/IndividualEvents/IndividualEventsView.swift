@@ -16,9 +16,6 @@ struct IndividualEventsView: View {
         GeometryReader { proxy in
             ScrollView {
                 VStack {
-                    Text("Listado de eventos del paciente")
-                        .font(.largeTitle)
-                        .padding(.top, 20)
 
                     if carerViewModel.isLoading {
                         ProgressView("Cargando eventos...")

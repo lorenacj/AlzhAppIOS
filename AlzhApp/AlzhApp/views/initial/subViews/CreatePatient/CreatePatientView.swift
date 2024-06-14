@@ -104,7 +104,7 @@ struct CreatePatientView: View {
                     .frame(maxWidth: .infinity)
                     
                     // Birthday
-                    CustomDateField(
+                    CustomEventDateField(
                         title: LocalizedString.birthdate,
                         placeholder: "",
                         date: Binding(
@@ -128,7 +128,7 @@ struct CreatePatientView: View {
                                 disorder: disorderText,
                                 passportId: dniText
                             )
-                            print("DEBUG: Adding patient: \(patient)")
+//                            print("DEBUG: Adding patient: \(patient)")
                             Task {
                                 do {
                                     try await carerViewModel.addPatient(patient: patient)

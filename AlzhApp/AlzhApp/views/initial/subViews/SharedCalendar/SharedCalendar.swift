@@ -13,7 +13,7 @@ struct SharedCalendar: View {
         GeometryReader { proxy in
             ScrollView {
                 VStack {
-                    if carerViewModel.isLoading {
+                    if carerViewModel.isLoadingCarer {
                         ProgressView("Cargando eventos...")
                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                             .foregroundColor(.white)
@@ -26,7 +26,7 @@ struct SharedCalendar: View {
                             .foregroundColor(.red)
                         Button(action: {
                             Task {
-                                carerViewModel.errorText = nil
+                                carerViewModel.errorTextEventsCarer = nil
                                 await carerViewModel.getEventsByCarer()
                             }
                         }, label: {
@@ -36,7 +36,8 @@ struct SharedCalendar: View {
                         })
                         .background(
                             Capsule()
-                                .fill(Color.red)
+                                .fill(AppColors.maroon)
+                        
                         )
                     } else if carerViewModel.eventsCarer.isEmpty {
                         Button(action: {

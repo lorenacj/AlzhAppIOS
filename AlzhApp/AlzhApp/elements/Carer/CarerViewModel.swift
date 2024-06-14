@@ -11,6 +11,7 @@ final class CarerViewModel: ObservableObject {
     @Published var errorText: String?
     @Published var errorTextEvent: String?
     @Published var errorTextCode: String?
+    @Published var errorTextEventsCarer: String?
     @Published var isLoginSuccessful = false
     @Published var isRegisterSuccessful = false
     @Published var isAddCarerSuccessful = false
@@ -23,6 +24,7 @@ final class CarerViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var isLoadingEvent = false
     @Published var isLoadingCode = false
+    @Published var isLoadingCarer = false
     @Published var shouldReloadPatients = false
     @Published var patientCode: String?
     
@@ -214,11 +216,11 @@ final class CarerViewModel: ObservableObject {
     
     func getEventsByCarer() {
             Task {
-                isLoading = true
+                isLoadingCarer = true
                 guard let token = token else {
                     print("Error: No hay token disponible")
-                    errorText = "No token available"
-                    isLoading = false
+                    errorTextEventsCarer = "No token available"
+                    isLoadingCarer = false
                     return
                 }
 
@@ -226,15 +228,33 @@ final class CarerViewModel: ObservableObject {
                     print("Intentando obtener eventos con el token: \(token)")
                     let events = try await carerRepository.getEventsByCarer(token: token)
                     self.eventsCarer = events
-                    errorText = nil
+                    errorTextEventsCarer = nil
                     print("Eventos obtenidos correctamente: \(events)")
                 } catch {
                     print("Error al manejar los eventos: \(error.localizedDescription)")
-                    handleError(error)
+                    handleErrorGetEventsCarer(error)
                 }
-                isLoading = false
+                isLoadingCarer = false
             }
         }
+    private func handleErrorGetEventsCarer(_ error: Error) {
+        if let repoError = error as? RepositoryError {
+            switch repoError {
+            case .statusCode(let code):
+                errorTextEventsCarer = "Error: Código de estado \(code)"
+                print("DEBUG: Repository error with status code: \(code)")
+            case .custom(let message):
+                errorTextEventsCarer = message
+                print("DEBUG: Repository error with message: \(message)")
+            default:
+                errorTextEventsCarer = "Error desconocido: \(error.localizedDescription)"
+                print("DEBUG: Unknown repository error: \(error.localizedDescription)")
+            }
+        } else {
+            errorTextEventsCarer = error.localizedDescription
+            print("DEBUG: General error: \(error.localizedDescription)")
+        }
+    }
 
     @MainActor
     func exitCarerFromPatient(patientID: Int) {

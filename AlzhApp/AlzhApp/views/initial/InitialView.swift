@@ -27,7 +27,8 @@ struct InitialView: View {
                                     .resizable()
                                     .frame(width: 30, height: 30)
                                     .foregroundStyle(.white)
-                                Text(errorText)
+//                                Text(errorText)
+                                Text("No se han encontrado pacientes")
                                     .foregroundColor(.white)
                                     .padding(.horizontal,5)
                                     .padding()
@@ -159,6 +160,7 @@ struct InitialView: View {
             }
             .onAppear {
                 carerViewModel.getPatientsByCarer()
+                carerViewModel.patientCode = ""
             }
             .onChange(of: carerViewModel.shouldReloadPatients) { shouldReload in
                 if shouldReload {
