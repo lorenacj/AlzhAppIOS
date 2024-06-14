@@ -36,7 +36,8 @@ struct SharedCalendar: View {
                         })
                         .background(
                             Capsule()
-                                .fill(Color.red)
+                                .fill(AppColors.maroon)
+                        
                         )
                     } else if carerViewModel.eventsCarer.isEmpty {
                         Button(action: {
